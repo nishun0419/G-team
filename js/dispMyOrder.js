@@ -1,5 +1,5 @@
 function dispMyOrder(response, count){
-	$("#orderlist").append($("<div class='col-md-10 col-md-offset-1 orderBox'><div>")
+	$("#orderList").append($("<div class='col-md-10 col-md-offset-1 orderBox'><div>")
 					  .append($("<div class='media'></div>")
 					  .append($("<a class='media-left' href='#'></a>")
 					  .append($("<img class='samune' id='samune"+count+"'>")

@@ -10,19 +10,24 @@
 	$password = "nise";
 	try{
 		$dbh = new PDO($dsn,$user,$password);
-			$sql = "select * from orders";
+			$sql = "select * from orders where userid = ?";
 			$stmt=$dbh->prepare($sql);
+			$stmt -> bindValue(1, $_GET["userid"], PDO::PARAM_STR);
 			$stmt -> execute();
 			$res = array();
 			while($row = $stmt -> fetch(PDO::FETCH_ASSOC)){
-				$res[] = array( "ident" => $row["ident"],
-								"facility_name" => $row["facility_name"],
-								"zip" => $row["zip"],
-								"address" => $row["address"],
-								"message" => $row["message"],
-								"capacity" => $row["capacity"],
-								"images" => $row["images"]
+				$sql = "select * from facilitys where ident = ?";
+				$fstmt = $dbh -> prepare($sql);
+				$fstmt -> bindValue(1, $row["facilityid"], PDO::PARAM_STR);
+				$fstmt -> execute();
+				while($frow = $fstmt -> fetch(PDO::FETCH_ASSOC)){
+				$res[] = array( "ident" => $frow["ident"],
+								"facility_name" => $frow["facility_name"],
+								"zip" => $frow["zip"],
+								"address" => $frow["address"],
+								"images" => $frow["images"]
 						);
+				}
 			}
 		header("Access-Control-Allow-Origin:*");
 		header("Content-Type: application/json");

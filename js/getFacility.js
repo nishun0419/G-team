@@ -34,6 +34,7 @@ $(function(){
 			for(count = 0; count < responses.length; count++){
 				dispMyFacility(responses[count], count);
 			}
+			getOrder();
 		}
 	})
 	.fail(function(){
