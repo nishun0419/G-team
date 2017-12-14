@@ -10,6 +10,8 @@ function dispMyOrder(response, count){
 					  .append($("<a></a>")
 					  .attr({'href':'#' + response.ident})
 					  .text(response.facility_name)))
+					  .append($("<div class='text-right'></div>")
+					  .text(response.orderdate))
 					  )
 					  )
 					  );

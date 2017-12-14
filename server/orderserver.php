@@ -10,9 +10,10 @@
 	$password = "nise";
 	try{
 		$dbh = new PDO($dsn,$user,$password);
-			$sql = "select * from orders where userid = ?";
+			$sql = "select * from orders where userid = ? orderdate > ? order by orderdate";
 			$stmt=$dbh->prepare($sql);
 			$stmt -> bindValue(1, $_GET["userid"], PDO::PARAM_STR);
+			$stmt -> bindVAlue(2, date("Y-m-d"), PDO::PARAM_STR);
 			$stmt -> execute();
 			$res = array();
 			while($row = $stmt -> fetch(PDO::FETCH_ASSOC)){
@@ -25,7 +26,8 @@
 								"facility_name" => $frow["facility_name"],
 								"zip" => $frow["zip"],
 								"address" => $frow["address"],
-								"images" => $frow["images"]
+								"images" => $frow["images"],
+								"orderdate" => $row["orderdate"]
 						);
 				}
 			}

@@ -54,3 +54,4 @@ create table orders(
 insert into orders(userid, facilityid, orderdate) values("ninose", 1, "2018/1/18");
 insert into orders(userid, facilityid, orderdate) values("ninose", 1, "2017/12/18");
 insert into orders(userid, facilityid, orderdate) values("ninose", 1, "2018/12/26");
+insert into orders(userid, facilityid, orderdate) values("ninose", 1, "2017/11/20");
