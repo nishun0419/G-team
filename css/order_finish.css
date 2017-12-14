@@ -1,0 +1,33 @@
+#white_back{
+	position: fixed;
+	background-color: #FFFFFF;
+	height: 100%;
+	width: 100%;
+	top:0;
+  	left: 0;
+  	z-index: 5;
+}
+
+#price_box{
+	position: absolute;
+	height: 300px;
+	width: 300px;
+	top:50%;
+	left:50%;
+	margin-top: -150px;
+	margin-left: -150px;
+	background-color: #4AFDFF;
+	padding-top: 100px;
+	padding-left: 50px;
+	font-size: 60px;
+	color: blue;
+}
+
+.check{
+	margin-left: 80px;
+	visibility: hidden;
+}
+
+.ordermessage{
+	margin-top: 80px;
+}

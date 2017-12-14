@@ -1,0 +1,113 @@
+html{
+	/*height: 100%;*/
+}
+.logoCenter{
+	height: 200px;
+}
+body{
+	margin: 0;
+	padding: 0;
+	background-color: #535353;
+}
+
+.centerTitle{
+	color:#FFFFFF;
+}
+
+#animation_back{
+	position: fixed;
+	background-color: #FFFFFF;
+	height: 100%;
+	width: 100%;
+	top:0;
+  	left: 0;
+  	z-index: 5;
+}
+
+.animationtext{
+	color:#000000;
+}
+
+.animationtext1{
+	font-size: 50px;
+	padding-top: 80px;
+	visibility: hidden;
+}
+.animationtext2{
+	font-size: 50px;
+	position: absolute;
+	width: 100%;
+	top: 80%;
+	margin: 0;
+	text-align: center;
+	visibility: hidden;
+}
+ 
+.xImage {
+ height: 120px;
+ width: 120px;
+ position: absolute;
+ top: 50%;
+ left: 50%;
+ margin-top: -60px;
+ margin-left: -60px;
+ display: none;
+}
+
+.animationtext3{
+	height: 100px;
+	font-size: 50px;
+	position: absolute;
+	width: 100%;
+	top: 50%;
+	margin-top: -40px;
+	text-align: center;
+	display: none;
+}
+
+#titletop{
+	/* width: 100%; */
+	margin: 0;
+	/* height: 100%; */
+	position: relative;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-attachment: fixed;
+	background-size: cover;
+	background-image: url(/php/image/titleback.jpg);
+	/* padding-top: 60px;
+	/* margin-top: -60px; */
+}
+
+.titleName{
+	padding-top: 70px;
+}
+
+.panel{
+	height: 100%;
+}
+
+.serchbox{
+	height: 400px;
+	padding-top: 100px;
+}
+
+.titlesecond{
+/*	background-repeat: no-repeat;
+	background-position: center;
+	background-attachment: fixed;
+	background-size: cover;
+	background-image:url(/php/image/titlesecond.jpg);
+	opacity: 0;*/
+	margin-top: 50px;
+	padding-top: 60px;
+}
+
+.imgbox{
+	height: 100px;
+	width: 100px;
+	background-color: red;
+}
+h2{
+	text-align: center;
+}

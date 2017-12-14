@@ -1,0 +1,31 @@
+.main{
+  margin-top: 80px;
+}
+
+.box{
+  border:1px solid blue;
+}
+
+.samune{
+  width: 64px;
+  height: 64px;
+}
+
+.facilityBox{
+  display: inline-flex;
+}
+
+.media{
+  border: 1px solid blue;
+}
+
+/*.delete_facility{
+  height: 64px;
+  margin-top: 15px;
+  background-color: red;
+}
+
+.edit_facility{
+  height: 64px;
+  margin-top: 15px;
+}*/

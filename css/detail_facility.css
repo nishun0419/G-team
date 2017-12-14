@@ -1,0 +1,43 @@
+#detail_Info{
+	margin-top: 80px;
+}
+#map{
+	height: 300px;
+	min-width: 100%;
+	margin: auto;
+}
+
+#facility_info_box{
+	border: 1px solid blue;
+}
+
+#calendar_val{
+	margin-top: 20px;
+}
+#calendar{
+	width: 100px;
+}
+
+
+#price{
+	color: red;
+	font-size: 20px;
+}
+
+#calendar_message{
+	color: red;
+	background-color: yellow;
+}
+
+.inorder .ui-state-default{
+	color: red;
+}
+
+.ui-state-default{
+	height: 3em;
+}
+
+.ui-datepicker{
+	width: 30em;
+	height: 25em;
+}

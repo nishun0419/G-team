@@ -1,0 +1,15 @@
+#orderbox{
+	margin-top: 80px;
+	border: 1px solid blue;
+}
+
+.ordermessage{
+	margin-top: 20px;
+}
+
+.button_group{
+	margin-top: 20px;
+}
+.ok{
+	margin-left: 70px;
+}

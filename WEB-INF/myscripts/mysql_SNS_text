@@ -1,0 +1,56 @@
+# データベースminishopの作成
+set names utf8;
+drop database if exists SNS;
+create database SNS;
+
+# ユーザーminiに、パスワードshopを設定し、データベースminishopに対するすべての権限を付与
+grant all privileges on SNS.* to nise@localhost identified by 'nise';
+
+# データベースminishopを使用する
+use SNS;
+
+# テーブルitemsの作成
+create table user(
+	ident	int auto_increment primary key,
+	userid	varchar(50) not null,
+	password	varchar(256) not null,
+	price int not null
+);
+
+create table messagebords(
+	messageid int auto_increment primary key,
+	userid varchar(50) not null,
+	title varchar(50) not null,
+	message	varchar(256) not null,
+	posttime timestamp not null default current_timestamp
+);
+
+insert into messagebords(userid, title, message) values("ninose", "test", "test");
+
+create table facilitys(
+	ident int auto_increment primary key,
+	facility_name varchar(100) not null,
+	zip varchar(100) not null,
+	address varchar(256) not null,
+	message varchar(1000) not null,
+	capacity varchar(256) not null, 
+	images varchar(256),
+	price int not null,
+	userid varchar(50) not null
+);
+
+insert into facilitys(facility_name, zip, address, message, capacity,images,price,userid) values("神戸電子専門学校", "650-0002", "兵庫県神戸市中央区北野町１−１−8", "神戸電子専門学校は、兵庫県神戸市中央区にある私立の専門学校。 ITや電子工学などのエンジニア系だけでなく、ゲームソフトやサウンドといったエンターテイメント分野から、グラフィック、建築CAD、工業デザインといったデザイン分野にわたり、15学科を擁する総合学園。","50人", "denshi.png", 2000,"0419");
+insert into facilitys(facility_name, zip, address, message, capacity,price,userid)
+values("神戸市役所","650-0001","神戸市中央区加納町6-5-1","神戸市役所（こうべしやくしょ）は、地方公共団体である神戸市の執行機関としての事務を行う施設（役所）である。この頁では、建築物としての神戸市役所について述べる。", "10人",2000,"ninose");
+insert into facilitys(facility_name, zip, address, message, capacity,price,userid)
+values("ルミエール御影","650-0045","神戸市東灘区御影石町1-8-17","神戸市役所（こうべしやくしょ）は、地方公共団体である神戸市の執行機関としての事務を行う施設（役所）である。この頁では、建築物としての神戸市役所について述べる。", "10人",2000,"ninose");
+
+create table orders(
+	userid varchar(50) not null,
+	facilityid int not null,
+	orderdate date default null
+);
+
+insert into orders(userid, facilityid, orderdate) values("ninose", 1, "2018/1/18");
+insert into orders(userid, facilityid, orderdate) values("ninose", 1, "2017/12/18");
+insert into orders(userid, facilityid, orderdate) values("ninose", 1, "2018/12/26");
