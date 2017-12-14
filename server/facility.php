@@ -10,6 +10,7 @@
 	$password = "nise";
 	try{
 		$dbh = new PDO($dsn,$user,$password);
+		// 施設検索トップ画面
 		if($_GET["process"] === "top"){
 			$sql = "select * from facilitys";
 			$stmt=$dbh->prepare($sql);
@@ -26,6 +27,7 @@
 						);
 			}
 		}
+		// 施設検索詳細画面
 		else if($_GET["process"] === "detail"){
 			$sql = "select * from facilitys where ident = ?";
 			$stmt = $dbh -> prepare($sql);
@@ -58,6 +60,7 @@
 			}
 		}
 		else{
+			// マイページ
 			$sql = "select * from facilitys where userid = ?";
 			$stmt = $dbh -> prepare($sql);
 			$stmt -> bindValue(1, $_GET["userid"], PDO::PARAM_STR);
