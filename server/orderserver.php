@@ -10,10 +10,13 @@
 	$password = "nise";
 	try{
 		$dbh = new PDO($dsn,$user,$password);
-			$sql = "select * from orders where userid = ? orderdate > ? order by orderdate";
+		if($_GET["process"] === "mypage"){
+			$sql = "select * from orders where DATE(orderdate) > ? and userid = ? order by orderdate";
 			$stmt=$dbh->prepare($sql);
-			$stmt -> bindValue(1, $_GET["userid"], PDO::PARAM_STR);
-			$stmt -> bindVAlue(2, date("Y-m-d"), PDO::PARAM_STR);
+			$date = date('Y-m-d');
+
+			$stmt -> bindValue(2, $_GET["userid"], PDO::PARAM_STR);
+			$stmt -> bindParam(1, $date, PDO::PARAM_STR);
 			$stmt -> execute();
 			$res = array();
 			while($row = $stmt -> fetch(PDO::FETCH_ASSOC)){
@@ -31,6 +34,22 @@
 						);
 				}
 			}
+		}
+		else if($_GET["process"] === "order_check"){
+			$sql = "select * from orders where DATE(orderdate) = ?";
+			$stmt = $dbh -> prepare($sql);
+
+			$stmt -> bindValue(1, $_GET["orderdate"], PDO::PARAM_STR);
+			$stmt -> execute();
+			$row = $stmt -> fetch(PDO::FETCH_ASSOC);
+			$res = array();
+			if($row){
+				$res[] = array("userid" => $row["userid"],
+								"facilityid" => $row["facilityid"],
+								"orderdate" => $row["orderdate"]
+						);
+			}
+		}
 		header("Access-Control-Allow-Origin:*");
 		header("Content-Type: application/json");
 		echo json_encode($res);

@@ -17,6 +17,8 @@ create table user(
 	price int not null
 );
 
+insert into user(userid, password, price) values("ninose", "$2y$10$fdBVIYCVifMGs8x5NSBzcevYB0DzdxnUNbryBA.nXHiqD5Wt6FhjG",5000);
+
 create table messagebords(
 	messageid int auto_increment primary key,
 	userid varchar(50) not null,
