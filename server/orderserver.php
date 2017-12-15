@@ -44,10 +44,23 @@
 			$row = $stmt -> fetch(PDO::FETCH_ASSOC);
 			$res = array();
 			if($row){
-				$res[] = array("userid" => $row["userid"],
-								"facilityid" => $row["facilityid"],
+				$sql = "select * from Users where UserID = ?";
+				$stmt = $dbh -> prepare($sql);
+
+				$stmt -> bindValue(1, $row["userid"], PDO::PARAM_STR);
+				$stmt -> execute();
+				$urow = $stmt -> fetch(PDO::FETCH_ASSOC);
+				if($urow){
+				$res[] = array("FamilyName" => $urow["FamilyName"],
+								"GivenName" => $urow["GivenName"],
+								"FamilyNameKana" => $urow["FamilyNameKana"],
+								"GivenNameKana" => $urow["GivenNameKana"],
+								"UserPostNum" => $urow["UserPostNum"],
+								"UserAddress" => $urow["UserAddress"],
+								"UserTel" => $urow["UserTel"],
 								"orderdate" => $row["orderdate"]
 						);
+				}
 			}
 		}
 		header("Access-Control-Allow-Origin:*");

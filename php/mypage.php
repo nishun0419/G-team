@@ -24,7 +24,7 @@
 		var serchparam = null;
 		var dataprocess = "mypage";
 		var ident = null;
-		var userid = '<?php echo unserialize($_SESSION["userid"]); ?>';
+		var userid = '<?php echo unserialize($_SESSION["UserID"]); ?>';
 	</script>
 	<div class="container">
 		<div class="row main">

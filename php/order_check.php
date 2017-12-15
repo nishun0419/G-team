@@ -21,6 +21,7 @@
 		var dataprocess = "checkOrder";
 		var ident = '<?php echo $_GET["id"]; ?>';
 		var userid = null;
+		var MyUserName = '<?php echo unserialize($_SESSION["UserName"]) ?>';
 	</script>
 	
 	<div class="container main">

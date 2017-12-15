@@ -25,14 +25,15 @@
 				try{
 					$dbh = new PDO($dsn, $user, $password);
 
-					$sql = "select * from user where userid = ?";
+					$sql = "select * from Users where UserID = ?";
 					$stmt = $dbh -> prepare($sql);
 					$stmt -> bindValue(1, htmlspecialchars($_POST['id']),PDO::PARAM_STR);
 					$stmt -> execute();
 					$row = $stmt -> fetch(PDO::FETCH_ASSOC);
 					if($row){
-						if(password_verify(htmlspecialchars($_POST['password']),$row['password'])){
-							$_SESSION['userid'] = serialize($row['userid']);
+						if(password_verify(htmlspecialchars($_POST['password']),$row['Password'])){
+							$_SESSION['UserName'] = serialize($row['FamilyName'].$row['GivenName']);
+							$_SESSION['UserID'] = serialize($row['UserID']);
 							if($_POST["flag"] === "orner"){
 								$_SESSION['flag'] = 1;
 							}

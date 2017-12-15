@@ -45,7 +45,7 @@ var opt = {
                 if (holiday.getYear() == date.getYear() &&
                     holiday.getMonth() == date.getMonth() &&
                     holiday.getDate() == date.getDate()) {
-                    return [true,"","予約済み" ];
+                    return [true,"inorder","予約済み" ];
                 }
             }
             }
@@ -58,4 +58,5 @@ var opt = {
     };
     $("#calendar").datepicker(opt);
     $("#facility_name").text(response.facility_name);
+    $(".inorder").text("*")
 }

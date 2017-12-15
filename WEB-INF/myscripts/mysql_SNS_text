@@ -6,18 +6,31 @@ create database SNS;
 # ユーザーminiに、パスワードshopを設定し、データベースminishopに対するすべての権限を付与
 grant all privileges on SNS.* to nise@localhost identified by 'nise';
 
-# データベースminishopを使用する
+# データベースminishopを使用する 
 use SNS;
 
 # テーブルitemsの作成
-create table user(
-	ident	int auto_increment primary key,
-	userid	varchar(50) not null,
-	password	varchar(256) not null,
-	price int not null
+create table Users(
+	UserID	varchar(256) not null primary key,
+	FamilyName varchar(256) not null,
+	GivenName varchar(256) not null,
+	FamilyNameKana varchar(256) not null,
+	GivenNameKana varchar(256) not null,
+	Password varchar(256) not null,
+	UserPostNum varchar(100) not null,
+	UserAddress varchar(256) not null,
+	UserTel varchar(50) not null
 );
 
-insert into user(userid, password, price) values("ninose", "$2y$10$fdBVIYCVifMGs8x5NSBzcevYB0DzdxnUNbryBA.nXHiqD5Wt6FhjG",5000);
+create table user(
+	ident int auto_increment primary key,
+	userid varchar(256),
+	password varchar(256)
+	);
+
+insert into Users(UserID,FamilyName,GivenName,FamilyNameKana,GivenNameKana, Password,UserPostNum, UserAddress, UserTel ) values("ninose","二瀬","峻介","ニノセ","シュンスケ","$2y$10$fdBVIYCVifMGs8x5NSBzcevYB0DzdxnUNbryBA.nXHiqD5Wt6FhjG","658-0045","兵庫県神戸市東灘区御影石町1-8-17ルミエール御影","080-3052-7831");
+
+insert into Users(UserID,FamilyName,GivenName,FamilyNameKana,GivenNameKana, Password,UserPostNum, UserAddress, UserTel ) values("denshi","神戸","電子","コウベ","デンシ","$2y$10$VSap8GpyZDeEkIVbCVD5bOgyLauVrYApzX6IytxMS3jd3L6.X92UW","658-0045","兵庫県神戸市中央区北野町1-8-1","080-3052-7831");
 
 create table messagebords(
 	messageid int auto_increment primary key,
@@ -41,7 +54,7 @@ create table facilitys(
 	userid varchar(50) not null
 );
 
-insert into facilitys(facility_name, zip, address, message, capacity,images,price,userid) values("神戸電子専門学校", "650-0002", "兵庫県神戸市中央区北野町１−１−8", "神戸電子専門学校は、兵庫県神戸市中央区にある私立の専門学校。 ITや電子工学などのエンジニア系だけでなく、ゲームソフトやサウンドといったエンターテイメント分野から、グラフィック、建築CAD、工業デザインといったデザイン分野にわたり、15学科を擁する総合学園。","50人", "denshi.png", 2000,"0419");
+insert into facilitys(facility_name, zip, address, message, capacity,images,price,userid) values("神戸電子専門学校", "650-0002", "兵庫県神戸市中央区北野町１−１−8", "神戸電子専門学校は、兵庫県神戸市中央区にある私立の専門学校。 ITや電子工学などのエンジニア系だけでなく、ゲームソフトやサウンドといったエンターテイメント分野から、グラフィック、建築CAD、工業デザインといったデザイン分野にわたり、15学科を擁する総合学園。","50人", "denshi.png", 2000,"denshi");
 insert into facilitys(facility_name, zip, address, message, capacity,price,userid)
 values("神戸市役所","650-0001","神戸市中央区加納町6-5-1","神戸市役所（こうべしやくしょ）は、地方公共団体である神戸市の執行機関としての事務を行う施設（役所）である。この頁では、建築物としての神戸市役所について述べる。", "10人",2000,"ninose");
 insert into facilitys(facility_name, zip, address, message, capacity,price,userid)
@@ -57,3 +70,4 @@ insert into orders(userid, facilityid, orderdate) values("ninose", 1, "2018/1/18
 insert into orders(userid, facilityid, orderdate) values("ninose", 1, "2017/12/18");
 insert into orders(userid, facilityid, orderdate) values("ninose", 1, "2018/12/26");
 insert into orders(userid, facilityid, orderdate) values("ninose", 1, "2017/11/20");
+insert into orders(userid, facilityid, orderdate) values("denshi", 2, "2018/1/3");
