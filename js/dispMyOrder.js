@@ -1,8 +1,8 @@
 function dispMyOrder(response, count){
-	$("#orderlist").append($("<div class='col-md-10 col-md-offset-1 orderBox'><div>")
+	$("#orderList").append($("<div class='col-md-10 col-md-offset-1 orderBox'><div>")
 					  .append($("<div class='media'></div>")
 					  .append($("<a class='media-left' href='#'></a>")
-					  .append($("<img class='samune' id='samune"+count+"'>")
+					  .append($("<img class='samune' id='ordersamune"+count+"'>")
 					  .attr({'src' : "/php/image/" + response.images})))
 					  .append($("<div class='media-body'></div>")
 					  .text("〒" + response.zip + response.address)
@@ -10,6 +10,8 @@ function dispMyOrder(response, count){
 					  .append($("<a></a>")
 					  .attr({'href':'#' + response.ident})
 					  .text(response.facility_name)))
+					  .append($("<div class='text-right'></div>")
+					  .text(response.orderdate))
 					  )
 					  )
 					  );
@@ -18,6 +20,6 @@ function dispMyOrder(response, count){
 			// 		  .append($("<div class='edit_facility'></div>")
 			// 		  .text('編集'));
 	if(response.images === null){
-		$("#samune" + count).attr('src', '/php/image/noimage.jpg');
+		$("#ordersamune" + count).attr('src', '/php/image/noimage.jpg');
 	}
 }

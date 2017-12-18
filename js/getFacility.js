@@ -35,6 +35,9 @@ $(function(){
 				dispMyFacility(responses[count], count);
 			}
 		}
+		else if(dataprocess === "checkOrder"){
+			dispOrderCheck(responses[0]);
+		}
 	})
 	.fail(function(){
 		console.log('失敗');

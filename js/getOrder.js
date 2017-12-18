@@ -4,10 +4,12 @@ $(function(){
 		type: "get",
 		dataType: "json",
 		data:{
-			userid : userid
+			userid : userid,
+			process: "mypage"
 		},
 	})
 	.done(function(responses){
+		console.log(JSON.stringify(responses));
 		for(count = 0; count < responses.length; count++){
 			dispMyOrder(responses[count], count);
 		}

@@ -24,7 +24,7 @@
 		var serchparam = null;
 		var dataprocess = "mypage";
 		var ident = null;
-		var userid = '<?php echo unserialize($_SESSION["userid"]); ?>';
+		var userid = '<?php echo unserialize($_SESSION["UserID"]); ?>';
 	</script>
 	<div class="container">
 		<div class="row main">
@@ -59,10 +59,10 @@
 	</div>	
 	
 	 <!-- <script type="text/javascript" src="/php/js/getM.js"></script> -->
-	 <script type="text/javascript" src="/php/js/dispMyFacility.js"></script>
-	 <script type="text/javascript" src="/php/js/getFacility.js"></script>
 	 <script type="text/javascript" src="/php/js/getOrder.js"></script>
 	 <script type="text/javascript" src="/php/js/dispMyOrder.js"></script>
+	 <script type="text/javascript" src="/php/js/dispMyFacility.js"></script>
+	 <script type="text/javascript" src="/php/js/getFacility.js"></script>
 	 <script type="text/javascript" src="/php/js/clickEvent.js"></script>
 </body>
 </html>
