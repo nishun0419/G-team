@@ -11,7 +11,7 @@
 	try{
 		$dbh = new PDO($dsn,$user,$password);
 		if($_GET["process"] === "mypage"){
-			$sql = "select * from orders where DATE(orderdate) > ? and userid = ? order by orderdate";
+			$sql = "select * from orders where DATE(orderdate) >= ? and userid = ? order by orderdate";
 			$stmt=$dbh->prepare($sql);
 			$date = date('Y-m-d');
 
@@ -36,10 +36,11 @@
 			}
 		}
 		else if($_GET["process"] === "order_check"){
-			$sql = "select * from orders where DATE(orderdate) = ?";
+			$sql = "select * from orders where DATE(orderdate) = ? and facilityid = ?";
 			$stmt = $dbh -> prepare($sql);
 
 			$stmt -> bindValue(1, $_GET["orderdate"], PDO::PARAM_STR);
+			$stmt -> bindValue(2, $_GET["facilityid"], PDO::PARAM_STR);
 			$stmt -> execute();
 			$row = $stmt -> fetch(PDO::FETCH_ASSOC);
 			$res = array();

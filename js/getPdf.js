@@ -5,7 +5,8 @@ function getPdf(date){
 		dataType: "json",
 		data:{
 			orderdate: date,
-			process: "order_check"
+			process: "order_check",
+			facilityid: ident
 		},
 	})
 	.done(function(responses){
