@@ -21,7 +21,7 @@
 		var dataprocess = "order";
 		var ident = '<?php echo $_GET["id"] ?>';
 		var calendar_val = '<?php echo $_GET["calendar_val"] ?>';
-		var userid = '<?php echo unserialize($_SESSION["userid"]) ?>';
+		var userid = '<?php echo unserialize($_SESSION["UserID"]) ?>';
 	</script>
 	<div class="container">
 		<div class="row">

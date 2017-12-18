@@ -57,7 +57,7 @@
 						);
 			}
 		}
-		else{
+		else if($_GET["process"] === "mypage"){
 			$sql = "select * from facilitys where userid = ?";
 			$stmt = $dbh -> prepare($sql);
 			$stmt -> bindValue(1, $_GET["userid"], PDO::PARAM_STR);
@@ -73,6 +73,30 @@
 						);
 			}
 
+		}
+
+		else if($_GET["process"] === "checkOrder"){
+			$sql = "select * from facilitys where ident = ?";
+			$stmt = $dbh -> prepare($sql);
+			$stmt -> bindValue(1, $_GET["ident"], PDO::PARAM_STR);
+			$res = array();
+			$stmt -> execute();
+			$row = $stmt -> fetch(PDO::FETCH_ASSOC);
+			if($row){
+				$sql = "select * from orders where facilityid = ?";
+				$stmt = $dbh -> prepare($sql);
+				$stmt -> bindValue(1, $row["ident"], PDO::PARAM_STR);
+				$stmt -> execute();
+				$index = 0;
+				$orderdate = null; 
+				while($orow = $stmt -> fetch(PDO::FETCH_ASSOC)){
+					$orderdate[$index] = $orow["orderdate"];
+					$index++;
+				}
+				$res[] = array("facility_name" => $row["facility_name"],
+								"orderdate" => $orderdate
+						);
+			}
 		}
 
 		header("Access-Control-Allow-Origin:*");
