@@ -59,12 +59,7 @@
 						);
 			}
 		}
-<<<<<<< HEAD
-		else{
-			// マイページ
-=======
 		else if($_GET["process"] === "mypage"){
->>>>>>> master
 			$sql = "select * from facilitys where userid = ?";
 			$stmt = $dbh -> prepare($sql);
 			$stmt -> bindValue(1, $_GET["userid"], PDO::PARAM_STR);
