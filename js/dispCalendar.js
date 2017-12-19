@@ -1,7 +1,9 @@
-function dispCalendar(orderdate){
+function dispCalendar(response){
     var flag = true;
     var work;
-    // orderdate = ["2018-01-18"];
+    var orderdate = response.orderdate;
+    var StartDate = toDate(response.StartDate);
+    var StopDate = toDate(response.StopDate);
 var opt = {
      timeOnlyTitle: '時間を選択',
      timeText: '時間',
@@ -28,8 +30,8 @@ var opt = {
         firstDay: 0,
         showMonthAfterYear: true,
         yearSuffix: '年',
-        minDate: '-0',
-        maxDate: '+90d',
+        minDate: StartDate,
+        maxDate: StopDate,
         beforeShowDay: function(date){
             // var disabledate = $.datepicker.formatDate(date, 'yyyy-mm-dd');
             // if(( orderdate.indexOf(disabledate) == -1)){
@@ -47,7 +49,7 @@ var opt = {
                 if (holiday.getYear() == date.getYear() &&
                     holiday.getMonth() == date.getMonth() &&
                     holiday.getDate() == date.getDate()) {
-                    return [false,"inorder","予約済み" ];
+                    return [false,"","予約済み" ];
                 }
             }
             }
@@ -75,4 +77,8 @@ var opt = {
     };
     $("#calendar").datepicker(opt);
 }
+function toDate (str) {
+  var arr = str.split('-')
+  return new Date(arr[0], arr[1] - 1, arr[2]);
+};
 

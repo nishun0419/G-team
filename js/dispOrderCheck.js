@@ -58,5 +58,4 @@ var opt = {
     };
     $("#calendar").datepicker(opt);
     $("#facility_name").text(response.facility_name);
-    $(".inorder").text("*")
 }

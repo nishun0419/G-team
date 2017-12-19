@@ -4,19 +4,19 @@ function dispFacility(response, i){
 					 .append($("<div class='text-left'></div>")
 					 .append($("<h2></h2>")
 					 .append($("<a></a>")
-					 .text(response.facility_name)
-					 .attr({'href':'/php/php/detail_Facility.php?id=' + response.ident}))))
+					 .text(response.FacName)
+					 .attr({'href':'/php/php/detail_Facility.php?id=' + response.UpID}))))
 					 .append($("<div class='text-left'></div>")
-					 .text("〒"+response.zip + response.address))
+					 .text("〒"+response.PostNum + response.Address))
 					 .append($("<div class='text-left'></div>")
-					 .text("人数：" + response.capacity))
+					 .text("人数：" + response.PeopleNum))
 					 .append($("<div class='text-left message'></div>")
-					 .text(response.message)))
+					 .text(response.Exposition)))
 					 .append($("<div class='col-md-6'></div>")
 					 .append($("<img class='img-responsive' id='facility_img"+i+"'>")
-					 .attr({'src' : "/php/image/" + response.images})))
+					 .attr({'src' : "/php/image/" + response.image})))
 					 );
-	if(response.images === null){
+	if(response.image === null){
 		$("#facility_img"+i).attr('src', '/php/image/noimage.jpg');
 	}
 }

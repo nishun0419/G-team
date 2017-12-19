@@ -21,7 +21,7 @@ $(function(){
 		else if(dataprocess === "detail"){
 			dispDetailFacility(responses[0]);
 			if(responses[0].orderdate !== null){
-				dispCalendar(responses[0].orderdate);
+				dispCalendar(responses[0]);
 			}
 			else{
 				dispCalendar(null);

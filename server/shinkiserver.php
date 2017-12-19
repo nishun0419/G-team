@@ -22,18 +22,18 @@
 			try{
 				$dbh = new PDO($dsn, $user, $password);
 
-				$sql = "select * from user where userid = ?";
+				$sql = "select * from Users where UserID = ?";
 				$stmt = $dbh -> prepare($sql);
 				$stmt -> bindValue(1, htmlspecialchars($_POST['id']),PDO::PARAM_STR);
 				$stmt -> execute();
 				if(!$stmt -> fetch(PDO::FETCH_ASSOC)){
-					$sql = "insert into user(userid, password) values(?,?)";
+					$sql = "insert into Users(UserID, Password) values(?,?)";
 					// $stmt = $dbh -> query("SET NAMES utf8;");
 					$stmt = $dbh -> prepare($sql);
 					$stmt -> bindValue(1, htmlspecialchars($_POST['id']), PDO::PARAM_STR);
 					$stmt -> bindValue(2, password_hash(htmlspecialchars($_POST['password']),PASSWORD_DEFAULT), PDO::PARAM_STR);
 					$stmt -> execute();
-					$_SESSION["userid"] = serialize(htmlspecialchars($_POST["id"]));
+					$_SESSION["UserID"] = serialize(htmlspecialchars($_POST["id"]));
 					// $_SESSION["password"] = htmlspecialchars($_POST["password"]);
 					// unset($_SESSION["message_Shinki"]);
 					// header("Location: ../php/mypage.php");
