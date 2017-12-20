@@ -1,8 +1,5 @@
-function dispCalendar(orderdate){
-    var flag = true;
-    var work;
-    // orderdate = ["2018-01-18"];
-var opt = {
+$( function() {
+   var dates = $( '#datepickerFrom, #datepickerTo' ) . datepicker( {
      timeOnlyTitle: '時間を選択',
      timeText: '時間',
         hourText: '時',
@@ -30,49 +27,14 @@ var opt = {
         yearSuffix: '年',
         minDate: '-0',
         maxDate: '+90d',
-        beforeShowDay: function(date){
-            // var disabledate = $.datepicker.formatDate(date, 'yyyy-mm-dd');
-            // if(( orderdate.indexOf(disabledate) == -1)){
-            // return [true, "", "予約済"];
-            // }
-            // else{
-            //     return [false, "", "予約済"];
-            // }
-            //予約済みか確認するための処理
-            if(orderdate !== null){
-            for (var i = 0; i < orderdate.length; i++){
-                var ordertime = Date.parse(orderdate[i]);
-                var holiday = new Date();
-                holiday.setTime(ordertime);
-                if (holiday.getYear() == date.getYear() &&
-                    holiday.getMonth() == date.getMonth() &&
-                    holiday.getDate() == date.getDate()) {
-                    return [false,"inorder","予約済み" ];
-                }
-            }
-            }
-                return [true, ""];
-        },
-        onSelect: function(dataText, inst){
-            if(flag){
-                $("#calendar_val").val(dataText);
-                flag = false;
-            }
-            else{
-               work = $("#calendar_val").val();
-               if(work !== dataText && work < dataText){
-                    $("#calendar_val").val(work +"~" + dataText);
-                    $("#calendar_message").text("");
-                    flag = true;
-                }
-                else{
-                    if(work > dataText){
-                        $("#calendar_message").text("違う日をクリックしてください");
-                    }
-                }
-            }
-        }
-    };
-    $("#calendar").datepicker(opt);
-}
-
+        onSelect: function( selectedDate ) {
+                            var option = this . id == 'datepickerFrom' ? 'minDate' : 'maxDate',
+                                instance = $( this ) . data( 'datepicker' ),
+                                date = $ . datepicker . parseDate(
+                                    instance . settings . dateFormat ||
+                                    $ . datepicker . _defaults . dateFormat,
+                                    selectedDate, instance . settings );
+                            dates . not( this ) . datepicker( 'option', option, date );
+                        }
+                    } );
+                } );

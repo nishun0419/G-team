@@ -14,7 +14,7 @@
 		if(isset($_SESSION['message_Shinki'])) {
 			print $_SESSION['message_Shinki'];
 			unset($_SESSION['message_Shinki']);
-		}	 	
+		}
 	?>
 	<div class="container">
 		<div class="text-center"><h3>新規登録</h3></div>
@@ -34,13 +34,26 @@
 						<div class="form-group">
 							<label for="id" class="col-md-4 control-label">ユーザーID</label>
 							<div class="col-md-6">
-								<input id="id" type="text" class="form-control" name="id" required autofocus>
+								<input id="id" type="text" class="form-control" name="id" required autofocus　value="" placeholder="ユーザーID登録">
 							</div>
 						</div>
 						<div class="form-group">
 							<label for="password" class="col-md-4 control-label">パスワード</label>
 							<div class="col-md-6">
-								<input id="password" type="password" class="form-control" name="password">
+								<input id="password" type="password" class="form-control" name="password"value="" placeholder="パスワードを入力">
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="password" class="col-md-4 control-label">パスワード(確認)</label>
+							<div class="col-md-6">
+								
+								<input type="password" class="form-control"　password="password2" name="password2" value="" placeholder="再度パスワードを入力">
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="password" class="col-md-4 control-label">メールアドレス</label>
+							<div class="col-md-6">
+								<input type="email" class="form-control"　id="email" name="email" value="" placeholder="メールアドレスの入力">
 							</div>
 						</div>
 						<div class="form-group">
