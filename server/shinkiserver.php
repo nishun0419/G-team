@@ -8,13 +8,13 @@
 		elseif(strpos($_POST["id"]," ") !== false || strpos($_POST["id"],"　") !== false){
 			$_SESSION['message_Shinki'] = "スペースがないidを入力をしてください";
 		}
-		elseif(preg_match('/[a-zA-Z0-9]/', $_POST["id"])){
+		elseif(preg_match('/[^a-zA-Z0-9]/', $_POST["id"])){
 			$_SESSION['message_Shinki'] = "ユーザーIDは半角英数字で入力してください";
 		}
-		elseif(empty($_POST["first"]) || empty($_POST["given"]) || empty($_POST["first_kana"]) || empty($_POST["given_kana"]) ){
+		elseif(empty($_POST["family"]) || empty($_POST["given"]) || empty($_POST["family_kana"]) || empty($_POST["given_kana"]) ){
 			$_SESSION['message_Shinki'] = "名前を入力してください";
 		}
-		elseif(preg_match('/[^ァ-ヶー]/u', $_POST['first_kana']) || preg_match('/[^ァ-ヶー]/u', $_POST['given_kana']) ){
+		elseif(preg_match('/[^ァ-ヶー]/u', $_POST['family_kana']) || preg_match('/[^ァ-ヶー]/u', $_POST['given_kana']) ){
 			$_SESSION['message_Shinki'] = "ふりがなは全角カタカナで入力してください";
 		}
 		elseif(empty($_POST["password"])){
@@ -43,15 +43,10 @@
 			$resMes = "false";
 		}
 		else{
-<<<<<<< HEAD
 			$dsn ="mysql:dbname=teamG;host=localhost;charset=utf8";
 			$user = "kobe";
 			$password = "denshi";
-=======
-			$dsn ="mysql:dbname=sns;host=localhost;charset=utf8mb4";
-			$user = "nise";
-			$password = "nise";
->>>>>>> master
+
 			try{
 				$today = getdate();
 				$d = $today["mday"];
@@ -64,13 +59,12 @@
 				$stmt -> bindValue(1, htmlspecialchars($_POST['id']),PDO::PARAM_STR);
 				$stmt -> execute();
 				if(!$stmt -> fetch(PDO::FETCH_ASSOC)){
-<<<<<<< HEAD
-					//TODO:POSTはできてるっぽいのにinsert出来ていないみたい(2,3,4,5カラム目)
-					$sql = "insert into Users(UserID,FirstName,FirstNameKana,GivenName,GivenNameKana,Password,AcountDate,UserPostNum,UserAddress,UserTel,UserMailAddress) values(?,?,?,?,?,?,?,?,?,?,?)";
+
+					$sql = "insert into Users(UserID,FamilyName,FamilyNameKana,GivenName,GivenNameKana,Password,AcountDate,UserPostNum,UserAddress,UserTel,UserMailAddress) values(?,?,?,?,?,?,?,?,?,?,?)";
 					$stmt = $dbh -> prepare($sql);
 					$stmt -> bindValue(1, htmlspecialchars($_POST['id']), PDO::PARAM_STR);
-					$stmt -> bindValue(2, htmlspecialchars($_POST['first']), PDO::PARAM_STR);
-					$stmt -> bindValue(3, htmlspecialchars($_POST['first_kana']), PDO::PARAM_STR);
+					$stmt -> bindValue(2, htmlspecialchars($_POST['family']), PDO::PARAM_STR);
+					$stmt -> bindValue(3, htmlspecialchars($_POST['family_kana']), PDO::PARAM_STR);
 					$stmt -> bindValue(4, htmlspecialchars($_POST['given']), PDO::PARAM_STR);
 					$stmt -> bindValue(5, htmlspecialchars($_POST['given_kana']), PDO::PARAM_STR);
 					$stmt -> bindValue(6, password_hash(htmlspecialchars($_POST['password']),PASSWORD_DEFAULT), PDO::PARAM_STR);
@@ -79,14 +73,9 @@
 					$stmt -> bindValue(9, htmlspecialchars($_POST['address']), PDO::PARAM_STR);
 					$stmt -> bindValue(10, htmlspecialchars($_POST['tel']), PDO::PARAM_STR);
 					$stmt -> bindValue(11, htmlspecialchars($_POST['email']), PDO::PARAM_STR);
-=======
-					$sql = "insert into Users(UserID, Password) values(?,?)";
-					// $stmt = $dbh -> query("SET NAMES utf8;");
-					$stmt = $dbh -> prepare($sql);
-					$stmt -> bindValue(1, htmlspecialchars($_POST['id']), PDO::PARAM_STR);
-					$stmt -> bindValue(2, password_hash(htmlspecialchars($_POST['password']),PASSWORD_DEFAULT), PDO::PARAM_STR);
->>>>>>> master
+
 					$stmt -> execute();
+					$_SESSION["UserName"] = serialize(htmlspecialchars($_POST["family"].$_POST["given"]));
 					$_SESSION["UserID"] = serialize(htmlspecialchars($_POST["id"]));
 					// $_SESSION["password"] = htmlspecialchars($_POST["password"]);
 					// unset($_SESSION["message_Shinki"]);

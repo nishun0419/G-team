@@ -39,9 +39,9 @@
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="first" class="col-md-4 control-label">姓(漢字)</label>
+							<label for="family" class="col-md-4 control-label">姓(漢字)</label>
 							<div class="col-md-6">
-								<input id="first" type="text" class="form-control" name="first"　required>
+								<input id="family" type="text" class="form-control" name="family"　required>
 							</div>
 						</div>
 						<div class="form-group">
@@ -51,9 +51,9 @@
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="first_kana" class="col-md-4 control-label">姓(カタカナ)</label>
+							<label for="family_kana" class="col-md-4 control-label">姓(カタカナ)</label>
 							<div class="col-md-6">
-								<input id="first_kana" type="text" class="form-control" name="first_kana"　required>
+								<input id="family_kana" type="text" class="form-control" name="family_kana"　required>
 							</div>
 						</div>
 						<div class="form-group">

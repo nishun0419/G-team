@@ -35,11 +35,12 @@ public class ShinkiController extends HttpServlet{
 
 	private String createUser(HttpServletRequest request){
 		HttpURLConnection uc = null;
-		request.setCharacterEncoding("UTF-8");
 		try{
+			request.setCharacterEncoding("UTF-8");
+			
 			String id = request.getParameter("id");
-			String first = request.getParameter("first");
-			String first_kana = request.getParameter("first_kana");
+			String family = request.getParameter("family");
+			String family_kana = request.getParameter("family_kana");
 			String given = request.getParameter("given");
 			String given_kana = request.getParameter("given_kana");
 			String password = request.getParameter("password");
@@ -49,7 +50,7 @@ public class ShinkiController extends HttpServlet{
 			String tel = request.getParameter("tel");
 			String email = request.getParameter("email");
 			String re_email = request.getParameter("re_email");
-			String data = "id="+id+"&first="+first+"&first_kana="+first_kana+"&given="+given+"&given_kana="+given_kana+"&password="+password+"&re_password="+re_password+"&postnum="+postnum+"&address="+address+"&tel="+tel+"&email="+email+"&re_email="+re_email;
+			String data = "id="+id+"&family="+family+"&family_kana="+family_kana+"&given="+given+"&given_kana="+given_kana+"&password="+password+"&re_password="+re_password+"&postnum="+postnum+"&address="+address+"&tel="+tel+"&email="+email+"&re_email="+re_email;
 			System.out.println(data);
 			URL url = new URL("http://localhost:8080/php/server/shinkiserver.php");
 			uc = (HttpURLConnection)url.openConnection();
