@@ -37,10 +37,19 @@ public class ShinkiController extends HttpServlet{
 		HttpURLConnection uc = null;
 		try{
 			String id = request.getParameter("id");
+			String first = request.getParameter("first");
+			String first_kana = request.getParameter("first_kana");
+			String given = request.getParameter("given");
+			String given_kana = request.getParameter("given_kana");
 			String password = request.getParameter("password");
-			System.out.println(id);
-			System.out.println(password);
-			String data = "id="+id+"&password="+password;
+			String re_password = request.getParameter("re_password");
+			String postnum = request.getParameter("postnum");
+			String address = request.getParameter("address");
+			String tel = request.getParameter("tel");
+			String email = request.getParameter("email");
+			String re_email = request.getParameter("re_email");
+			String data = "id="+id+"&first="+first+"&first_kana="+first_kana+"&given="+given+"&given_kana="+given_kana+"&password="+password+"&re_password="+re_password+"&postnum="+postnum+"&address="+address+"&tel="+tel+"&email="+email+"&re_email="+re_email;
+			System.out.println(data);
 			URL url = new URL("http://localhost:8080/php/server/shinkiserver.php");
 			uc = (HttpURLConnection)url.openConnection();
 			uc.setDoInput(true);

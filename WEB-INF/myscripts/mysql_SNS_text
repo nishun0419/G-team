@@ -1,22 +1,32 @@
-# データベースminishopの作成
+# データベースSNSの作成
 set names utf8;
 drop database if exists SNS;
 create database SNS;
 
-# ユーザーminiに、パスワードshopを設定し、データベースminishopに対するすべての権限を付与
+# ユーザーniseに、パスワードniseを設定し、データベースSNSに対するすべての権限を付与
 grant all privileges on SNS.* to nise@localhost identified by 'nise';
 
-# データベースminishopを使用する
+# データベースSNSを使用する
 use SNS;
 
-# テーブルitemsの作成
-create table user(
-	ident	int auto_increment primary key,
-	userid	varchar(50) not null,
-	password	varchar(256) not null,
-	price int not null
+# テーブルUsersの作成
+create table Users(
+	UserID	varchar(255) not null,
+	FirstName varchar(255) not null,
+	GivenName varchar(255) not null,
+	FirstNameKana varchar(255) not null,
+	GivenNameKana varchar(255) not null,
+	Password	varchar(255) not null,
+	AcountDate date not null,
+	UserPostNum varchar(255) not null,
+	UserAddress varchar(255) not null,
+	UserTel varchar(255) not null,
+	UserMailAddress varchar(255) not null
 );
 
+
+
+# 以下いじってませーん
 create table messagebords(
 	messageid int auto_increment primary key,
 	userid varchar(50) not null,
