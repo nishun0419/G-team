@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" >
 	<title>ログイン</title>
 	<link rel="stylesheet" type="text/css" href="/php/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="/php/css/navbar.css">

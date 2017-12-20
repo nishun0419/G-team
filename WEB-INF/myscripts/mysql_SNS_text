@@ -6,6 +6,7 @@ create database SNS;
 # ユーザーniseに、パスワードniseを設定し、データベースSNSに対するすべての権限を付与
 grant all privileges on SNS.* to nise@localhost identified by 'nise';
 
+<<<<<<< HEAD
 # データベースSNSを使用する
 use SNS;
 
@@ -34,26 +35,73 @@ create table messagebords(
 	message	varchar(256) not null,
 	posttime timestamp not null default current_timestamp
 );
+=======
+# データベースminishopを使用する 
+use SNS;
 
-insert into messagebords(userid, title, message) values("ninose", "test", "test");
-
-create table facilitys(
-	ident int auto_increment primary key,
-	facility_name varchar(100) not null,
-	zip varchar(100) not null,
-	address varchar(256) not null,
-	message varchar(1000) not null,
-	capacity varchar(256) not null, 
-	images varchar(256),
-	price int not null,
-	userid varchar(50) not null
+# テーブルitemsの作成
+create table Users(
+	UserID	varchar(256) not null primary key,
+	FamilyName varchar(256) not null,
+	GivenName varchar(256) not null,
+	FamilyNameKana varchar(256) not null,
+	GivenNameKana varchar(256) not null,
+	Password varchar(256) not null,
+	UserPostNum int not null,
+	UserAddress varchar(256) not null,
+	UserTel varchar(256) not null
 );
 
-insert into facilitys(facility_name, zip, address, message, capacity,images,price,userid) values("神戸電子専門学校", "650-0002", "兵庫県神戸市中央区北野町１−１−8", "神戸電子専門学校は、兵庫県神戸市中央区にある私立の専門学校。 ITや電子工学などのエンジニア系だけでなく、ゲームソフトやサウンドといったエンターテイメント分野から、グラフィック、建築CAD、工業デザインといったデザイン分野にわたり、15学科を擁する総合学園。","50人", "denshi.png", 2000,"0419");
-insert into facilitys(facility_name, zip, address, message, capacity,price,userid)
-values("神戸市役所","650-0001","神戸市中央区加納町6-5-1","神戸市役所（こうべしやくしょ）は、地方公共団体である神戸市の執行機関としての事務を行う施設（役所）である。この頁では、建築物としての神戸市役所について述べる。", "10人",2000,"ninose");
-insert into facilitys(facility_name, zip, address, message, capacity,price,userid)
-values("ルミエール御影","650-0045","神戸市東灘区御影石町1-8-17","神戸市役所（こうべしやくしょ）は、地方公共団体である神戸市の執行機関としての事務を行う施設（役所）である。この頁では、建築物としての神戸市役所について述べる。", "10人",2000,"ninose");
+create table user(
+	ident int auto_increment primary key,
+	userid varchar(256),
+	password varchar(256)
+	);
+>>>>>>> master
+
+insert into Users(UserID,FamilyName,GivenName,FamilyNameKana,GivenNameKana, Password,UserPostNum, UserAddress, UserTel ) values("ninose","二瀬","峻介","ニノセ","シュンスケ","$2y$10$fdBVIYCVifMGs8x5NSBzcevYB0DzdxnUNbryBA.nXHiqD5Wt6FhjG",658-0045,"兵庫県神戸市東灘区御影石町1-8-17ルミエール御影","080-3052-7831");
+
+insert into Users(UserID,FamilyName,GivenName,FamilyNameKana,GivenNameKana, Password,UserPostNum, UserAddress, UserTel ) values("denshi","神戸","電子","コウベ","デンシ","$2y$10$VSap8GpyZDeEkIVbCVD5bOgyLauVrYApzX6IytxMS3jd3L6.X92UW",658-0045,"兵庫県神戸市中央区北野町1-8-1","080-3052-7832");
+
+
+create table Posts(
+	UpID int auto_increment primary key,
+	UserID varchar(256) not null,
+	CategoryID int not null,
+	FacName varchar(256),
+	PostNum varchar(256),
+	Address varchar(256),
+	PeopleNum int,
+	Tel varchar(256),
+	MailAddress varchar(256),
+	Exposition varchar(256),
+	PostDate date,
+	StartDate date,
+	StopDate date,
+	UpCancel boolean default null,
+	Image1 varchar(256),
+	Image2 varchar(256),
+	Image3 varchar(256),
+	Area int,
+	Electrical boolean,
+	Water boolean,
+	Gas boolean,
+	Toilet boolean,
+	BarrierFree boolean,
+	Network boolean,
+	Parking boolean,
+	AirCondition boolean,
+	FoodDrink boolean,
+	NoFire boolean,
+	Price int
+
+);
+
+insert into Posts(UserID, CategoryID, FacName, PostNum,Address,PeopleNum,Tel,MailAddress,Exposition,StartDate,StopDate,Image1,Image2,Image3,Price) values("denshi",1,"神戸電子専門学校", "650-0002", "兵庫県神戸市中央区北野町１−１−8",50,"0853-63-0245","denshi@example.co.jp", "神戸電子専門学校は、兵庫県神戸市中央区にある私立の専門学校。 ITや電子工学などのエンジニア系だけでなく、ゲームソフトやサウンドといったエンターテイメント分野から、グラフィック、建築CAD、工業デザインといったデザイン分野にわたり、15学科を擁する総合学園。","2017-12-25","2018-1-2", "denshi.png","denshi.png","denshi.png", 2000);
+
+insert into Posts(UserID, CategoryID, FacName, PostNum,Address,PeopleNum,Tel,MailAddress,Exposition,StartDate,StopDate,Price) values("ninose",1,"神戸市役所", "650-0001","神戸市中央区加納町6-5-1",50,"0853-63-0245","denshi@example.co.jp", "神戸市役所のページ","2017-12-24","2018-1-1", 2000);
+
+
 
 create table orders(
 	userid varchar(50) not null,
@@ -64,3 +112,5 @@ create table orders(
 insert into orders(userid, facilityid, orderdate) values("ninose", 1, "2018/1/18");
 insert into orders(userid, facilityid, orderdate) values("ninose", 1, "2017/12/18");
 insert into orders(userid, facilityid, orderdate) values("ninose", 1, "2018/12/26");
+insert into orders(userid, facilityid, orderdate) values("ninose", 1, "2017/11/20");
+insert into orders(userid, facilityid, orderdate) values("denshi", 2, "2018/1/3");

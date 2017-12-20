@@ -33,13 +33,13 @@
 
 			<ul class="nav navbar-nav navbar-right">
 			<?php
-				if(!isset($_SESSION["userid"])){ 
+				if(!isset($_SESSION["UserName"])){ 
 			?>
 			<li><a href="/php/logincontroller" role="button">ログイン</a></li>
 			<li><a href="/php/shinkicontroller" role="button">新規登録</a></li>
 			<?php }else{?>
 			<li class="dropdown">
-				<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"><?php echo unserialize($_SESSION["userid"])."さま"; ?> <span class="caret"></span></a>
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"><?php echo unserialize($_SESSION["UserName"])."さま"; ?> <span class="caret"></span></a>
 					<ul class="dropdown-menu" role="menu">
 						<li><a href="/php/server/logout.php">ログアウト</a></li>
 						<li><a href="#">リング</a></li>							

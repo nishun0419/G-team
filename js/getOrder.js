@@ -1,10 +1,11 @@
-function getOrder(){
+$(function(){
 	$.ajax({
 		url: "/php/server/orderserver.php",
 		type: "get",
 		dataType: "json",
 		data:{
-			userid : userid
+			userid : userid,
+			process: "mypage"
 		},
 	})
 	.done(function(responses){
@@ -17,4 +18,4 @@ function getOrder(){
 		console.log('失敗');
 	});
 
-}
+});

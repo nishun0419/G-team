@@ -35,6 +35,7 @@ public class ShinkiController extends HttpServlet{
 
 	private String createUser(HttpServletRequest request){
 		HttpURLConnection uc = null;
+		request.setCharacterEncoding("UTF-8");
 		try{
 			String id = request.getParameter("id");
 			String first = request.getParameter("first");

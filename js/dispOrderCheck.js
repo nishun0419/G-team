@@ -1,9 +1,5 @@
-function dispCalendar(response){
-    var flag = true;
-    var work;
-    var orderdate = response.orderdate;
-    var StartDate = toDate(response.StartDate);
-    var StopDate = toDate(response.StopDate);
+function dispOrderCheck(response){
+    orderdate = response.orderdate;
 var opt = {
      timeOnlyTitle: '時間を選択',
      timeText: '時間',
@@ -30,8 +26,8 @@ var opt = {
         firstDay: 0,
         showMonthAfterYear: true,
         yearSuffix: '年',
-        minDate: StartDate,
-        maxDate: StopDate,
+        minDate: '-0',
+        maxDate: '+90d',
         beforeShowDay: function(date){
             // var disabledate = $.datepicker.formatDate(date, 'yyyy-mm-dd');
             // if(( orderdate.indexOf(disabledate) == -1)){
@@ -49,36 +45,17 @@ var opt = {
                 if (holiday.getYear() == date.getYear() &&
                     holiday.getMonth() == date.getMonth() &&
                     holiday.getDate() == date.getDate()) {
-                    return [false,"","予約済み" ];
+                    return [true,"inorder","予約済み" ];
                 }
             }
             }
-                return [true, ""];
+                return [false, ""];
         },
         onSelect: function(dataText, inst){
-            if(flag){
-                $("#calendar_val").val(dataText);
-                flag = false;
-            }
-            else{
-               work = $("#calendar_val").val();
-               if(work !== dataText && work < dataText){
-                    $("#calendar_val").val(work +"~" + dataText);
-                    $("#calendar_message").text("");
-                    flag = true;
-                }
-                else{
-                    if(work > dataText){
-                        $("#calendar_message").text("違う日をクリックしてください");
-                    }
-                }
-            }
+            getPdf(dataText);
+               
         }
     };
     $("#calendar").datepicker(opt);
+    $("#facility_name").text(response.facility_name);
 }
-function toDate (str) {
-  var arr = str.split('-')
-  return new Date(arr[0], arr[1] - 1, arr[2]);
-};
-

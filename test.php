@@ -1,3 +1,4 @@
 <?php
-	phpinfo();
+	//phpinfo();
+    print mb_internal_encoding();
 ?>

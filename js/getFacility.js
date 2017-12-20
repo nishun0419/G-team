@@ -21,7 +21,7 @@ $(function(){
 		else if(dataprocess === "detail"){
 			dispDetailFacility(responses[0]);
 			if(responses[0].orderdate !== null){
-				dispCalendar(responses[0].orderdate);
+				dispCalendar(responses[0]);
 			}
 			else{
 				dispCalendar(null);
@@ -34,7 +34,9 @@ $(function(){
 			for(count = 0; count < responses.length; count++){
 				dispMyFacility(responses[count], count);
 			}
-			getOrder();
+		}
+		else if(dataprocess === "checkOrder"){
+			dispOrderCheck(responses[0]);
 		}
 	})
 	.fail(function(){

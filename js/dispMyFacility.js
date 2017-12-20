@@ -8,7 +8,7 @@ function dispMyFacility(response, count){
 					  .text("〒" + response.zip + response.address)
 					  .append($("<h4></h4>")
 					  .append($("<a></a>")
-					  .attr({'href':'/php/php/detail_Facility.php?id=' + response.ident})
+					  .attr({'href':'/php/php/order_check.php?id=' + response.ident})
 					  .text(response.facility_name)))
 					  )
 					  )

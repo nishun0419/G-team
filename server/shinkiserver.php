@@ -1,4 +1,5 @@
 <?php
+		header("Content-Type:text/html;charset=UTF-8");
 		session_start();
 		$resMes = "sucess";
 		if(trim($_POST["id"]) == false){
@@ -42,9 +43,15 @@
 			$resMes = "false";
 		}
 		else{
+<<<<<<< HEAD
 			$dsn ="mysql:dbname=teamG;host=localhost;charset=utf8";
 			$user = "kobe";
 			$password = "denshi";
+=======
+			$dsn ="mysql:dbname=sns;host=localhost;charset=utf8mb4";
+			$user = "nise";
+			$password = "nise";
+>>>>>>> master
 			try{
 				$today = getdate();
 				$d = $today["mday"];
@@ -57,6 +64,7 @@
 				$stmt -> bindValue(1, htmlspecialchars($_POST['id']),PDO::PARAM_STR);
 				$stmt -> execute();
 				if(!$stmt -> fetch(PDO::FETCH_ASSOC)){
+<<<<<<< HEAD
 					//TODO:POSTはできてるっぽいのにinsert出来ていないみたい(2,3,4,5カラム目)
 					$sql = "insert into Users(UserID,FirstName,FirstNameKana,GivenName,GivenNameKana,Password,AcountDate,UserPostNum,UserAddress,UserTel,UserMailAddress) values(?,?,?,?,?,?,?,?,?,?,?)";
 					$stmt = $dbh -> prepare($sql);
@@ -71,8 +79,15 @@
 					$stmt -> bindValue(9, htmlspecialchars($_POST['address']), PDO::PARAM_STR);
 					$stmt -> bindValue(10, htmlspecialchars($_POST['tel']), PDO::PARAM_STR);
 					$stmt -> bindValue(11, htmlspecialchars($_POST['email']), PDO::PARAM_STR);
+=======
+					$sql = "insert into Users(UserID, Password) values(?,?)";
+					// $stmt = $dbh -> query("SET NAMES utf8;");
+					$stmt = $dbh -> prepare($sql);
+					$stmt -> bindValue(1, htmlspecialchars($_POST['id']), PDO::PARAM_STR);
+					$stmt -> bindValue(2, password_hash(htmlspecialchars($_POST['password']),PASSWORD_DEFAULT), PDO::PARAM_STR);
+>>>>>>> master
 					$stmt -> execute();
-					$_SESSION["userid"] = serialize(htmlspecialchars($_POST["id"]));
+					$_SESSION["UserID"] = serialize(htmlspecialchars($_POST["id"]));
 					// $_SESSION["password"] = htmlspecialchars($_POST["password"]);
 					// unset($_SESSION["message_Shinki"]);
 					// header("Location: ../php/mypage.php");

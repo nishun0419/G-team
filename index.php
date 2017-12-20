@@ -35,7 +35,7 @@
 	</div>
 	<?php
 		require('php/navbar.php');
-		if(isset($_SESSION["userid"])){
+		if(isset($_SESSION["UserID"])){
 			header("Location: /php/serchcontroller");
 			exit;
 		}
