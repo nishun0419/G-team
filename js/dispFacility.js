@@ -1,6 +1,8 @@
-function dispFacility(response, i){
-	$("#serchResult").append($("<div class='col-md-10 col-md-offset-1 resultbox'></div>")
-					 .append($("<div class='col-md-6'></div>")
+function dispFacility(response, i){ //検索結果表示
+	$("#serchResult").append($("<div class='col-md-5 col-md-offset-1 resultbox'></div>")
+					 .append($("<img class='img-responsive facilityImage center-block' id='facility_img"+i+"'>")
+					 .attr({'src' : "/php/image/" + response.image}))
+					 .append($("<div class='row'></div>")
 					 .append($("<div class='text-left'></div>")
 					 .append($("<h2></h2>")
 					 .append($("<a></a>")
@@ -9,12 +11,9 @@ function dispFacility(response, i){
 					 .append($("<div class='text-left'></div>")
 					 .text("〒"+response.PostNum + response.Address))
 					 .append($("<div class='text-left'></div>")
-					 .text("人数：" + response.PeopleNum))
-					 .append($("<div class='text-left message'></div>")
-					 .text(response.Exposition)))
-					 .append($("<div class='col-md-6'></div>")
-					 .append($("<img class='img-responsive' id='facility_img"+i+"'>")
-					 .attr({'src' : "/php/image/" + response.image})))
+					 .text("人数：" + response.PeopleNum )))
+					 .append($("<div class='price'></div>")
+					 .text("￥" + response.Price))
 					 );
 	if(response.image === null){
 		$("#facility_img"+i).attr('src', '/php/image/noimage.jpg');

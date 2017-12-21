@@ -57,5 +57,5 @@ var opt = {
         }
     };
     $("#calendar").datepicker(opt);
-    $("#facility_name").text(response.facility_name);
+    $("#facility_name").text(response.FacName);
 }

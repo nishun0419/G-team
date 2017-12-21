@@ -15,21 +15,21 @@
 			$stmt=$dbh->prepare($sql);
 			$date = date('Y-m-d');
 
-			$stmt -> bindValue(2, $_GET["userid"], PDO::PARAM_STR);
 			$stmt -> bindParam(1, $date, PDO::PARAM_STR);
+			$stmt -> bindValue(2, $_GET["userid"], PDO::PARAM_STR);
 			$stmt -> execute();
 			$res = array();
 			while($row = $stmt -> fetch(PDO::FETCH_ASSOC)){
-				$sql = "select * from facilitys where ident = ?";
+				$sql = "select * from Posts where UpID = ?";
 				$fstmt = $dbh -> prepare($sql);
 				$fstmt -> bindValue(1, $row["facilityid"], PDO::PARAM_STR);
 				$fstmt -> execute();
 				while($frow = $fstmt -> fetch(PDO::FETCH_ASSOC)){
-				$res[] = array( "ident" => $frow["ident"],
-								"facility_name" => $frow["facility_name"],
-								"zip" => $frow["zip"],
-								"address" => $frow["address"],
-								"images" => $frow["images"],
+				$res[] = array( "ident" => $frow["UpID"],
+								"FacName" => $frow["FacName"],
+								"PostNum" => $frow["PostNum"],
+								"Address" => $frow["Address"],
+								"Image" => $frow["Image1"],
 								"orderdate" => $row["orderdate"]
 						);
 				}

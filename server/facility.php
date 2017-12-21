@@ -22,11 +22,144 @@
 								"Address" => $row["Address"],
 								"Exposition" => $row["Exposition"],
 								"PeopleNum" => $row["PeopleNum"],
-								"image" => $row["Image1"]
+								"image" => $row["Image1"],
+								"Price" => $row["Price"]
 						);
 			}
 		}
-		else if($_GET["process"] === "detail"){
+		else if($_GET["process"] === "serch"){//位置情報を使わない普通の検索
+			$para = htmlspecialchars($_GET["keyword"]);
+			$area = htmlspecialchars($_GET["area"]);
+			$infras = $_GET["infras"];
+			$y = 0; //bindValueの添え字
+			$sql = "select * from Posts ";
+			if(isset($para) && $para !== null && $para !== "" ){
+			//キーワードがあるときの処理
+
+				$keyword = trim(htmlspecialchars($para));	//前後の空白をなくす
+				$dates = mb_convert_kana($keyword, 's');//全角スペースを半角キーワードに変える
+				if(strpos($dates, ' ') !== false){//キーワードの中にスペースがあった時の処理
+
+					$keywords = explode(' ',$dates);//スペースごとに分割する
+					$count = count($keywords);	//配列の長さ
+					for($i = 0; $i < $count; $i++){
+						if($i === 0){
+							$sql = $sql."where (FacName like ? or Exposition like ?) ";
+						}
+						else{
+							$sql = $sql."and (FacName like ? or Exposition like ?) ";
+						}
+					}
+				}
+				else{	//スペースがないとき
+						$sql = $sql."where (FacName like ? or Exposition like ?) ";
+						$keywords[0] = $dates;
+				}
+
+			}
+			else{}
+
+			if(isset($area) && $area !== null && $area !== ""){
+				$areaflag = true;
+				//エリア指定があるときの処理
+				if(isset($keyword)){
+					//キーワード入力があった時の処理
+					$sql = $sql."and Address like ?";
+				}
+				else{
+					//なかった時の処理
+					$sql = $sql."where Address like ?";
+				}
+			}
+			else{}
+
+			if(isset($infras) && is_array($infras)){
+				$infraflag = true;
+				if(isset($keywords) || isset($areaflag)){
+						$sql = $sql."and ";
+				}
+				else{
+						$sql = $sql."where ";
+				}
+				for($i = 0; $i < count($infras); $i++){
+					if($i > 0){
+						$sql = $sql."and ";
+					}
+					$infra = htmlspecialchars($infras[$i]);
+
+					if($infra === "1"){
+						$sql = $sql."Electrical = ? ";
+					}
+					else if($infra === "2"){
+						$sql = $sql."Water = ? ";
+					}
+					else if($infra === "3"){
+						$sql = $sql."Gas = ? ";
+					}
+					else if($infra === "4"){
+						$sql = $sql."Toilet = ? ";
+					}
+					else if($infra === "5"){
+						$sql = $sql."BarrierFree = ? ";
+					}
+					else if($infra === "6"){
+						$sql = $sql."Network = ? ";
+					}
+					else if($infra === "7"){
+						$sql = $sql."Parking = ? ";
+					}
+					else if($infra === "8"){
+						$sql = $sql."AirCondition = ? ";
+					}
+					else if($infra === "9"){
+						$sql = $sql."FoodDrink = ? ";
+					}
+					else if($infra === "10"){
+						$sql = $sql."NoFire = ? ";
+					}
+				}
+			}
+			else{}	
+			$stmt = $dbh -> prepare($sql);
+			if(isset($keywords)){
+				for($i = 0; $i < count($keywords); $i++){
+					$stmt -> bindValue($y + 1, '%'.$keywords[$i].'%', PDO::PARAM_STR);
+					$stmt -> bindValue($y + 2, '%'.$keywords[$i].'%', PDO::PARAM_STR);
+					$y = $y + 2;
+				}
+
+			}
+			else{}//キーワードがなかった時
+
+			if(isset($areaflag)){
+				$y++;
+				$stmt -> bindValue($y, '%'.$area.'%', PDO::PARAM_STR);
+			}
+			else{}//エリア指定がなかった時の処理
+
+			if(isset($infraflag)){
+				$y++;
+				for($i = 0; $i < count($infras); $i++){
+					$stmt -> bindValue($y, true, PDO::PARAM_INT);
+					$y++;
+				}
+			}
+			
+			$stmt -> execute();
+			$res = array();
+			while($row = $stmt -> fetch(PDO::FETCH_ASSOC)){
+				$res[] = array( "UpID" => $row["UpID"],
+								"FacName" => $row["FacName"],
+								"PostNum" => $row["PostNum"],
+								"Address" => $row["Address"],
+								"Exposition" => $row["Exposition"],
+								"PeopleNum" => $row["PeopleNum"],
+								"image" => $row["Image1"],
+								"Price" => $row["Price"]
+						);
+			}
+		}
+		else if($_GET["process"] === "detail"){ //施設詳細情報の処理
 			$sql = "select * from Posts where UpID = ?";
 			$stmt = $dbh -> prepare($sql);
 			$stmt -> bindValue(1, $_GET["ident"], PDO::PARAM_STR);
@@ -64,26 +197,26 @@
 						);
 			}
 		}
-		else if($_GET["process"] === "mypage"){
-			$sql = "select * from facilitys where userid = ?";
+		else if($_GET["process"] === "mypage"){	//マイページ上に表示する投稿リスト用の処理	
+			$sql = "select * from Posts where UserID = ?";
 			$stmt = $dbh -> prepare($sql);
 			$stmt -> bindValue(1, $_GET["userid"], PDO::PARAM_STR);
 			$res = array();
 			$stmt -> execute();
 
 			while($row = $stmt -> fetch(PDO::FETCH_ASSOC)){
-				$res[] = array("facility_name" => $row["facility_name"],
-							   "zip" => $row["zip"],
-							   "address" => $row["address"],
-							   "images" => $row["images"],
-							   "ident" =>  $row["ident"]
+				$res[] = array("FacName" => $row["FacName"],
+							   "PostNum" => $row["PostNum"],
+							   "Address" => $row["Address"],
+							   "Image" => $row["Image1"],
+							   "UpID" =>  $row["UpID"]
 						);
 			}
 
 		}
 
-		else if($_GET["process"] === "checkOrder"){
-			$sql = "select * from facilitys where ident = ?";
+		else if($_GET["process"] === "checkOrder"){//予約状況確認用の処理
+			$sql = "select * from Posts where UpID = ?";
 			$stmt = $dbh -> prepare($sql);
 			$stmt -> bindValue(1, $_GET["ident"], PDO::PARAM_STR);
 			$res = array();
@@ -92,7 +225,7 @@
 			if($row){
 				$sql = "select * from orders where facilityid = ?";
 				$stmt = $dbh -> prepare($sql);
-				$stmt -> bindValue(1, $row["ident"], PDO::PARAM_STR);
+				$stmt -> bindValue(1, $row["UpID"], PDO::PARAM_STR);
 				$stmt -> execute();
 				$index = 0;
 				$orderdate = null; 
@@ -100,7 +233,7 @@
 					$orderdate[$index] = $orow["orderdate"];
 					$index++;
 				}
-				$res[] = array("facility_name" => $row["facility_name"],
+				$res[] = array("FacName" => $row["FacName"],
 								"orderdate" => $orderdate
 						);
 			}

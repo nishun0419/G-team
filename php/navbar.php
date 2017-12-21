@@ -23,7 +23,7 @@
 				<span class="icon-bar"></span>
 			</button>
 			<a class="navbar-brand" href="/php/index.php">
-				<img src="/php/image/chinook.png" id="logo" width="120" height="70">
+				CHINook
 			</a>
 		</div>
 		<div id=navmenu class="collapse navbar-collapse">
@@ -42,8 +42,8 @@
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"><?php echo unserialize($_SESSION["UserName"])."さま"; ?> <span class="caret"></span></a>
 					<ul class="dropdown-menu" role="menu">
 						<li><a href="/php/server/logout.php">ログアウト</a></li>
-						<li><a href="#">リング</a></li>							
-						<li><a href="#">リンク・リストＤ３</a></li>
+						<li><a href="/php/php/mypage.php">マイページに戻る</a></li>							
+						<li><a href="#">ヘルプ</a></li>
 					</ul>
 			</li>
 			<?php } ?>

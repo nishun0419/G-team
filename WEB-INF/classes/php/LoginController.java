@@ -77,10 +77,10 @@ public class LoginController extends HttpServlet{
 		try{
 			String id = request.getParameter("id");
 			String password = request.getParameter("password");
-			String flag = request.getParameter("flag");
+			// String flag = request.getParameter("flag");
 			System.out.println(id);
 			System.out.println(password);
-			String data = "id="+id+"&password="+password+"&flag="+flag;
+			String data = "id="+id+"&password="+password;
 			URL url = new URL("http://localhost:8080/php/server/loginserver.php");
 			uc = (HttpURLConnection)url.openConnection();
 			uc.setDoInput(true);

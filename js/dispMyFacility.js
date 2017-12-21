@@ -3,13 +3,13 @@ function dispMyFacility(response, count){
 					  .append($("<div class='media'></div>")
 					  .append($("<a class='media-left' href='#'></a>")
 					  .append($("<img class='samune' id='samune"+count+"'>")
-					  .attr({'src' : "/php/image/" + response.images})))
+					  .attr({'src' : "/php/image/" + response.Image})))
 					  .append($("<div class='media-body'></div>")
-					  .text("〒" + response.zip + response.address)
+					  .text("〒" + response.PostNum + response.Address)
 					  .append($("<h4></h4>")
 					  .append($("<a></a>")
-					  .attr({'href':'/php/php/order_check.php?id=' + response.ident})
-					  .text(response.facility_name)))
+					  .attr({'href':'/php/php/order_check.php?id=' + response.UpID})
+					  .text(response.FacName)))
 					  )
 					  )
 					  );
@@ -17,7 +17,7 @@ function dispMyFacility(response, count){
 			// 		  .text('削除'))
 			// 		  .append($("<div class='edit_facility'></div>")
 			// 		  .text('編集'));
-	if(response.images === null){
+	if(response.Image === null){
 		$("#samune" + count).attr('src', '/php/image/noimage.jpg');
 	}
 }

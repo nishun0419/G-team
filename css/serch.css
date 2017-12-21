@@ -1,22 +1,35 @@
-.serchbox{
+.main{
 	margin-top: 80px;
+}
+/*.sercharea{
+ display: flex;
+}*/
+
+.serchbox{
+	border: 1px solid blue;
 	padding-top: 10px;
-	border:1px solid blue;
-	background-color: #F55645;
 }
-
-.sercharea{
-	display: inline-flex;
+.serchLabel{
+	padding-left: 30px;
 }
-
 .resultbox{
 	/*height: 250px;*/
-	padding-top: 10px;
+/*	padding-top: 10px;
 	padding-bottom: 10px;
-	margin-top: 10px;
-	border:1px solid red;
+	margin-top: 10px;*/
+	border:1px solid #DEDDDD;
+	padding-top: 10px;
+	margin-top: 5px;
+}
+.facilityImage{
+	height: 300px;
 }
 
-.message{
-	margin-top: 10px;
+.price{
+	position: absolute;
+	padding-right: 10px;
+	font-size: 20px;
+	color: white;
+	top: 0px;
+	background-color: rgba(0,0,0,0.8);
 }
