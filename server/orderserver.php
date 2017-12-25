@@ -10,28 +10,33 @@
 	$password = "nise";
 	try{
 		$dbh = new PDO($dsn,$user,$password);
-		if($_GET["process"] === "mypage"){
-			$sql = "select * from orders where DATE(orderdate) >= ? and userid = ? order by orderdate";
+		if($_GET["process"] === "mypage"){ //マイページ表示用
+			$sql = "select * from Reservations where UserID = ?";
 			$stmt=$dbh->prepare($sql);
-			$date = date('Y-m-d');
-
-			$stmt -> bindParam(1, $date, PDO::PARAM_STR);
-			$stmt -> bindValue(2, $_GET["userid"], PDO::PARAM_STR);
+			$stmt -> bindValue(1, $_GET["userid"], PDO::PARAM_STR);
 			$stmt -> execute();
 			$res = array();
-			while($row = $stmt -> fetch(PDO::FETCH_ASSOC)){
-				$sql = "select * from Posts where UpID = ?";
+			while($row = $stmt -> fetch(PDO::FETCH_ASSOC)){ //予約日取得
+				$sql = "select * from ResDates where ResID = ? and DATE(Reservation) >= ?";
+				$date = date("Y-m-d");
 				$fstmt = $dbh -> prepare($sql);
-				$fstmt -> bindValue(1, $row["facilityid"], PDO::PARAM_STR);
+				$fstmt -> bindValue(1, $row["ResID"], PDO::PARAM_INT);
+				$fstmt -> bindValue(2, $date, PDO::PARAM_STR);
 				$fstmt -> execute();
-				while($frow = $fstmt -> fetch(PDO::FETCH_ASSOC)){
-				$res[] = array( "ident" => $frow["UpID"],
-								"FacName" => $frow["FacName"],
-								"PostNum" => $frow["PostNum"],
-								"Address" => $frow["Address"],
-								"Image" => $frow["Image1"],
-								"orderdate" => $row["orderdate"]
+				while($rrow = $fstmt -> fetch(PDO::FETCH_ASSOC)){ //施設情報取得
+					$sql = "select * from Posts where UpID = ?";
+					$rstmt = $dbh -> prepare($sql);
+					$rstmt -> bindValue(1, $row["UpID"], PDO::PARAM_INT);
+					$rstmt -> execute();
+					while($frow = $rstmt -> fetch(PDO::FETCH_ASSOC)){ 
+						$res[] = array( "ident" => $frow["UpID"],
+										"FacName" => $frow["FacName"],
+										"PostNum" => $frow["PostNum"],
+										"Address" => $frow["Address"],
+										"Image" => $frow["Image1"],
+										"orderdate" => $rrow["Reservation"]
 						);
+					}
 				}
 			}
 		}

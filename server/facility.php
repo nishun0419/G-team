@@ -30,7 +30,9 @@
 		else if($_GET["process"] === "serch"){//位置情報を使わない普通の検索
 			$para = htmlspecialchars($_GET["keyword"]);
 			$area = htmlspecialchars($_GET["area"]);
+			if(isset($_GET["infras"])){
 			$infras = $_GET["infras"];
+			}
 			$y = 0; //bindValueの添え字
 			$sql = "select * from Posts ";
 			if(isset($para) && $para !== null && $para !== "" ){
@@ -182,6 +184,17 @@
 					$orderdate[$index] = $frow["orderdate"];
 					$index++;
 				}
+				//インフラの情報を格納する(詳細画面に必要なため)
+				$infra_label[0] = $row["Electrical"];
+				$infra_label[1] = $row["Water"];
+				$infra_label[2] = $row["Gas"];
+				$infra_label[3] = $row["Toilet"];
+				$infra_label[4] = $row["BarrierFree"];
+				$infra_label[5] = $row["Network"];
+				$infra_label[6] = $row["Parking"];
+				$infra_label[7] = $row["AirCondition"];
+				$infra_label[8] = $row["FoodDrink"];
+				$infra_label[9] = $row["NoFire"];
 
 				$res[] = array( "UpID" => $row["UpID"],
 								"FacName" => $row["FacName"],
@@ -193,7 +206,8 @@
 								"Price" => $row["Price"],
 								"StartDate" => $row["StartDate"],
 								"StopDate" => $row["StopDate"],
-								"orderdate" => $orderdate
+								"orderdate" => $orderdate,
+								"infraLabel" => $infra_label
 						);
 			}
 		}

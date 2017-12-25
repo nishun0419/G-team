@@ -67,13 +67,24 @@ create table Posts(
 
 );
 
-insert into Posts(UserID, CategoryID, FacName, PostNum,Address,PeopleNum,Tel,MailAddress,Exposition,StartDate,StopDate,Image1,Image2,Image3,Price,Area, Electrical, Water, Gas, Toilet, BarrierFree, Network, Parking, AirCondition, FoodDrink, NoFire) values("denshi",1,"神戸電子専門学校", "650-0002", "兵庫県神戸市中央区北野町１−１−8",50,"0853-63-0245","denshi@example.co.jp", "神戸電子専門学校は、兵庫県神戸市中央区にある私立の専門学校。 ITや電子工学などのエンジニア系だけでなく、ゲームソフトやサウンドといったエンターテイメント分野から、グラフィック、建築CAD、工業デザインといったデザイン分野にわたり、15学科を擁する総合学園。","2017-12-25","2018-1-2", "denshi.png","denshi.png","denshi.png", 2000, 60, true,true,false,true, false, true, true, true, true, false);
+insert into Posts(UserID, CategoryID, FacName, PostNum,Address,PeopleNum,Tel,MailAddress,Exposition,PostDate,StartDate,StopDate,Image1,Image2,Image3,Price,Area, Electrical, Water, Gas, Toilet, BarrierFree, Network, Parking, AirCondition, FoodDrink, NoFire) values("denshi",1,"神戸電子専門学校", "650-0002", "兵庫県神戸市中央区北野町１−１−8",50,"0853-63-0245","denshi@example.co.jp", "神戸電子専門学校は、兵庫県神戸市中央区にある私立の専門学校。 ITや電子工学などのエンジニア系だけでなく、ゲームソフトやサウンドといったエンターテイメント分野から、グラフィック、建築CAD、工業デザインといったデザイン分野にわたり、15学科を擁する総合学園。",curdate(),"2017-12-25","2018-1-2", "denshi.png","denshi.png","denshi.png", 2000, 60, true,true,false,true, false, true, true, true, true, false);
 
-insert into Posts(UserID, CategoryID, FacName, PostNum,Address,PeopleNum,Tel,MailAddress,Exposition,StartDate,StopDate,Price,Area, Electrical, Water, Gas, Toilet, BarrierFree, Network, Parking, AirCondition, FoodDrink, NoFire) values("ninose",1,"神戸市役所", "650-0001","神戸市中央区加納町6-5-1",50,"0853-63-0245","denshi@example.co.jp", "神戸市役所のページ","2017-12-24","2018-1-1", 2000, 100, true,true,false,true, false, true, true, true, true, false);
+insert into Posts(UserID, CategoryID, FacName, PostNum,Address,PeopleNum,Tel,MailAddress,Exposition,PostDate,StartDate,StopDate,Price,Area, Electrical, Water, Gas, Toilet, BarrierFree, Network, Parking, AirCondition, FoodDrink, NoFire) values("ninose",1,"神戸市役所", "650-0001","神戸市中央区加納町6-5-1",50,"0853-63-0245","denshi@example.co.jp", "神戸市役所のページ",curdate(),"2017-12-24","2018-1-1", 2000, 100, true,true,false,true, false, true, true, true, true, false);
 
-insert into Posts(UserID, CategoryID, FacName, PostNum,Address,PeopleNum,Tel,MailAddress,Exposition,StartDate,StopDate,Image1,Image2,Image3,Price,Area, Electrical, Water, Gas, Toilet, BarrierFree, Network, Parking, AirCondition, FoodDrink, NoFire) values("ninose",1,"ルミエール御影", "658-0045", "兵庫県神戸市東灘区御影石町1-8-17",10,"080-3052-7831","denshi@example.co.jp", "引越し便利な家具家電付あり！オートロック・モニター付インターフォンで安心！御影駅から三宮駅まで特急で約6分とアクセス良好♪","2017-12-25","2018-1-2", "mikage.png","mikage.png","mikage.png", 2000, 10, true,true,false,true, false, true, true, true, true, true);
+insert into Posts(UserID, CategoryID, FacName, PostNum,Address,PeopleNum,Tel,MailAddress,Exposition,PostDate,StartDate,StopDate,Image1,Image2,Image3,Price,Area, Electrical, Water, Gas, Toilet, BarrierFree, Network, Parking, AirCondition, FoodDrink, NoFire) values("ninose",1,"ルミエール御影", "658-0045", "兵庫県神戸市東灘区御影石町1-8-17",10,"080-3052-7831","denshi@example.co.jp", "引越し便利な家具家電付あり！オートロック・モニター付インターフォンで安心！御影駅から三宮駅まで特急で約6分とアクセス良好♪",curdate(),"2017-12-25","2018-1-2", "mikage.png","mikage.png","mikage.png", 2000, 10, true,true,false,true, false, true, true, true, true, true);
 
+create table ResDates(
+	ResID int,
+	Reservation date
+);
 
+create table Reservations(
+	ResID int auto_increment primary key,
+	UserID varchar(256),
+	UpID int,
+	ResCancel boolean default false,
+	ResCancelComplete boolean default false
+);
 
 create table orders(
 	userid varchar(50) not null,
@@ -81,8 +92,14 @@ create table orders(
 	orderdate date default null
 );
 
-insert into orders(userid, facilityid, orderdate) values("ninose", 1, "2018/1/18");
-insert into orders(userid, facilityid, orderdate) values("ninose", 1, "2017/12/18");
-insert into orders(userid, facilityid, orderdate) values("ninose", 1, "2018/12/26");
-insert into orders(userid, facilityid, orderdate) values("ninose", 1, "2017/11/20");
-insert into orders(userid, facilityid, orderdate) values("denshi", 2, "2018/1/3");
+insert into ResDates(ResID, Reservation) values(1, "2018/1/18");
+insert into ResDates(ResID, Reservation) values(2, "2017/12/18");
+insert into ResDates(ResID, Reservation) values(3, "2018/12/26");
+insert into ResDates(ResID, Reservation) values(4, "2017/11/20");
+insert into ResDates(ResID, Reservation) values(5, "2018/1/3");
+
+insert into Reservations(UserID, UpID) values("ninose", 1);
+insert into Reservations(UserID, UpID) values("ninose", 1);
+insert into Reservations(UserID, UpID) values("ninose", 1);
+insert into Reservations(UserID, UpID) values("ninose", 1);
+insert into Reservations(UserID, UpID) values("denshi", 2);

@@ -28,6 +28,8 @@ $(function(){
 			for(count = 0; count < responses.length; count++){
 				dispMyFacility(responses[count], count);
 			}
+			$("#tabFacility").append($("<span class='badge'></span>")
+						  .text(responses.length));
 		}
 		else if(dataprocess === "checkOrder"){	//予約状況の確認
 			dispOrderCheck(responses[0]);

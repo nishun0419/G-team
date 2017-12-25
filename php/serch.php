@@ -15,21 +15,26 @@
 		if(isset($_GET["keyword"]) || $_GET["keyword"] !== " "){
 			$param = htmlspecialchars($_GET["keyword"]);
 			$process = "serch";
+			// for($i = 0; $i < count($_GET["infra"]); $i++){
+			// 	$infras[$i] = $_GET["infra"][$i];
+			// }
 		}
 		else{
-			$param = null;
-			$process = "top";
+				$param = null;
+				$process = "top";
 		}
+		$infras = json_encode($_GET["infra"]);
 	?>
 	<script type="text/javascript">
 		var serchparam = '<?php echo $param; ?>';
 		var dataprocess = '<?php echo $process; ?>';
-		var area = '<?php echo htmlspecialchars($_GET["area"]) ?>'
+		var area = '<?php echo htmlspecialchars($_GET["area"]); ?>';
+		var infras = JSON.parse('<?php echo $infras; ?>');
 	</script>
 	<div class="container main">
 		<div class="row">
 			<div class="col-md-4 serchbox">
-				<!-- <form class="form-horizontal"> -->
+				<form class="form-horizontal" method="get" action="">
 						<div class="col-md-8 sercharea">
 							<input type="text" class="form-control" id="paramValue" name="keyword" placeholder="キーワード検索">
 							<div>
@@ -85,48 +90,48 @@
 									<option value="沖縄県">沖縄県</option>
 								</select>
 							</div>
-							<button type="button" class="btn btn-primary serch">検索</button>
+							<button type="submit" class="btn btn-primary serch">検索</button>
 							<div class="row">
 
 								<label>
-									<input type="checkbox" name="infra[]" value="1">電気あり
+									<input type="checkbox" name="infra[]" class="infra" value="1">電気あり
 								</label>
 								<label>
-									<input type="checkbox" name="infra[]" value="2">水道あり
+									<input type="checkbox" name="infra[]" class="infra" value="2">水道あり
 								</label>
 								<label>
-									<input type="checkbox" name="infra[]" value="3">ガスあり
+									<input type="checkbox" name="infra[]" class="infra" value="3">ガスあり
 								</label>
 								<label>
-									<input type="checkbox" name="infra[]" value="4">トイレあり
+									<input type="checkbox" name="infra[]" class="infra" value="4">トイレあり
 								</label>
 								<label>
-									<input type="checkbox" name="infra[]" value="5">バリアフリー
+									<input type="checkbox" name="infra[]" class="infra" value="5">バリアフリー
 								</label>
 								<label>
-									<input type="checkbox" name="infra[]" value="6">ネットあり
+									<input type="checkbox" name="infra[]" class="infra" value="6">ネットあり
 								</label>
 								<label>
-									<input type="checkbox" name="infra[]" value="7">駐車場あり
+									<input type="checkbox" name="infra[]" class="infra" value="7">駐車場あり
 								</label>
 								<label>
-									<input type="checkbox" name="infra[]" value="8">冷暖房あり
+									<input type="checkbox" name="infra[]" class="infra" value="8">冷暖房あり
 								</label>
 								<label>
-									<input type="checkbox" name="infra[]" value="9">飲食OK
+									<input type="checkbox" name="infra[]" class="infra" value="9">飲食OK
 								</label>
 								<label>
-									<input type="checkbox" name="infra[]" value="10">火気OK
+									<input type="checkbox" name="infra[]" class="infra" value="10">火気OK
 								</label>
 							</div>
 						</div>
-				<!-- </form> -->
+				</form>
 			</div>
 			<div class="col-md-8" id="serchResult"></div>
 		</div>
 	</div>
 	<script type="text/javascript" src="/php/js/dispFacility.js"></script>
-	<script type="text/javascript" src="/php/js/firstSerch.js"></script>
+	<!-- <script type="text/javascript" src="/php/js/firstSerch.js"></script> -->
 	<script type="text/javascript" src="/php/js/serchClickEvent.js"></script>
 	<script type="text/javascript" src="/php/js/serch.js"></script>
 </body>

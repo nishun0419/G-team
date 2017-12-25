@@ -32,27 +32,44 @@ function dispDetailFacility(response){
 					 .text("人数：" + response.PeopleNum))
 					 .append($("<div class='text-left'></div>")
 					 .text("説明：" + response.Exposition))
+					 .append($("<div class='text-left infra_Zone'></div>")
+					 .append($("<label class='infraLabel' id='infra1'></label>")
+					 .text("電気あり"))
+					 .append($("<label class='infraLabel' id='infra2'></label>")
+					 .text("水道あり"))
+					 .append($("<label class='infraLabel' id='infra3'></label>")
+					 .text("ガスあり"))
+					 .append($("<label class='infraLabel' id='infra4'></label>")
+					 .text("トイレあり"))
+					 .append($("<label class='infraLabel' id='infra5'></label>")
+					 .text("バリアフリー"))
+					 .append($("<label class='infraLabel' id='infra6'></label>")
+					 .text("ネットあり"))
+					 .append($("<label class='infraLabel' id='infra7'></label>")
+					 .text("駐車場あり"))
+					 .append($("<label class='infraLabel' id='infra8'></label>")
+					 .text("冷暖房あり"))
+					 .append($("<label class='infraLabel' id='infra9'></label>")
+					 .text("飲食OK"))
+					 .append($("<label class='infraLabel' id='infra10'></label>")
+					 .text("火気OK")))
 					 .append($("<div class='text-right' id='price'></div>")
-					 .text("￥"+response.Price)))))
+					 .text("￥"+response.Price)))
+					 .append($("<div id='map'></div>"))))
 					 .append($("<div class='row'></div>")
-					 .append($("<div class='col-md-6 no-float'></div>")
-					 .append($("<div id='map'></div>")))
-					 .append($("<div class='col-md-6 no-float'></div>")
-					 .append($("<form method='GET' action='/php/php/order.php'></form>")
-					 // .append($("<input type='text' name='calendar_val' id='calendar_val'>"))
-					 .append($("<input type='hidden' name='id'>")
-					 .val(response.UpID))
-					 // .append($("<input type='submit' value='申込'>"))
-					 )
-					 .append($("<p id = 'calendar_message'></p>"))
-					 .append($("<div id='calendar'></div>")))
-					 ));
+					 .append($("<div id='calendar'></div>"))));
 		for(i = 0; i < 3; i++){
 			if(response.images[i] === null){
 				$(".img"+i).attr({'src':'/php/image/noimage.jpg'});
 			}
 			else{
 				$(".img"+i).attr({'src':'/php/image/'+response.images[i]});
+			}
+		}
+		for(i = 0; i < 10; i++){
+			index = i + 1;
+			if(response.infraLabel[i] === "1"){
+				$("#infra" + index).show();
 			}
 		}
 	document.addEventListener( 'DOMContentLoaded', initMap(response.Address));

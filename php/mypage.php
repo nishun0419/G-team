@@ -39,8 +39,8 @@
 			</div>
 			<div class="col-md-6 hidden-xs">
 				<ul class="nav nav-tabs">
-					<li class="active"><a href="#orderList" data-toggle="tab">予約リスト</a></li>
-					<li><a href="#facilityList" data-toggle="tab">投稿リスト</a></li>
+					<li class="active"><a href="#orderList" id="tabOrder" data-toggle="tab">予約リスト</a></li>
+					<li><a href="#facilityList" id="tabFacility" data-toggle="tab">投稿リスト</a></li>
 				</ul>
 
 				<div class="tab-content">

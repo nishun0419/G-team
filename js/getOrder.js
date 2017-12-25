@@ -13,6 +13,8 @@ $(function(){
 		for(count = 0; count < responses.length; count++){
 			dispMyOrder(responses[count], count);
 		}
+		$("#tabOrder").append($("<span class='badge'></span>")
+					  .text(responses.length));
 	})
 	.fail(function(){
 		console.log('失敗');
