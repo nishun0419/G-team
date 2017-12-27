@@ -24,6 +24,30 @@
 		var userid = null;
 	</script>
 
+	<!-- モーダル・ダイアログ -->
+	<div class="modal fade" id="orderModal" tabindex="-1">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"><span>×</span></button>
+					<h4 class="modal-title">予約日</h4>
+				</div>
+				<div class="modal-body">
+					<div class="text-center calendarVal"></div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
+					<form method="POST" action="/php/ordercontroller">
+						<input type="hidden" name="upID" id="upID">
+						<input type="hidden" name="reservation" id="reservation">
+						<input type="hidden" name="process" value="preOrder">
+						<button type="submit" class="btn btn-primary">ボタン</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
 	<div class="container">
 		<div class="row">
 			<div id="detail_Info"></div>

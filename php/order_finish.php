@@ -25,10 +25,6 @@
 			<button class="btn btn-primary check">OK</button>
 		</div>
 	</div>
-	<script type="text/javascript">
-		var userid = '<?php echo $_POST["userid"] ?>';
-		var facilityIdent = '<?php echo $_POST["facilityIdent"] ?>';
-	</script>
 	<div class="text-center ordermessage">
 		申込が完了しました。
 	</div>

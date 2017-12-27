@@ -11,24 +11,35 @@
 <body>
 	<?php
 		require('navbar.php');
-		
-		if(isset($_GET["keyword"]) || $_GET["keyword"] !== " "){
+		$process = "serch";
+		if(isset($_GET["keyword"]) || $_GET["keyword"] !== ""){
 			$param = htmlspecialchars($_GET["keyword"]);
-			$process = "serch";
 			// for($i = 0; $i < count($_GET["infra"]); $i++){
 			// 	$infras[$i] = $_GET["infra"][$i];
 			// }
 		}
 		else{
 				$param = null;
-				$process = "top";
 		}
-		$infras = json_encode($_GET["infra"]);
+
+		if(isset($_GET["area"]) || $_GET["area"] !== ""){
+			$area = htmlspecialchars($_GET["area"]);
+		}
+		else{
+			$area = null;
+		}
+
+		if(isset($_GET["infra"]) || $_GET["infra"] !== ""){
+			$infras = json_encode($_GET["infra"]);
+		}
+		else{
+			$infras = json_encode([]);
+		}
 	?>
 	<script type="text/javascript">
 		var serchparam = '<?php echo $param; ?>';
 		var dataprocess = '<?php echo $process; ?>';
-		var area = '<?php echo htmlspecialchars($_GET["area"]); ?>';
+		var area = '<?php echo $area; ?>';
 		var infras = JSON.parse('<?php echo $infras; ?>');
 	</script>
 	<div class="container main">

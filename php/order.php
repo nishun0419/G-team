@@ -18,9 +18,9 @@
 	?>
 	<script type="text/javascript">
 		var serchparam = null;
-		var dataprocess = "order";
-		var ident = '<?php echo $_GET["id"] ?>';
-		var calendar_val = '<?php echo $_GET["calendar_val"] ?>';
+		var dataprocess = "info_Check";
+		var ident = '<?php echo htmlspecialchars($_GET["UpID"]) ?>';
+		var calendar_val = '<?php echo htmlspecialchars($_GET["Reservation"]) ?>';
 		var userid = '<?php echo unserialize($_SESSION["UserID"]) ?>';
 	</script>
 	<div class="container">
@@ -33,9 +33,11 @@
 			</div>
 			<div class="col-md-10 col-md-offset-1 button_group">
 				<div class="col-md-6 col-md-offset-4">
-					<form method="POST" action="/php/php/order_finish.php">
-						<input type="hidden" id="facilityIdent">
-						<input type="hidden" id="userid">
+					<form method="POST" action="/php/ordercontroller">
+						<input type="hidden" id="facilityIdent" name="UpID">
+						<input type="hidden" id="userid" name="UserID">
+						<input type="hidden" id="date" name="Reservation">
+						<input type="hidden" name="process" value="order">
 						<button class="btn btn-primary cancel">キャンセル</button>
 						<button type="submit" class="btn btn-primary ok">申し込む</button>
 					</form>

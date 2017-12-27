@@ -169,21 +169,28 @@
 			$res = array();
 			$row = $stmt -> fetch(PDO::FETCH_ASSOC);
 			if($row){
-				$sql = "select * from orders where facilityid = ?";
+				$sql = "select * from Reservations where UpID = ?";
 				$stmt = $dbh -> prepare($sql);
 				$stmt -> bindValue(1, $row["UpID"], PDO::PARAM_STR);
 				$stmt -> execute();
 				$index = 0;
 				$orderdate = null;
+				//予約されている日付を格納
+				while($rrow = $stmt -> fetch(PDO::FETCH_ASSOC)){
+					$sql = "select * from ResDates where ResID = ?";
+					$rstmt = $dbh -> prepare($sql);
+					$rstmt -> bindValue(1,$rrow["ResID"], PDO::PARAM_INT);
+					$rstmt -> execute();
+					while($ReserData = $rstmt -> fetch(PDO::FETCH_ASSOC)){
+						$orderdate[$index] = $ReserData["Reservation"];
+						$index++;
+					}
+				}
 				//画像を配列に格納
 				$images[0] = $row["Image1"];
 				$images[1] = $row["Image2"];
 				$images[2] = $row["Image3"];
-				//予約されている日付を格納
-				while($frow = $stmt -> fetch(PDO::FETCH_ASSOC)){
-					$orderdate[$index] = $frow["orderdate"];
-					$index++;
-				}
+				
 				//インフラの情報を格納する(詳細画面に必要なため)
 				$infra_label[0] = $row["Electrical"];
 				$infra_label[1] = $row["Water"];
@@ -196,6 +203,14 @@
 				$infra_label[8] = $row["FoodDrink"];
 				$infra_label[9] = $row["NoFire"];
 
+				//StartDateが過去の場合StartDateを今日にする
+				if(strtotime($row["StartDate"]) < strtotime(date('Y-m-d',strtotime('+1 day')))){
+					$StartDate = date('Y-m-d',strtotime('+1 day'));
+				}
+				else{
+					$StartDate = $row["StartDate"];
+				}
+
 				$res[] = array( "UpID" => $row["UpID"],
 								"FacName" => $row["FacName"],
 								"PostNum" => $row["PostNum"],
@@ -204,12 +219,36 @@
 								"PeopleNum" => $row["PeopleNum"],
 								"images" => $images,
 								"Price" => $row["Price"],
-								"StartDate" => $row["StartDate"],
+								"StartDate" => $StartDate,
 								"StopDate" => $row["StopDate"],
 								"orderdate" => $orderdate,
 								"infraLabel" => $infra_label
 						);
 			}
+		}
+		else if($_GET["process"] === "info_Check"){//予約前の情報確認用の処理
+			$sql = "select * from Posts where UpID = ?";
+			$stmt = $dbh -> prepare($sql);
+			$stmt -> bindValue(1, $_GET["ident"], PDO::PARAM_INT);
+			$stmt -> execute();
+			$res = array();
+			$row = $stmt -> fetch(PDO::FETCH_ASSOC);
+			if($row){
+				$sql = "select * from Users where UserID = ?";
+				$stmt = $dbh -> prepare($sql);
+				$stmt -> bindValue(1, $_GET["userid"], PDO::PARAM_STR);
+				$stmt -> execute();
+				$urow = $stmt -> fetch(PDO::FETCH_ASSOC);
+				if($urow){
+					$res[] = array("UpID" => $row["UpID"],
+								   "FacName" => $row["FacName"],
+								   "PostNum" => $row["PostNum"],
+								   "Address" => $row["Address"],
+								   "FullName" => $urow["FamilyName"].$urow["GivenName"]
+								);
+				}
+			}
+
 		}
 		else if($_GET["process"] === "mypage"){	//マイページ上に表示する投稿リスト用の処理	
 			$sql = "select * from Posts where UserID = ?";

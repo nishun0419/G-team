@@ -1,6 +1,6 @@
 function dispCalendar(response){
-    var flag = true;
-    var work;
+    // var flag = true;
+    // var work;
     var orderdate = response.orderdate;
     var StartDate = toDate(response.StartDate);
     var StopDate = toDate(response.StopDate);
@@ -26,7 +26,7 @@ var opt = {
         dayNamesShort: ['日','月','火','水','木','金','土'],
         dayNamesMin: ['日','月','火','水','木','金','土'],
         weekHeader: '週',
-        dateFormat: 'yy/mm/dd',
+        dateFormat: 'yy-mm-dd',
         firstDay: 0,
         showMonthAfterYear: true,
         yearSuffix: '年',
@@ -56,24 +56,15 @@ var opt = {
                 return [true, ""];
         },
         onSelect: function(dataText, inst){
-            if(flag){
-                $("#calendar_val").val(dataText);
-                flag = false;
-            }
-            else{
-               work = $("#calendar_val").val();
-               if(work !== dataText && work < dataText){
-                    $("#calendar_val").val(work +"~" + dataText);
-                    $("#calendar_message").text("");
-                    flag = true;
+            $(".calendarVal").text(dataText);
+            $("#reservation").val(dataText);
+            $('#orderModal').modal(
+                {
+                    backdrop: "true",
                 }
-                else{
-                    if(work > dataText){
-                        $("#calendar_message").text("違う日をクリックしてください");
-                    }
-                }
-            }
-        }
+            );
+               
+        },
     };
     $("#calendar").datepicker(opt);
 }

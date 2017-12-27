@@ -4,12 +4,13 @@ function dispOrder(response, date, userid){
 					.append($("<div class='text-left'></div>")
 					.text("日付：" + date))
 					.append($("<div class='text-left'></div>")
-					.text("施設名：" + response.facility_name))
+					.text("施設名：" + response.FacName))
 					.append($("<div class='text-left'></div>")
-					.text("住所：〒" + response.zip + response.address)))
+					.text("住所：〒" + response.PostNum + response.Address)))
 					);
-	console.log(response.ident);
-	console.log(userid);
-	$("#facilityIdent").val(response.ident);
+	// console.log(response.);
+	// console.log(userid);
+	$("#facilityIdent").val(response.UpID);
 	$("#userid").val(userid);
+	$("#date").val(date);
 }

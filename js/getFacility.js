@@ -4,9 +4,9 @@ $(function(){
 		type: "get",
 		dataType: "json",
 		data:{
-			process: dataprocess,
-			ident: ident,
-			userid: userid
+			process: dataprocess,	//プロセス
+			ident: ident,			//施設ID(UpID)
+			userid: userid			//ユーザーID
 		},
 	})
 	.done(function (responses){
@@ -16,12 +16,13 @@ $(function(){
 			dispDetailFacility(responses[0]);
 			// if(responses[0].orderdate !== null){
 			dispCalendar(responses[0]);
+			$("#upID").val(ident);
 			// }
 			// else{
 			// 	dispCalendar(null);
 			// }
 		}
-		else if(dataprocess === "order"){
+		else if(dataprocess === "info_Check"){
 			dispOrder(responses[0], calendar_val,userid);
 		}
 		else if(dataprocess === "mypage"){	//mypege上に自分が投稿した施設情報を表示	
