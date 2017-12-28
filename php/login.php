@@ -47,6 +47,13 @@
 						</div>							
 						<div class="form-group">
 							<input type="hidden" name="process" value="login">
+							<?php //予約前画面に行くための値を入れる
+							if(isset($_GET['url'])){
+								print "<input type='hidden' name='url' value=". htmlspecialchars($_GET['url']).">";
+								print "<input type='hidden' name='upid' value=". htmlspecialchars($_GET['UpID']).">";
+								print "<input type='hidden' name='reservation' value=". htmlspecialchars($_GET['Reservation']).">";
+			}
+							?>
 							<div class="col-md-8 col-md-offset-4">
 								<button type="submit" class="btn btn-primary">
 									ログイン

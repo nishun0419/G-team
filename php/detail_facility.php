@@ -16,6 +16,9 @@
 	<?php
 		require('navbar.php');
 		$id = $_GET["id"];
+		if(isset($_SESSION["token"])){
+			unset($_SESSION["token"]);
+		}
 	?>
 	<script type="text/javascript">
 		var serchparam = null;
@@ -36,12 +39,12 @@
 					<div class="text-center calendarVal"></div>
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
 					<form method="POST" action="/php/ordercontroller">
+						<button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
 						<input type="hidden" name="upID" id="upID">
 						<input type="hidden" name="reservation" id="reservation">
 						<input type="hidden" name="process" value="preOrder">
-						<button type="submit" class="btn btn-primary">ボタン</button>
+						<button type="submit" class="btn btn-primary">予約</button>
 					</form>
 				</div>
 			</div>

@@ -19,9 +19,9 @@ public class OrderController extends HttpServlet{
 			String process = request.getParameter("process");
 			// session = request.getSession();
 			// synchronized(session){
-					dispatcherURL = "/php/login.php";
+					dispatcherURL = "/php/error.php";
 					if(process == null || process.equals("")){
-						dispatcherURL = "/php/login.php";
+						dispatcherURL = "/php/error.php";
 					}
 					else if(process.equals("preOrder")){
 						dispatcherURL = preOrder(request);

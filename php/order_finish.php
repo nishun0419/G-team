@@ -19,17 +19,11 @@
 			$_SESSION["token"] = "access_OK";
 		}
 	?>
-	<div id="white_back">
-		<div id = price_box>
-			￥<span>5000</span>
-			<button class="btn btn-primary check">OK</button>
-		</div>
-	</div>
 	<div class="text-center ordermessage">
 		申込が完了しました。
 	</div>
 	<div class="text-center">
 		<a href="/php/index.php">トップに戻る</a>
-	<script type="text/javascript" src="/php/js/calcPrice.js"></script>
+	</div>
 </body>
 </html>

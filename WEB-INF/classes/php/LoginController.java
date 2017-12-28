@@ -30,7 +30,12 @@ public class LoginController extends HttpServlet{
 						// dispatcherURL = checkUser(request);
 					}else if(process.equals("logout")){
 						// session.invalidate();
-						dispatcherURL = "/login.jsp";
+						dispatcherURL = "/php/logout.php";
+					}else if(process.equals("order_to_login")){
+						String url =request.getParameter("url");
+						String upId = request.getParameter("UpID");
+						String reservation = request.getParameter("Reservation");
+						dispatcherURL = "/php/login.php?url="+url+"&UpID="+upId+"&Reservation="+reservation;
 					}
 					request.getRequestDispatcher(dispatcherURL).forward(request,response);
 			// }
@@ -74,6 +79,10 @@ public class LoginController extends HttpServlet{
 
 	private String checkUser(HttpServletRequest request){
 		HttpURLConnection uc = null;
+		//予約前の画面遷移に必要な変数
+		String orderurl = request.getParameter("url");
+		String upid = request.getParameter("upid");
+		String reservation = request.getParameter("reservation");
 		try{
 			String id = request.getParameter("id");
 			String password = request.getParameter("password");
@@ -120,16 +129,26 @@ public class LoginController extends HttpServlet{
 				BufferedReader br = new BufferedReader(new InputStreamReader(is,"utf-8"));
 				while((line = br.readLine()) != null){
 					if(line.equals("false")){
-					System.out.println(line);
-					dispatcherURL = "/php/login.php?" + br.readLine();
-					break;
+						System.out.println(line);
+						if(orderurl != null){
+							dispatcherURL = "/php/login.php?" + br.readLine()+"&url="+orderurl+"&UpID="+upid+"&Reservation="+reservation;
+							break;
+						}
+						else{
+							dispatcherURL = "/php/login.php?" + br.readLine();
+						}
 					}
 					else if(line.equals("")){
 					dispatcherURL = "/php/login.php";
 					}
 					else{
 						System.out.println(line);
-						dispatcherURL = "/php/mypage.php?" + line;
+						if(orderurl != null){
+							dispatcherURL = orderurl+"?UpID="+upid+"&Reservation="+reservation+"&"+line;
+						}
+						else{
+							dispatcherURL = "/php/mypage.php?" + line;
+						}
 					}
 				}
 				br.close();

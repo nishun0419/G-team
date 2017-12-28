@@ -49,7 +49,7 @@ var opt = {
                 if (holiday.getYear() == date.getYear() &&
                     holiday.getMonth() == date.getMonth() &&
                     holiday.getDate() == date.getDate()) {
-                    return [false,"","予約済み" ];
+                    return [false,"inorder","予約済み" ];
                 }
             }
             }
@@ -67,6 +67,7 @@ var opt = {
         },
     };
     $("#calendar").datepicker(opt);
+    // $(".inorder > span").append("");
 }
 function toDate (str) {
   var arr = str.split('-')

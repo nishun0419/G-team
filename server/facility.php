@@ -204,8 +204,8 @@
 				$infra_label[9] = $row["NoFire"];
 
 				//StartDateが過去の場合StartDateを今日にする
-				if(strtotime($row["StartDate"]) < strtotime(date('Y-m-d',strtotime('+1 day')))){
-					$StartDate = date('Y-m-d',strtotime('+1 day'));
+				if(strtotime($row["StartDate"]) < strtotime(date('Y-m-d'))){
+					$StartDate = date('Y-m-d');
 				}
 				else{
 					$StartDate = $row["StartDate"];

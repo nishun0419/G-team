@@ -42,6 +42,10 @@
 	height: 25em;
 }
 
+.ui-datepicker-today{
+	background-color: #E65E14;
+}
+
 .infraLabel{
 	margin-left: 5px;
 	border: 1px solid blue;
