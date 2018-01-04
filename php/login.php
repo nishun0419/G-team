@@ -13,7 +13,7 @@
 <body>
 	<?php
 	require('navbar.php');
-	if(isset($_SESSION['userid'])){
+	if(isset($_SESSION['UserID'])){
 		header("Location: /php/logincontroller?process=autoLogin&sessionId=".session_id());
 		exit;
 	}

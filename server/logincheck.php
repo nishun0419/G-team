@@ -5,7 +5,7 @@
 		session_id($_GET["sessionId"]);
 	}
 	session_start();
-	if(!isset($_SESSION["userid"])){
+	if(!isset($_SESSION["UserID"])){
 		$resMes = "false";
 	}
 	else{
