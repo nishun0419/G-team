@@ -35,6 +35,7 @@
 					<a class="list-group-item" href="/php/serchcontroller"><span class="glyphicon glyphicon-search" aria-hidden="true"></span>検索</a>
 					<a class="list-group-item" href="#"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>予約一覧</a>
 					<a class="list-group-item" href="#"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>投稿一覧</a>
+					<a class="list-group-item" href="/php/logincontroller?process=taikaiForm"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>退会</a>
 				</div>
 			</div>
 			<div class="col-md-6 hidden-xs">

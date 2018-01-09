@@ -1,0 +1,14 @@
+#taikaiTitle{
+	font-size: 60px;
+	color: #F60808;
+}
+
+.main{
+	margin-top: 80px;
+}
+body{
+
+	background-image: url(/php/image/CHIHIROIMGL1407_TP_V.jpg);
+	background-size:  cover;
+
+	}

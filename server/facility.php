@@ -276,21 +276,28 @@
 			$stmt -> execute();
 			$row = $stmt -> fetch(PDO::FETCH_ASSOC);
 			if($row){
-				$sql = "select * from orders where facilityid = ?";
+				$facname = $row["FacName"];
+				$sql = "select * from Reservations where UpID = ?";
 				$stmt = $dbh -> prepare($sql);
-				$stmt -> bindValue(1, $row["UpID"], PDO::PARAM_STR);
-				$stmt -> execute();
+				$stmt -> bindValue(1, $_GET["ident"], PDO::PARAM_STR);
+				$orderdate = null;
 				$index = 0;
-				$orderdate = null; 
-				while($orow = $stmt -> fetch(PDO::FETCH_ASSOC)){
-					$orderdate[$index] = $orow["orderdate"];
-					$index++;
+				$stmt -> execute(); 
+				while($rrow = $stmt -> fetch(PDO::FETCH_ASSOC)){
+					$sql = "select * from ResDates where ResID = ?";
+					$rstmt = $dbh -> prepare($sql);
+					$rstmt -> bindValue(1, $rrow["ResID"], PDO::PARAM_INT);
+					$rstmt -> execute();
+					while($resrow = $rstmt -> fetch(PDO::FETCH_ASSOC)){
+						$orderdate[$index] = $resrow["Reservation"];
+						$index++;
 				}
-				$res[] = array("FacName" => $row["FacName"],
-								"orderdate" => $orderdate
-						);
 			}
+			$res[] = array("FacName" => $facname,
+							"orderdate" => $orderdate
+						);
 		}
+	}
 
 		header("Access-Control-Allow-Origin:*");
 		header("Content-Type: application/json");
