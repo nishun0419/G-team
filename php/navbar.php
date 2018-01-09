@@ -41,9 +41,9 @@
 			<li class="dropdown">
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"><?php echo unserialize($_SESSION["UserName"])."さま"; ?> <span class="caret"></span></a>
 					<ul class="dropdown-menu" role="menu">
-						<li><a href="/php/server/logout.php">ログアウト</a></li>
-						<li><a href="#">リング</a></li>							
-						<li><a href="#">リンク・リストＤ３</a></li>
+						<li><a href="/php/logincontroller?process=logout">ログアウト</a></li>
+						<li><a href="/php/php/mypage.php">マイページに戻る</a></li>							
+						<li><a href="#">ヘルプ</a></li>
 					</ul>
 			</li>
 			<?php } ?>
