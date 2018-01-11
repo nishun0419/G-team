@@ -5,9 +5,9 @@
 	// 	exit;
 	// }
 
-	$dsn = "mysql:dbname=sns;host=localhost;charset=utf8";
-	$user = "nise";
-	$password = "nise";
+	$dsn = "mysql:dbname=teamG;host=localhost;charset=utf8";
+	$user = "kobe";
+	$password = "denshi";
 	try{
 		$dbh = new PDO($dsn,$user,$password);
 		$error = false;

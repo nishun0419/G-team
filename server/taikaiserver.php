@@ -18,9 +18,9 @@
 			// }
 		//(!isset($_SESSION["userid"]) && !empty($_POST["id"]) && !empty($_POST["password"]))
 			
-				$dsn ="mysql:dbname=SNS;host=localhost;charset=utf8";
-				$user = "nise";
-				$password = "nise";
+				$dsn ="mysql:dbname=temaG;host=localhost;charset=utf8";
+				$user = "kobe";
+				$password = "denshi";
 				try{
 					$dbh = new PDO($dsn, $user, $password);
 

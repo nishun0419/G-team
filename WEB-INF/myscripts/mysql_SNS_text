@@ -1,13 +1,13 @@
 # データベースminishopの作成
 set names utf8;
-drop database if exists SNS;
-create database SNS;
+drop database if exists teamG;
+create database teamG;
 
 # ユーザーminiに、パスワードshopを設定し、データベースminishopに対するすべての権限を付与
-grant all privileges on SNS.* to nise@localhost identified by 'nise';
+grant all privileges on teamG.* to kobe@localhost identified by 'denshi';
 
 # データベースminishopを使用する 
-use SNS;
+use teamG;
 
 # テーブルitemsの作成
 create table Users(
@@ -51,7 +51,7 @@ create table Posts(
 	Image1 varchar(256),
 	Image2 varchar(256),
 	Image3 varchar(256),
-	Area int,
+	Area decimal(6,2),
 	Electrical boolean,
 	Water boolean,
 	Gas boolean,
@@ -67,7 +67,7 @@ create table Posts(
 
 );
 
-insert into Posts(UserID, CategoryID, FacName, PostNum,Address,PeopleNum,Tel,MailAddress,Exposition,PostDate,StartDate,StopDate,Image1,Image2,Image3,Price,Area, Electrical, Water, Gas, Toilet, BarrierFree, Network, Parking, AirCondition, FoodDrink, NoFire) values("denshi",1,"神戸電子専門学校", "650-0002", "兵庫県神戸市中央区北野町１−１−8",50,"0853-63-0245","denshi@example.co.jp", "神戸電子専門学校は、兵庫県神戸市中央区にある私立の専門学校。 ITや電子工学などのエンジニア系だけでなく、ゲームソフトやサウンドといったエンターテイメント分野から、グラフィック、建築CAD、工業デザインといったデザイン分野にわたり、15学科を擁する総合学園。",curdate(),"2018-1-1","2018-1-30", "denshi.png","denshi.png","denshi.png", 2000, 60, true,true,false,true, false, true, true, true, true, false);
+insert into Posts(UserID, CategoryID, FacName, PostNum,Address,PeopleNum,Tel,MailAddress,Exposition,PostDate,StartDate,StopDate,Image1,Image2,Image3,Price,Area, Electrical, Water, Gas, Toilet, BarrierFree, Network, Parking, AirCondition, FoodDrink, NoFire) values("denshi",1,"神戸電子専門学校", "650-0002", "兵庫県神戸市中央区北野町１−１−8",50,"0853-63-0245","denshi@example.co.jp", "神戸電子専門学校は、兵庫県神戸市中央区にある私立の専門学校。 ITや電子工学などのエンジニア系だけでなく、ゲームソフトやサウンドといったエンターテイメント分野から、グラフィック、建築CAD、工業デザインといったデザイン分野にわたり、15学科を擁する総合学園。",curdate(),"2018-1-1","2018-1-30", "denshi.png","denshi.png","denshi.png", 2000, 60.1, true,true,false,true, false, true, true, true, true, false);
 
 insert into Posts(UserID, CategoryID, FacName, PostNum,Address,PeopleNum,Tel,MailAddress,Exposition,PostDate,StartDate,StopDate,Price,Area, Electrical, Water, Gas, Toilet, BarrierFree, Network, Parking, AirCondition, FoodDrink, NoFire) values("ninose",1,"神戸市役所", "650-0001","神戸市中央区加納町6-5-1",50,"0853-63-0245","denshi@example.co.jp", "神戸市役所のページ",curdate(),"2018-1-1","2018-1-31", 2000, 100, true,true,false,true, false, true, true, true, true, false);
 

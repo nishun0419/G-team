@@ -5,9 +5,9 @@
 	// 	exit;
 	// }
 
-	$dsn = "mysql:dbname=sns;host=localhost;charset=utf8";
-	$user = "nise";
-	$password = "nise";
+	$dsn = "mysql:dbname=teamG;host=localhost;charset=utf8";
+	$user = "kobe";
+	$password = "denshi";
 	try{
 		$dbh = new PDO($dsn,$user,$password);
 		if($_GET["process"] === "top"){
@@ -171,19 +171,19 @@
 			else{}//インフラ指定がなかった時の処理
 
 			if(isset($minmaxflag)){
-				$minwidth=(int)$minwidth;
-				$maxwidth = (int)$maxwidth;
+				$minwidth=(float)$minwidth;
+				$maxwidth = (float)$maxwidth;
 				$stmt -> bindValue($y, $minwidth, PDO::PARAM_INT);
 				$stmt -> bindValue($y + 1, $maxwidth, PDO::PARAM_INT);
 				$y + 2;
 			}
 			elseif(isset($minflag)){
-				$minwidth = (int)$minwidth;
+				$minwidth = (float)$minwidth;
 				$stmt -> bindValue($y, $minwidth, PDO::PARAM_INT);
 				$y++;
 			}
 			elseif(isset($maxflag)){
-				$maxwidth = (int)$maxwidth;
+				$maxwidth = (float)$maxwidth;
 				$stmt -> bindValue($y, $maxwidth, PDO::PARAM_INT);
 				$y++;
 			}

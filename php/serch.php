@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Serch</title>
 	<link href="/php/css/bootstrap.min.css" rel="stylesheet" type="text/css">
 	<link rel="stylesheet" type="text/css" href="/php/css/serch.css">
@@ -125,15 +126,15 @@
 								<label>広　さ</label>
 								<select name="minwidth" id="minwidth">
 									<option value="" selected>指定なし</option>
-									<option value="0">0</option>
 									<option value="30">30</option>
+									<option value="50">50</option>
 									<option value="100">100</option>
 								</select>~
 								<select name="maxwidth" id="maxwidth">
 									<option value="" selected>指定なし</option>
-									<option value="0">0</option>
-									<option value="30">30</option>
+									<option value="50">50</option>
 									<option value="100">100</option>
+									<option value="200">200</option>
 								</select>㎡
 							</div>
 							<button type="submit" class="btn btn-primary serch">検索</button>
