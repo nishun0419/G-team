@@ -13,5 +13,8 @@
 		正しくない処理を認識しました。
 		やり直してください。
 	</div>
+	<div class="text-center">
+		<a href="/php/serchcontroller">戻る</a>
+	</div>
 </body>
 </html>

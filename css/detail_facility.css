@@ -43,7 +43,8 @@
 }
 
 .ui-datepicker-today{
-	background-color: #E65E14;
+	/*background:　#1484e6 url(images/ui-bg_diagonals-thick_22_1484e6_40x40.png) 50% 50% repeat !important;*/
+	background-color: #FF6F05;
 }
 
 .infraLabel{

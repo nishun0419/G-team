@@ -29,6 +29,13 @@
 			$area = null;
 		}
 
+		if(isset($_GET["width"]) || $_GET["width"] !== ""){
+			$width = htmlspecialchars($_GET["width"]);
+		}
+		else{
+			$width = null;
+		}
+
 		if(isset($_GET["infra"]) || $_GET["infra"] !== ""){
 			$infras = json_encode($_GET["infra"]);
 		}
@@ -40,6 +47,7 @@
 		var serchparam = '<?php echo $param; ?>';
 		var dataprocess = '<?php echo $process; ?>';
 		var area = '<?php echo $area; ?>';
+		var width = '<?php echo $width; ?>';
 		var infras = JSON.parse('<?php echo $infras; ?>');
 	</script>
 	<div class="container main">
@@ -100,6 +108,15 @@
 									<option value="鹿児島県">鹿児島県</option>
 									<option value="沖縄県">沖縄県</option>
 								</select>
+							</div>
+							<div>
+								<label>広　さ</label>
+								<select name="width" id="width">
+									<option value="" selected>指定なし</option>
+									<option value="30">30~</option>
+									<option value="60">60~</option>
+									<option value="100">100~</option>
+								</select>㎡
 							</div>
 							<button type="submit" class="btn btn-primary serch">検索</button>
 							<div class="row">

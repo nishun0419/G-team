@@ -30,10 +30,11 @@
 		else if($_GET["process"] === "serch"){//位置情報を使わない普通の検索
 			$para = htmlspecialchars($_GET["keyword"]);
 			$area = htmlspecialchars($_GET["area"]);
+			$width = htmlspecialchars($_GET["width"]);
 			if(isset($_GET["infras"])){
 			$infras = $_GET["infras"];
 			}
-			$y = 0; //bindValueの添え字
+			$y = 1; //bindValueの添え字
 			$sql = "select * from Posts ";
 			if(isset($para) && $para !== null && $para !== "" ){
 			//キーワードがあるときの処理
@@ -121,12 +122,25 @@
 					}
 				}
 			}
-			else{}	
+			else{}
+
+			if(isset($width) || $width !== null || $width !== ""){
+				$widthflag = true;
+				if(isset($keywords) || isset($areaflag) || isset($infraflag)){
+						$sql = $sql."and ";
+				}
+				else{
+						$sql = $sql."where ";
+				}
+
+				$sql = $sql."Area >= ? ";
+
+			}	
 			$stmt = $dbh -> prepare($sql);
 			if(isset($keywords)){
 				for($i = 0; $i < count($keywords); $i++){
+					$stmt -> bindValue($y, '%'.$keywords[$i].'%', PDO::PARAM_STR);
 					$stmt -> bindValue($y + 1, '%'.$keywords[$i].'%', PDO::PARAM_STR);
-					$stmt -> bindValue($y + 2, '%'.$keywords[$i].'%', PDO::PARAM_STR);
 					$y = $y + 2;
 				}
 
@@ -134,17 +148,23 @@
 			else{}//キーワードがなかった時
 
 			if(isset($areaflag)){
-				$y++;
 				$stmt -> bindValue($y, '%'.$area.'%', PDO::PARAM_STR);
+				$y++;
 			}
 			else{}//エリア指定がなかった時の処理
 
 			if(isset($infraflag)){
-				$y++;
 				for($i = 0; $i < count($infras); $i++){
 					$stmt -> bindValue($y, true, PDO::PARAM_INT);
 					$y++;
 				}
+			}
+			else{}//インフラ指定がなかった時の処理
+
+			if(isset($widthflag)){
+				$width=(int)$width;
+				$stmt -> bindValue($y, $width, PDO::PARAM_INT);
+				$y++;
 			}
 			
 			$stmt -> execute();
