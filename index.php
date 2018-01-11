@@ -23,11 +23,17 @@
 	</div>
 	<?php
 		require('php/navbar.php');
-		if(isset($_SESSION["UserID"])){
-			header("Location: /php/serchcontroller");
-			exit;
+		if(isset($_SESSION["visit"])){
+			$visitFlag = true;
+		}
+		else{
+			$visitFlag = null;
+			$_SESSION["visit"] = "visit";
 		}
 	?>
+	<script type="text/javascript">
+		var visitflag="<?php echo $visitFlag; ?>"; 
+	</script>
 	<div id="titletop">
 		<div class="container">
 			<div class="row titleName">
@@ -105,6 +111,9 @@
 						<div class="form-group">
 							<div class="col-md-8 col-md-offset-4">
 								<input type="hidden" name="process" value="serch">
+								<input type="hidden" name="minwidth" value="">
+								<input type="hidden" name="maxwidth" value="">
+								<input type="hidden" name="infra" value="">
 								<button type="submit" class="btn btn-primary" aria-label="Left Align"><span class="glyphicon glyphicon-search" aria-hidden="true"></span>検索</button>
 							</div>
 						</div>

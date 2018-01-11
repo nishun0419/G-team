@@ -1,24 +1,30 @@
 $(function (){
-	$('.animationtext1').textillate({
-		selector: 'texts',
-		loop: false,
-		minDisplayTime: 1000,
-		initialDelay: 0,
-		autoStart: true,
-		outEffects:['hinge'],
-		in:{
-			effect: 'fadeInRight',
-			delayScale: 1.5,
-			delay: 50,
-			sync: false,
-			shuffle: false,
-			reverse: false,
-			callback:animationtext2
-		},
-		callback: function(){},
-		type: 'char'
+	if(!visitflag){
+		$('.animationtext1').textillate({
+			selector: 'texts',
+			loop: false,
+			minDisplayTime: 1000,
+			initialDelay: 0,
+			autoStart: true,
+			outEffects:['hinge'],
+			in:{
+				effect: 'fadeInRight',
+				delayScale: 1.5,
+				delay: 50,
+				sync: false,
+				shuffle: false,
+				reverse: false,
+				callback:animationtext2
+			},
+			callback: function(){},
+			type: 'char'
 
-	});
+		});
+	}
+	else{
+		$('#animation_back').css({'display':'none'});
+		bodysnow();
+	}
 });
 function animationtext2(){
 	$('.animationtext2').textillate({

@@ -19,7 +19,7 @@
         </init-param>
         <init-param>
             <param-name>executable</param-name>
-            <param-value>C:/php/php-cgi.exe</param-value>
+            <param-value>/usr/local/Cellar/php70/7.0.27_19/bin/php-cgi</param-value>
         </init-param>
         <init-param>
             <param-name>passShellEnvironment</param-name>

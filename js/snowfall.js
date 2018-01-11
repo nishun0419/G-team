@@ -1,6 +1,6 @@
 $(function(){
 	$('#animation_back').snowfall({
-		flakeCount :150, // 数
+		flakeCount :30, // 数
    		flakeIndex : 99999, // スタイルシートのz-indexの値
    		maxSpeed : 6, // 最大速度
    		minSpeed : 1, // 最小速度

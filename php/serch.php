@@ -13,7 +13,7 @@
 	<?php
 		require('navbar.php');
 		$process = "serch";
-		if(isset($_GET["keyword"]) || $_GET["keyword"] !== ""){
+		if($_GET["keyword"]){
 			$param = htmlspecialchars($_GET["keyword"]);
 			// for($i = 0; $i < count($_GET["infra"]); $i++){
 			// 	$infras[$i] = $_GET["infra"][$i];
@@ -23,7 +23,7 @@
 				$param = null;
 		}
 
-		if(isset($_GET["area"]) || $_GET["area"] !== ""){
+		if($_GET["area"]){
 			$area = htmlspecialchars($_GET["area"]);
 		}
 		else{
@@ -48,7 +48,7 @@
 			$minwidth = null;
 		}
 
-		if(isset($_GET["infra"]) || $_GET["infra"] !== ""){
+		if($_GET["infra"]){
 			$infras = json_encode($_GET["infra"]);
 		}
 		else{

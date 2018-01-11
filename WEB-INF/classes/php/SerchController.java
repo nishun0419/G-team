@@ -21,16 +21,10 @@ public class SerchController extends HttpServlet{
 			// synchronized(session){
 					dispatcherURL = "/php/serch.php";
 					if(process == null || process.equals("")){
-						dispatcherURL = "/php/serch.php";
+						dispatcherURL = "/php/serch.php?keyword=&area=&process=serch&minwidth=&maxwidth=&infra=";
 					}
 					else if(process.equals("serch")){
 						dispatcherURL = SerchParamCheck(request);
-					}else if(process.equals("login")){
-						// dispatcherURL = checkUser(request);
-						// dispatcherURL = checkUser(request);
-					}else if(process.equals("logout")){
-						// session.invalidate();
-						dispatcherURL = "/login.jsp";
 					}
 					request.getRequestDispatcher(dispatcherURL).forward(request,response);
 			// }
