@@ -3,9 +3,12 @@ $(function(){//位置情報を使わない検索
 	console.log(serchparam);
 	console.log(area);
 	console.log(infras);
+	console.log(minwidth);
+	console.log(maxwidth);
 	$("#paramValue").val(serchparam);
 	$("#area").val(area);
-	$("#width").val(width);
+	$("#minwidth").val(minwidth);
+	$("#maxwidth").val(maxwidth);
 
 	// console.log($(".infra").eq(0).val());
 	if(infras !== null){
@@ -29,7 +32,8 @@ $(function(){//位置情報を使わない検索
 			keyword: $("#paramValue").val(),
 			infras: infras,
 			area:$("#area").val(),
-			width:$("#width").val(),
+			minwidth:$("#minwidth").val(),
+			maxwidth:$("#maxwidth").val(),
 		},
 	})
 	.done(function(responses){

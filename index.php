@@ -11,11 +11,6 @@
 	<script src="/php/js/jquery.lettering.js"></script>
 	<script src="/php/js/jquery.textillate.js"></script>
 	<script type="text/javascript" src="/php/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="/php/js/lib/greensock/TweenMax.min.js"></script>
-　　　	<script type="text/javascript" src="/php/js/scrollmagic/uncompressed/ScrollMagic.js"></script>
-　　　	<script type="text/javascript" src="/php/js/scrollmagic/uncompressed/plugins/animation.gsap.js"></script>
-	<script type="text/javascript" src="/php/js/scrollmagic/uncompressed/plugins/animation.velocity.js"></script>
-	<script type="text/javascript" src="/php/js/scrollmagic/uncompressed/plugins/debug.addIndicators.js"></script>
 	<script type="text/javascript" src="/php/js/snowfall.jquery.js"></script>
 	<title>Title</title>
 </head>
@@ -189,7 +184,7 @@
 				<h2>CHINookでは全国のあらゆる空き施設を検索できます</h2>
 			</div>
 			<div class="col-md-4 secondInfo">
-				<img class="img-responsive" src="/php/image/denshi.png">
+				<img class="img-responsive secondInfoImg" src="/php/image/denshi.png">
 				<div class="text-left">
 					<h3>神戸電子専門学校</h3>
 				</div>
@@ -198,7 +193,7 @@
 				</div>
 			</div>
 			<div class="col-md-4 secondInfo">
-				<img class="img-responsive" src="/php/image/denshi.png">
+				<img class="img-responsive secondInfoImg" src="/php/image/secondInfo1.jpg">
 				<div class="text-left">
 					<h3>B施設</h3>
 				</div>
@@ -207,7 +202,7 @@
 				</div>
 			</div>
 			<div class="col-md-4 secondInfo">
-				<img class="img-responsive" src="/php/image/denshi.png">
+				<img class="img-responsive secondInfoImg" src="/php/image/secondInfo2.jpg">
 				<div class="text-left">
 					<h3>C施設</h3>
 				</div>

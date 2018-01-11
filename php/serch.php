@@ -29,11 +29,22 @@
 			$area = null;
 		}
 
-		if(isset($_GET["width"]) || $_GET["width"] !== ""){
-			$width = htmlspecialchars($_GET["width"]);
+
+		if($_GET["maxwidth"] && $_GET["minwidth"]){
+			$maxwidth = htmlspecialchars($_GET["maxwidth"]);
+			$minwidth = htmlspecialchars($_GET["minwidth"]);
+		}
+		else if($_GET["minwidth"]){
+			$maxwidth = null;
+			$minwidth = htmlspecialchars($_GET["minwidth"]);
+		}
+		else if($_GET["maxwidth"]){
+			$maxwidth = htmlspecialchars($_GET["maxwidth"]);
+			$minwidth = null;
 		}
 		else{
-			$width = null;
+			$maxwidth = null;
+			$minwidth = null;
 		}
 
 		if(isset($_GET["infra"]) || $_GET["infra"] !== ""){
@@ -47,14 +58,15 @@
 		var serchparam = '<?php echo $param; ?>';
 		var dataprocess = '<?php echo $process; ?>';
 		var area = '<?php echo $area; ?>';
-		var width = '<?php echo $width; ?>';
+		var minwidth = '<?php echo $minwidth; ?>';
+		var maxwidth = '<?php echo $maxwidth; ?>';
 		var infras = JSON.parse('<?php echo $infras; ?>');
 	</script>
 	<div class="container main">
 		<div class="row">
 			<div class="col-md-4 serchbox">
 				<form class="form-horizontal" method="get" action="">
-						<div class="col-md-8 sercharea">
+						<div class="col-md-10 sercharea">
 							<input type="text" class="form-control" id="paramValue" name="keyword" placeholder="キーワード検索">
 							<div>
 								<label>エリア</label>
@@ -111,11 +123,17 @@
 							</div>
 							<div>
 								<label>広　さ</label>
-								<select name="width" id="width">
+								<select name="minwidth" id="minwidth">
 									<option value="" selected>指定なし</option>
-									<option value="30">30~</option>
-									<option value="60">60~</option>
-									<option value="100">100~</option>
+									<option value="0">0</option>
+									<option value="30">30</option>
+									<option value="100">100</option>
+								</select>~
+								<select name="maxwidth" id="maxwidth">
+									<option value="" selected>指定なし</option>
+									<option value="0">0</option>
+									<option value="30">30</option>
+									<option value="100">100</option>
 								</select>㎡
 							</div>
 							<button type="submit" class="btn btn-primary serch">検索</button>

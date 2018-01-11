@@ -120,3 +120,7 @@ body{
 	/*border: 1px solid blue;*/
 	padding-bottom: 20px;
 }
+
+.secondInfoImg{
+	height: 320px;
+}

@@ -30,7 +30,8 @@
 		else if($_GET["process"] === "serch"){//位置情報を使わない普通の検索
 			$para = htmlspecialchars($_GET["keyword"]);
 			$area = htmlspecialchars($_GET["area"]);
-			$width = htmlspecialchars($_GET["width"]);
+			$minwidth = htmlspecialchars($_GET["minwidth"]);
+			$maxwidth = htmlspecialchars($_GET["maxwidth"]);
 			if(isset($_GET["infras"])){
 			$infras = $_GET["infras"];
 			}
@@ -124,17 +125,25 @@
 			}
 			else{}
 
-			if(isset($width) || $width !== null || $width !== ""){
-				$widthflag = true;
+			if($minwidth || $maxwidth){
 				if(isset($keywords) || isset($areaflag) || isset($infraflag)){
 						$sql = $sql."and ";
 				}
 				else{
 						$sql = $sql."where ";
 				}
-
-				$sql = $sql."Area >= ? ";
-
+				if($minwidth && $maxwidth){
+					$minmaxflag = true;
+					$sql = $sql. "Area between ? and ?";
+				}
+				elseif($minwidth){
+					$minflag = true;
+					$sql = $sql."Area >= ? ";
+				}
+				elseif($maxwidth){
+					$maxflag = true;
+					$sql = $sql. "Area <= ?";
+				}
 			}	
 			$stmt = $dbh -> prepare($sql);
 			if(isset($keywords)){
@@ -161,9 +170,21 @@
 			}
 			else{}//インフラ指定がなかった時の処理
 
-			if(isset($widthflag)){
-				$width=(int)$width;
-				$stmt -> bindValue($y, $width, PDO::PARAM_INT);
+			if(isset($minmaxflag)){
+				$minwidth=(int)$minwidth;
+				$maxwidth = (int)$maxwidth;
+				$stmt -> bindValue($y, $minwidth, PDO::PARAM_INT);
+				$stmt -> bindValue($y + 1, $maxwidth, PDO::PARAM_INT);
+				$y + 2;
+			}
+			elseif(isset($minflag)){
+				$minwidth = (int)$minwidth;
+				$stmt -> bindValue($y, $minwidth, PDO::PARAM_INT);
+				$y++;
+			}
+			elseif(isset($maxflag)){
+				$maxwidth = (int)$maxwidth;
+				$stmt -> bindValue($y, $maxwidth, PDO::PARAM_INT);
 				$y++;
 			}
 			
