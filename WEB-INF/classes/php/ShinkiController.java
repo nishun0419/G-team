@@ -1,7 +1,7 @@
 package php;
 import java.io.*;
 import java.net.*;
-import  javax.servlet.*;
+import javax.servlet.*;
 import javax.servlet.http.*;
 public class ShinkiController extends HttpServlet{
 	private String dispatcherURL;
@@ -24,10 +24,6 @@ public class ShinkiController extends HttpServlet{
 						dispatcherURL = "/php/shinki.php";
 					}else if(process.equals("createUser")){
 						dispatcherURL = createUser(request);
-						// dispatcherURL = checkUser(request);
-					}else if(process.equals("logout")){
-						// session.invalidate();
-						dispatcherURL = "/login.jsp";
 					}
 					request.getRequestDispatcher(dispatcherURL).forward(request,response);
 			// }
@@ -37,7 +33,8 @@ public class ShinkiController extends HttpServlet{
 		HttpURLConnection uc = null;
 		try{
 			request.setCharacterEncoding("UTF-8");
-			
+
+			// 変更点:受け渡す項目の追加だけ
 			String id = request.getParameter("id");
 			String family = request.getParameter("family");
 			String family_kana = request.getParameter("family_kana");
@@ -50,7 +47,9 @@ public class ShinkiController extends HttpServlet{
 			String tel = request.getParameter("tel");
 			String email = request.getParameter("email");
 			String re_email = request.getParameter("re_email");
+			//TODO:都道府県プルダウン対応 String pref = request.getParameter("pref");
 			String data = "id="+id+"&family="+family+"&family_kana="+family_kana+"&given="+given+"&given_kana="+given_kana+"&password="+password+"&re_password="+re_password+"&postnum="+postnum+"&address="+address+"&tel="+tel+"&email="+email+"&re_email="+re_email;
+			//TODO:都道府県プルダウン対応 String data = "id="+id+"&family="+family+"&family_kana="+family_kana+"&given="+given+"&given_kana="+given_kana+"&password="+password+"&re_password="+re_password+"&postnum="+postnum+"&address="+address+"&tel="+tel+"&email="+email+"&re_email="+re_email+"&pref="+pref;
 			System.out.println(data);
 			URL url = new URL("http://localhost:8080/php/server/shinkiserver.php");
 			uc = (HttpURLConnection)url.openConnection();
