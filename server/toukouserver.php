@@ -2,24 +2,92 @@
 
 header("Content-Type:text/html;charset=UTF-8");
 session_start();
-$resMes = "success";
+$resMes = "";
 
 $dir = '../image';			// TODO:応相談、保存場所のpath
 $upfile = array('','','');	// アップロードファイル保存用の配列
 $res = array();				// 緯度経度保存用の配列
 
+// ファイルのアップロード(ファイルがない場合は無視)
+if( $_FILES['upload_file']['size'] != 0){
+	for($i = 0 ; $i < count($_FILES['upload_file']['tmp_name']) ; $i++){
+		$tmpName = $_FILES['upload_file']['tmp_name'][$i];
+		$finfo = new finfo(FILEINFO_MIME_TYPE);
+		$mime_type = $finfo->file($tmpName);
+		// 拡張子チェック
+		$ext = "";
+		switch ($mime_type) {
+			case "image/png":
+				$ext = "png";
+				break;
+			case "image/jpeg":
+				$ext = "jpg";
+				break;
+			case "image/gif":
+				$ext = "gif";
+				break;
+			default:
+				$resMes .= "画像はpng,jpg,gifのどれかをアップロードしてください。";
+				break;
+		}
+		if(is_uploaded_file($_FILES['upload_file']['tmp_name'][$i])){	
+			$fileName = md5_file($_FILES['upload_file']['tmp_name'][$i]).".".$ext;	//念のため、ファイルからハッシュ生成->ファイル名に
+			if(move_uploaded_file($tmpName, "$dir/$fileName")){
+				chmod($dir.'/'.$fileName, 0604);
+				$upfile[$i] =  "$dir/$fileName";
+			}else{
+				$resMes .= "アップロードエラー。";
+			}
+		}else{
+			$resMes .= "ファイル未選択。";
+		}
+	}
+}
 
 // TODO:バリデーションチェック(未完成)
 if(!isset($_SESSION['UserID'])){
-	$resMes = "UserIDがありません";
+	$resMes .= "UserIDがありません。";
 }
-elseif(!isset($_POST['fac_name'])){
-	$resMes = "必要項目が入力されていません";
+// 必須項目確認
+elseif(!isset($_POST['fac_name']) || !isset($_POST['fac_zip']) || !isset($_POST['fac_address']) || !isset($_POST['fac_email']) || !isset($_POST['fac_tel']) || !isset($_POST['people']) || !isset($_POST['date_from']) || !isset($_POST['date_to']) || !isset($_POST['fac_area']) || !isset($_POST['price']) ){
+	$resMes .= "必要項目が入力されていません。";
 }
+// チェックボックス選択確認
+elseif( !($_POST['pay_cash'] == 1 || $_POST['pay_card'] == 1 || $_POST['pay_cry'] == 1) ){
+	$resMes .= "支払い方法は一つ以上選択してください。";
+}
+elseif(!isset($_POST['cate'])){
+	$resMes .= "カテゴリーは一つ以上選択してください。";
+}
+// アップロード上限確認
 elseif( count($_FILES['upload_file']['tmp_name']) > 3 ){
-	$resMes = "ファイルが4つ以上選択されています。";
+	$resMes .= "アップロードできるファイルは3つまでです。";
 }
-else{
+// その他、個々の項目チェック
+elseif(!preg_match('/^\d{3}\-\d{4}$/', $_POST['fac_zip'])){
+	$resMes .= "郵便番号は半角数字と半角ハイフンで入力してください。";
+}
+elseif(!preg_match('/^[0-9-]+$/', $_POST['fac_tel'])){
+	$resMes .= "電話番号は半角数字と半角ハイフンで入力してください。";
+}
+elseif(!preg_match('/^[0-9]+$/', $_POST['people'])){
+	$resMes .= "人数は半角数字で入力してください。";
+}
+elseif(!preg_match('/^[0-9\/]+$/', $_POST['date_from']) || !preg_match('/^[0-9\/]+$/', $_POST['date_to'])){
+	$resMes .= "日付は正しく入力してください。";
+}
+elseif(!preg_match('/^[0-9\.]+$/', $_POST['fac_area'])){
+	$resMes .= "土地の広さは半角数字で入力してください。";
+}
+elseif(mb_strlen($_POST['fac_text']) > 1000){
+	$resMes .= "説明文は1000文字以内で入力してください。";
+}
+elseif(!preg_match('/^[0-9]+$/', $_POST['price'])){
+	$resMes .= "料金は半角数字で入力してください。";
+}
+
+// バリデーションチェックここまで
+elseif(empty($resMes)){
 
 	// 住所から緯度経度を計算
 	$address = $_POST['fac_address'];
@@ -31,24 +99,6 @@ else{
 		$res['lng'] = (string)$location->lng[0];
 	}
 
-	// ファイルのアップロード
-	// TODO:basename通すだけで、ファイル名はアップロードされたまま->変える
-	if( $_FILES['upload_file']['size'] != 0){
-		for($i = 0 ; $i < count($_FILES['upload_file']['tmp_name']) ; $i++){
-			if(is_uploaded_file($_FILES['upload_file']['tmp_name'][$i])){
-				$tmpName = $_FILES['upload_file']['tmp_name'][$i];
-				$fileName =  basename($_FILES['upload_file']['name'][$i]);
-				if(move_uploaded_file($tmpName, "$dir/$fileName")){
-					chmod($dir.'/'.$fileName, 0604);
-					$upfile[$i] =  "$dir/$fileName";	// TODO:DBに保存しておくファイル名及びpahも応相談
-				}else{
-					$resMes = "アップロードエラー";
-				}
-			}else{
-				$resMes = "ファイル未選択";
-			}
-		}
-	}
 
 	// 受け取ったカテゴリーIDを配列に挿入
 	$category  = $_POST['cate'];
@@ -121,8 +171,7 @@ else{
 		$resMes = $_POST['fac_text'];
 
 	}catch(PDOException $e){
-		$_SESSION['message_Shinki'] = $e;
-		$resMes = "error";
+		$resMes .= "error";
 		echo $resMes;
 	}
 }

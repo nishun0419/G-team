@@ -10,7 +10,7 @@
 			$_SESSION['message_Shinki'] = "スペースがないidを入力をしてください";
 		}
 		elseif(preg_match('/[^a-zA-Z0-9]/', $_POST["id"])){
-			$_SESSION['message_Shinki'] = "ユーザーIDは半角英数字で入力してください";
+			$_SESSION['message_Shinki'] = "ユーザーIDは半角英数字で入力してくだい";
 		}
 		elseif(empty($_POST['family']) || empty($_POST['given']) || empty($_POST['family_kana']) || empty($_POST['given_kana']) ){
 			$_SESSION['message_Shinki'] = "名前を入力してください";
@@ -33,7 +33,7 @@
 		elseif(empty($_POST['postnum'])){
 			$_SESSION['message_Shinki'] = "郵便番号を入力してください";
 		}
-		elseif(preg_match("/^d{3}-d{4}$/",$_POST['postnum'])){
+		elseif(!preg_match('/^\d{3}\-\d{4}$/', $_POST['postnum'])){
 			$_SESSION['message_Shinki'] = "郵便番号は半角数字と半角ハイフンで入力してください";
 		}
 		elseif(empty($_POST['address'])){
@@ -42,7 +42,7 @@
 		elseif(empty($_POST['tel'])){
 			$_SESSION['message_Shinki'] = "電話番号を入力してください";
 		}
-		elseif(preg_match('/[^0-9-]/', $_POST['tel'])){
+		elseif(!preg_match('/^[0-9-]+$/', $_POST['tel'])){
 			$_SESSION['message_Shinki'] = "電話番号は半角数字と半角ハイフンで入力してください";
 		}
 		elseif(strcmp($_POST['password'],$_POST['re_password']) != 0 ){
