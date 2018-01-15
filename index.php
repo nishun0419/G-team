@@ -119,6 +119,9 @@
 						</div>
 					</form>
 				</div>
+				<?php
+					if(!isset($_SESSION["UserName"])){
+				?>
 				<div class="col-md-5 col-md-offset-2 serchbox hidden-xs">
 					<form class="form-horizontal" role="form" method="get" action="/php/logincontroller">
 						<div class="text-center">
@@ -144,6 +147,9 @@
 						</div>
 					</form>
 				</div>
+				<?php
+					}
+				?>
 			</div>
 		</div>
 	</div>
