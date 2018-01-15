@@ -38,8 +38,8 @@
 						<input type="hidden" id="userid" name="UserID">
 						<input type="hidden" id="date" name="Reservation">
 						<input type="hidden" name="process" value="order">
-						<button class="btn btn-primary cancel">キャンセル</button>
-						<button type="submit" class="btn btn-primary ok">申し込む</button>
+						<button class="btn cancel"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>キャンセル</button>
+						<button type="submit" class="btn btn-primary ok"><span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>申し込む</button>
 					</form>
 				</div>
 			</div>

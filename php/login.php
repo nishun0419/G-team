@@ -7,6 +7,7 @@
 	<title>ログイン</title>
 	<link rel="stylesheet" type="text/css" href="/php/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="/php/css/navbar.css">
+	<link rel="stylesheet" type="text/css" href="/php/css/login.css">
 	<script type="text/javascript" src="/php/js/jquery-3.1.1.min.js"></script>
 	<script src="/php/js/bootstrap.min.js"></script>
 </head>
@@ -23,7 +24,7 @@
 		<div class="col-md-8 col-md-offset-2">
 			<?php
 			if(isset($_SESSION['message_Login'])){
-				print "<span class='help-block'><strong>". $_SESSION['message_Login']. "</strong></span>";
+				print "<span class='help-block error_mes'><strong>". $_SESSION['message_Login']. "</strong></span>";
 				unset($_SESSION['message_Login']);
 			}
 			?>
@@ -36,7 +37,7 @@
 						<div class="form-group">
 							<label for="id" class="col-md-4 control-label">ユーザーID</label>
 							<div class="col-md-6">
-								<input id="id" type="text" class="form-control" name="id" required autofocus>
+								<input id="id" type="text" pattern="^[0-9A-Za-z]+$" title="半角英数字でお願いします" class="form-control" name="id" required autofocus>
 							</div>
 						</div>
 						<div class="form-group">

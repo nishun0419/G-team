@@ -1,0 +1,13 @@
+body{
+	position: relative;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-attachment: fixed;
+	background-size: cover;
+	/*http://frame-illust.com/?p=358*/
+	background-image: url(/php/image/login_back.png);
+}
+
+.error_mes{
+	color:red;
+}

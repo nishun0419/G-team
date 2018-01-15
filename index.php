@@ -114,7 +114,7 @@
 								<input type="hidden" name="minwidth" value="">
 								<input type="hidden" name="maxwidth" value="">
 								<input type="hidden" name="infra" value="">
-								<button type="submit" class="btn btn-primary" aria-label="Left Align"><span class="glyphicon glyphicon-search" aria-hidden="true"></span>検索</button>
+								<button type="submit" class="btn index_serch" aria-label="Left Align"><span class="glyphicon glyphicon-search" aria-hidden="true"></span>検索</button>
 							</div>
 						</div>
 					</form>
@@ -139,7 +139,7 @@
 						<div class="form-group">
 							<div class="col-md-8 col-md-offset-4">
 								<input type="hidden" name="process" value="login">
-								<button type="submit" class="btn btn-primary">ログイン</button>
+								<button type="submit" class="btn index_login">ログイン</button>
 							</div>
 						</div>
 					</form>

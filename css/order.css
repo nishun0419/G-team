@@ -12,4 +12,13 @@
 }
 .ok{
 	margin-left: 70px;
+	background-color: #496D79;
+}
+
+.cancel{
+	background-color:#D4D3D3;
+}
+
+.glyphicon{
+	margin-right: 5px;
 }

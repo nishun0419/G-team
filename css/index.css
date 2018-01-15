@@ -94,6 +94,16 @@ body{
 	background-color: rgba(255,255,255,0.8);
 }
 
+.index_serch{
+	background-color:#499A91;
+	color: #ECEAEA;
+}
+
+.index_login{
+	background-color:#499A91;
+	color: #ECEAEA;
+}
+
 .titlesecond{
 /*	background-repeat: no-repeat;
 	background-position: center;
