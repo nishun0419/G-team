@@ -17,9 +17,11 @@ create table Users(
 	FamilyNameKana varchar(256) not null,
 	GivenNameKana varchar(256) not null,
 	Password varchar(256) not null,
+	AcountDate date,
 	UserPostNum varchar(256) not null,
 	UserAddress varchar(256) not null,
-	UserTel varchar(256) not null
+	UserTel varchar(256) not null,
+	UserMailAddress varchar(256)
 );
 
 create table user(
@@ -28,9 +30,9 @@ create table user(
 	password varchar(256)
 	);
 
-insert into Users(UserID,FamilyName,GivenName,FamilyNameKana,GivenNameKana, Password,UserPostNum, UserAddress, UserTel ) values("ninose","二瀬","峻介","ニノセ","シュンスケ","$2y$10$fdBVIYCVifMGs8x5NSBzcevYB0DzdxnUNbryBA.nXHiqD5Wt6FhjG","658-0045","兵庫県神戸市東灘区御影石町1-8-17ルミエール御影","080-3052-7831");
+insert into Users(UserID,FamilyName,GivenName,FamilyNameKana,GivenNameKana, Password,AcountDate,UserPostNum, UserAddress, UserTel,UserMailAddress ) values("ninose","二瀬","峻介","ニノセ","シュンスケ","$2y$10$fdBVIYCVifMGs8x5NSBzcevYB0DzdxnUNbryBA.nXHiqD5Wt6FhjG",curdate(),"658-0045","兵庫県神戸市東灘区御影石町1-8-17ルミエール御影","080-3052-7831","ninose@gmail.com");
 
-insert into Users(UserID,FamilyName,GivenName,FamilyNameKana,GivenNameKana, Password,UserPostNum, UserAddress, UserTel ) values("denshi","神戸","電子","コウベ","デンシ","$2y$10$VSap8GpyZDeEkIVbCVD5bOgyLauVrYApzX6IytxMS3jd3L6.X92UW","658-0045","兵庫県神戸市中央区北野町1-8-1","080-3052-7832");
+insert into Users(UserID,FamilyName,GivenName,FamilyNameKana,GivenNameKana, Password,AcountDate,UserPostNum, UserAddress, UserTel,UserMailAddress ) values("denshi","神戸","電子","コウベ","デンシ","$2y$10$VSap8GpyZDeEkIVbCVD5bOgyLauVrYApzX6IytxMS3jd3L6.X92UW",curdate(),"658-0045","兵庫県神戸市中央区北野町1-8-1","080-3052-7832","denshi@gmail.com");
 
 
 create table Posts(
@@ -40,6 +42,8 @@ create table Posts(
 	FacName varchar(256),
 	PostNum varchar(256),
 	Address varchar(256),
+	Lat decimal(10,7),
+	Lon decimal(10,7),
 	PeopleNum int,
 	Tel varchar(256),
 	MailAddress varchar(256),
@@ -60,11 +64,12 @@ create table Posts(
 	Network boolean,
 	Parking boolean,
 	AirCondition boolean,
-	Smoking enum ('freeSmoke', 'halfSmoke', 'noSmoke') default 'noSmoke' not null,
 	FoodDrink boolean,
 	NoFire boolean,
-	Price int
-
+	Price int,
+	CashPayFlag boolean default '0' NOT NULL,
+	CardPayFlag boolean default '0' NOT NULL,
+	CryptocurrencyPayFlag boolean default '0' NOT NULL
 );
 
 insert into Posts(UserID, CategoryID, FacName, PostNum,Address,PeopleNum,Tel,MailAddress,Exposition,PostDate,StartDate,StopDate,Image1,Image2,Image3,Price,Area, Electrical, Water, Gas, Toilet, BarrierFree, Network, Parking, AirCondition, FoodDrink, NoFire) values("denshi",1,"神戸電子専門学校", "650-0002", "兵庫県神戸市中央区北野町１−１−8",50,"0853-63-0245","denshi@example.co.jp", "神戸電子専門学校は、兵庫県神戸市中央区にある私立の専門学校。 ITや電子工学などのエンジニア系だけでなく、ゲームソフトやサウンドといったエンターテイメント分野から、グラフィック、建築CAD、工業デザインといったデザイン分野にわたり、15学科を擁する総合学園。",curdate(),"2018-1-1","2018-1-30", "denshi.png","denshi.png","denshi.png", 2000, 60.1, true,true,false,true, false, true, true, true, true, false);
@@ -86,10 +91,27 @@ create table Reservations(
 	ResCancelComplete boolean default false
 );
 
-create table orders(
-	userid varchar(50) not null,
-	facilityid int not null,
-	orderdate date default null
+create table Categorys(
+	CategoryID int auto_increment primary key,
+	Category varchar(256)
+);
+
+insert into Categorys(Category) values('パーティー');
+insert into Categorys(Category) values('演奏');
+insert into Categorys(Category) values('会議');
+insert into Categorys(Category) values('スポーツ');
+insert into Categorys(Category) values('オフィス');
+insert into Categorys(Category) values('結婚式');
+insert into Categorys(Category) values('車・バイク練習');
+insert into Categorys(Category) values('料理');
+insert into Categorys(Category) values('展示会');
+insert into Categorys(Category) values('写真撮影');
+insert into Categorys(Category) values('その他');
+
+
+create table PostCategorys(
+	UpID int primary key,
+	CategoryID int
 );
 
 insert into ResDates(ResID, Reservation) values(1, "2018/1/18");

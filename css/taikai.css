@@ -6,14 +6,11 @@
 	margin-top: 80px;
 }
 .dropBox{
-	border: 1px solid blue;
+	border: 1px solid #E2DCDC;
 	padding-bottom: 10px;
-	background-color:#FB4802
+	filter:alpha(opacity=50);
    }
 
-body{
 
-	background-image: url(/php/image/CHIHIROIMGL1407_TP_V.jpg);
-	background-size:  cover;
 
-	}
+	

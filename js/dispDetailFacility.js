@@ -59,11 +59,11 @@ function dispDetailFacility(response){
 					 .append($("<div class='row'></div>")
 					 .append($("<div id='calendar'></div>"))));
 		for(i = 0; i < 3; i++){
-			if(response.images[i] === null){
+			if(response.images[i] === ""){
 				$(".img"+i).attr({'src':'/php/image/noimage.jpg'});
 			}
 			else{
-				$(".img"+i).attr({'src':'/php/image/'+response.images[i]});
+				$(".img"+i).attr({'src':'/php/image/post_image/'+response.images[i]});
 			}
 		}
 		for(i = 0; i < 10; i++){

@@ -19,6 +19,12 @@
   border: 1px solid blue;
 }
 
+/*my_order_list,my_facility_list用の追加CSS*/
+
+.back_mymenu{
+  border: 1px solid #B6B4B4;
+}
+
 /*.delete_facility{
   height: 64px;
   margin-top: 15px;

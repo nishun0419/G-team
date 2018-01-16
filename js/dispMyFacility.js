@@ -3,7 +3,7 @@ function dispMyFacility(response, count){
 					  .append($("<div class='media'></div>")
 					  .append($("<a class='media-left' href='#'></a>")
 					  .append($("<img class='samune' id='samune"+count+"'>")
-					  .attr({'src' : "/php/image/" + response.Image})))
+					  .attr({'src' : "/php/image/post_image/" + response.Image})))
 					  .append($("<div class='media-body'></div>")
 					  .text("〒" + response.PostNum + response.Address)
 					  .append($("<h4></h4>")

@@ -1,0 +1,113 @@
+drop database if exists teamG;
+
+create database teamG;
+
+# ユーザー「kobe」にパスワード「denshi」を設定し、データベース「teamG」に対する全ての権限を付与
+grant all privileges on teamG.* to kobe@localhost identified by 'denshi';
+
+# データベース teamG を使用
+use teamG;
+
+create table Users(
+	UserID varchar(255) primary key,
+	FamilyName varchar(255) NOT NULL,
+	GivenName varchar(255) NOT NULL,
+	FamilyNameKana varchar(255) NOT NULL,
+	GivenNameKana varchar(255) NOT NULL,
+	Password	 varchar(255) NOT NULL,
+	AcountDate date NOT NULL,
+	UserPostNum varchar(255) NOT NULL,
+	UserAddress varchar(255) NOT NULL,
+	UserTel varchar(255) NOT NULL,
+	UserMailAddress varchar(255) NOT NULL
+) ENGINE=InnoDB;
+
+create table Categorys(
+	CategoryID int auto_increment primary key,
+	Category varchar(255) NOT NULL
+) ENGINE=InnoDB;
+
+create table Posts(
+	UpID int auto_increment primary key,
+	UserID varchar(255),
+	FacName varchar(255) NOT NULL,
+	PostNum varchar(255) NOT NULL,
+	Address varchar(255) NOT NULL,
+	Lat decimal(10,7) NOT NULL,
+	Lon decimal(10,7) NOT NULL,
+	PeopleNum int NOT NULL,
+	Tel varchar(255) NOT NULL,
+	MailAddress varchar(255) NOT NULL,
+	Exposition varchar(3006) NOT NULL,
+	Price int NOT NULL,
+	PostDate date NOT NULL,
+	StartDate date NOT NULL,
+	StopDate date NOT NULL,
+	UpCancel boolean default '1',
+	Image1 varchar(255),
+	Image2 varchar(255),
+	Image3 varchar(255),
+	Area decimal(6,2) NOT NULL,
+	Electrical boolean default '0' NOT NULL,
+	Water boolean default '0' NOT NULL,
+	Gas boolean default '0' NOT NULL,
+	Toilet boolean default '0' NOT NULL,
+	BarrierFree boolean default '0' NOT NULL,
+	Network boolean default '0' NOT NULL,
+	Parking boolean default '0' NOT NULL,
+	AirCondition boolean default '0' NOT NULL,
+	FoodDrink boolean default '0' NOT NULL,
+	NoFire boolean default '1' NOT NULL,
+	CashPayFlag boolean default '0' NOT NULL,
+	CardPayFlag boolean default '0' NOT NULL,
+	CryptocurrencyPayFlag boolean default '0' NOT NULL,
+	FOREIGN KEY (UserID)
+	REFERENCES Users(UserID)
+) ENGINE=InnoDB;
+
+create table PostCategorys(
+	UpID int,
+	CategoryID int,
+	PRIMARY KEY (UpID,CategoryID),
+	FOREIGN KEY (UpID)
+	REFERENCES Posts(UpID),
+	FOREIGN KEY (CategoryID)
+	REFERENCES Categorys(CategoryID)
+) ENGINE=InnoDB;
+
+create table Reservations(
+	ResID int auto_increment primary key,
+	UserID varchar(255),
+	UpID int,
+	ResCancel enum("usual", "request", "end") default 'usual' NOT NULL,
+	ResCheckFlag boolean default '0' NOT NULL,
+	ResPrice int NOT NULL,
+	FOREIGN KEY (UserID)
+	REFERENCES Users(UserID),
+	FOREIGN KEY (UpID)
+	REFERENCES Posts(UpID)
+) ENGINE=InnoDB;
+
+create table ResDates(
+	ResID int,
+	Reservation date,
+	PRIMARY KEY (ResID, Reservation),
+	FOREIGN KEY (ResID)
+	REFERENCES Reservations(ResID)
+) ENGINE=InnoDB;
+
+insert into Categorys(Category) values('パーティー');
+insert into Categorys(Category) values('演奏');
+insert into Categorys(Category) values('会議');
+insert into Categorys(Category) values('スポーツ');
+insert into Categorys(Category) values('オフィス');
+insert into Categorys(Category) values('結婚式');
+insert into Categorys(Category) values('車・バイク練習');
+insert into Categorys(Category) values('料理');
+insert into Categorys(Category) values('展示会');
+insert into Categorys(Category) values('写真撮影');
+insert into Categorys(Category) values('その他');
+
+
+# ID:kobetest,PASS:kobetestでログインできます
+insert into Users(UserID,FamilyName,FamilyNameKana,GivenName,GivenNameKana,Password,AcountDate,UserPostNum,UserAddress,UserTel,UserMailAddress) values('kobetest','神戸','コウベ','太郎','タロウ','$2y$10$TsbHDY1.kITYkPV86lgOJe6UEW.bA.kmFYhE/2f6yNHbVSH1Z.4IO','2018-01-11','650-0002','兵庫県神戸市中央区北野町1-1-8','123-4567-8901','test@example.com');

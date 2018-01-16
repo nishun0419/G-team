@@ -1,7 +1,7 @@
 package php;
 import java.io.*;
 import java.net.*;
-import  javax.servlet.*;
+import javax.servlet.*;
 import javax.servlet.http.*;
 public class ShinkiController extends HttpServlet{
 	private String dispatcherURL;
@@ -24,10 +24,6 @@ public class ShinkiController extends HttpServlet{
 						dispatcherURL = "/php/shinki.php";
 					}else if(process.equals("createUser")){
 						dispatcherURL = createUser(request);
-						// dispatcherURL = checkUser(request);
-					}else if(process.equals("logout")){
-						// session.invalidate();
-						dispatcherURL = "/login.jsp";
 					}
 					request.getRequestDispatcher(dispatcherURL).forward(request,response);
 			// }
@@ -35,13 +31,24 @@ public class ShinkiController extends HttpServlet{
 
 	private String createUser(HttpServletRequest request){
 		HttpURLConnection uc = null;
-		request.setCharacterEncoding("UTF-8");
 		try{
-			String id = request.getParameter("id");
-			String password = request.getParameter("password");
-			System.out.println(id);
-			System.out.println(password);
-			String data = "id="+id+"&password="+password;
+			request.setCharacterEncoding("UTF-8");
+
+			// 変更点:受け渡す項目の追加だけ
+			String id = request.getParameter("UserID");
+			String family = request.getParameter("FamilyName");
+			String family_kana = request.getParameter("FamilyNameKana");
+			String given = request.getParameter("GivenName");
+			String given_kana = request.getParameter("GivenNameKana");
+			String password = request.getParameter("Password");
+			String re_password = request.getParameter("PasswordConfirm");
+			String postnum = request.getParameter("UserPostNum");
+			String address = request.getParameter("UserAdress")+request.getParameter("UserAdress2")+request.getParameter("UserAdress3");
+			String tel = request.getParameter("Usertel");
+			String email = request.getParameter("UserMailAdress");
+
+			String data = "id="+id+"&family="+family+"&family_kana="+family_kana+"&given="+given+"&given_kana="+given_kana+"&password="+password+"&re_password="+re_password+"&postnum="+postnum+"&address="+address+"&tel="+tel+"&email="+email;
+			System.out.println(data);
 			URL url = new URL("http://localhost:8080/php/server/shinkiserver.php");
 			uc = (HttpURLConnection)url.openConnection();
 			uc.setDoInput(true);
@@ -51,24 +58,27 @@ public class ShinkiController extends HttpServlet{
 			// uc.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
 			uc.setReadTimeout(10000);
 			uc.setConnectTimeout(20000);
-			// uc.setRequestProperty("User-Agent", "*");
+			// uc.setRequestProperty("Content-Type","text/html;charset=UTF-8");
 			// uc.setRequestProperty("Accept=Language", "ja");
 
 			uc.connect();
-			OutputStream out = null;
+			// OutputStreamWriter out = null;
 			try{
-				out = uc.getOutputStream();
-				// BufferedWriter bw = new BufferedWriter(out);
-				PrintStream ps = new PrintStream(out);
-				ps.print(data);
-				ps.close();
+				OutputStreamWriter out = new OutputStreamWriter(uc.getOutputStream(),"utf-8");
+				BufferedWriter bw = new BufferedWriter(out);
+				// PrintStream ps = new PrintStream(out);
+				bw.write(data);
+				// ps.close();
+				bw.close();
+				out.close();
+
 				// out.flush();
 			}catch(IOException e){
 				dispatcherURL = "/php/shinki.php";
 			}finally{
-				if(out != null){
-					out.close();
-				}
+				// if(out != null){
+				// 	out.close();
+				// }
 			}
 			// String data = "id="+id;
 			// bw.write("id=ninose&password=ninose");

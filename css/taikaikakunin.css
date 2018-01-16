@@ -1,14 +1,16 @@
 #taikaiTitle{
-	font-size: 60px;
-	color: #F60808;
+	font-size: 40px;
+	color: #0E6BEA;
 }
 
 .main{
 	margin-top: 80px;
 }
-body{
+.dropBox{
+	border: 1px solid #E2DCDC ;
+	padding-bottom: 10px;
+	filter:alpha(opacity=50);
+	-moz-
+   }
 
-	background-image: url(/php/image/CHIHIROIMGL1407_TP_V.jpg);
-	background-size:  cover;
 
-	}
