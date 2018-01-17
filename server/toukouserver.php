@@ -4,7 +4,7 @@ header("Content-Type:text/html;charset=UTF-8");
 session_start();
 $resMes = "";
 
-$dir = '../image/post_image';			// 保存場所のpath
+$dir = '../image/post_image';		// 保存場所のpath
 $upfile = array('','','');	// アップロードファイル保存用の配列
 $res = array();				// 緯度経度保存用の配列
 
@@ -22,36 +22,83 @@ elseif( count($_FILES['upload_file']['tmp_name']) > 3 ){
 	if(!isset($_POST['fac_name']) || !isset($_POST['fac_zip']) || !isset($_POST['fac_address']) || !isset($_POST['fac_email']) || !isset($_POST['fac_tel']) || !isset($_POST['people']) || !isset($_POST['date_from']) || !isset($_POST['date_to']) || !isset($_POST['fac_area']) || !isset($_POST['price']) ){
 		$resMes .= "必要項目が入力されていません。";
 	}
-	// チェックボックス選択確認
-	elseif( !($_POST['pay_cash'] == 1 || $_POST['pay_card'] == 1 || $_POST['pay_cry'] == 1) ){
-		$resMes .= "支払い方法は一つ以上選択してください。";
+	
+	// 施設名の長さチェック
+	elseif(mb_strlen($_POST['fac_name']) > 64){
+		$resMes .= "施設名が長すぎます。";
 	}
-	elseif(!isset($_POST['cate'])){
-		$resMes .= "カテゴリーは一つ以上選択してください。";
-	}
-	// その他、個々の項目チェック
+	// 郵便番号の形式チェック
 	elseif(!preg_match('/^\d{3}\-\d{4}$/', $_POST['fac_zip'])){
 		$resMes .= "郵便番号は半角数字と半角ハイフンで入力してください。";
 	}
+	// 住所の長さチェック
+	elseif(mb_strlen($_POST['fac_address']) > 80){
+		$resMes .= "住所が長すぎます。";
+	}
+	// メールアドレスの形式・長さチェック
+	elseif(!preg_match('/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/iD', $_POST['fac_email'])){
+		$resMes .= "メールアドレスは正しく入力してください。";
+	}
+	elseif(mb_strlen($_POST['fac_email']) > 80){
+		$resMes .= "メールアドレスが長すぎます。";
+	}
+	// 電話番号の形式・長さチェック
 	elseif(!preg_match('/^[0-9-]+$/', $_POST['fac_tel'])){
 		$resMes .= "電話番号は半角数字と半角ハイフンで入力してください。";
 	}
+	elseif(mb_strlen($_POST['fac_tel']) > 20) {
+		$resMes .= "電話番号が長すぎます。";
+	}
+	// 人数の形式・長さチェック
 	elseif(!preg_match('/^[0-9]+$/', $_POST['people'])){
 		$resMes .= "人数は半角数字で入力してください。";
 	}
-	elseif(!preg_match('/^[0-9\/]+$/', $_POST['date_from']) || !preg_match('/^[0-9\/]+$/', $_POST['date_to'])){
+	elseif(mb_strlen($_POST['people']) > 5){
+		$resMes .= "人数が多すぎます。";
+	}
+	// 日付の形式(長さ)チェック
+	elseif(!preg_match('/^[0-9]{4}\/[0-9]{2}\/[0-9]{2}+$/', $_POST['date_from']) || !preg_match('/^[0-9]{4}\/[0-9]{2}\/[0-9]{2}+$/', $_POST['date_to'])){
 		$resMes .= "日付は正しく入力してください。";
 	}
-	elseif(!preg_match('/^[0-9\.]+$/', $_POST['fac_area'])){
+	// 土地広さの形式・長さチェック
+	elseif(!preg_match('/^[0-9.]+$/', $_POST['fac_area'])){
 		$resMes .= "土地の広さは半角数字で入力してください。";
 	}
+	elseif(mb_strlen($_POST['fac_area']) > 10){
+		$resMes .= "土地の広さが大きすぎます。";
+	}
+	// 説明文の長さチェック
 	elseif(mb_strlen($_POST['fac_text']) > 1000){
 		$resMes .= "説明文は1000文字以内で入力してください。";
 	}
-	elseif(!preg_match('/^[0-9]+$/', $_POST['price'])){
+	// カテゴリーの選択チェック
+	elseif(!isset($_POST['cate'])){
+		$resMes .= "カテゴリーは一つ以上選択してください。";
+	}
+	// 料金の形式(長さ)チェック
+	elseif(!preg_match('/^[0-9]{1,10}+$/', $_POST['price'])){
 		$resMes .= "料金は半角数字で入力してください。";
 	}
+	// 支払い方法の選択チェック
+	elseif( !($_POST['pay_cash'] === '1' || $_POST['pay_card'] === '1' || $_POST['pay_cry'] === '1') ){
+		$resMes .= "支払い方法は一つ以上選択してください。";
+	}
 	// バリデーションチェックここまで
+
+	// バリデーションチェックでエラーがなければ
+	// 住所から緯度経度を計算
+	else{
+		$address = $_POST['fac_address'];
+		$req = 'http://maps.google.com/maps/api/geocode/xml?address='.urlencode($address).'&sensor=false';
+		$xml = simplexml_load_file($req) or die('XML parsing error');
+		if($xml->status == 'OK'){
+			$location = $xml->result->geometry->location;
+			$res['lat'] = (string)$location->lat[0];
+			$res['lng'] = (string)$location->lng[0];
+		}else{
+			$resMes = "緯度経度取得エラー。";
+		}
+	}
 
 	// エラーなし&ファイルが選択されてる場合(選択されてなければスルー)
 	if( empty($resMes) && !empty($_FILES['upload_file']['tmp_name'][0]) ){
@@ -81,7 +128,8 @@ elseif( count($_FILES['upload_file']['tmp_name']) > 3 ){
 			for($i = 0 ; $i < count($_FILES['upload_file']['tmp_name']) ; $i++){
 				// HTTP POSTでアップロードされてるかのチェック
 				if(is_uploaded_file($_FILES['upload_file']['tmp_name'][$i])){	
-					$fileName = md5_file($tmpName[$i]).".".$ext[$i];	//念のため、ファイルからハッシュ生成->ファイル名に
+					// TODO:rand
+					$fileName = sha1(sha1_file($tmpName[$i]).date('YmdHis')).".".$ext[$i];	//念のため、ファイルからハッシュ生成->ファイル名に
 					// ファイルの移動
 					if(move_uploaded_file($tmpName[$i], "$dir/$fileName")){
 						chmod($dir.'/'.$fileName, 0604);	// パーミッション0604
@@ -100,17 +148,6 @@ elseif( count($_FILES['upload_file']['tmp_name']) > 3 ){
 	// アップロードでもエラーがなければ
 	if(empty($resMes)){
 
-		// 住所から緯度経度を計算
-		$address = $_POST['fac_address'];
-		$req = 'http://maps.google.com/maps/api/geocode/xml?address='.urlencode($address).'&sensor=false';
-		$xml = simplexml_load_file($req) or die('XML parsing error');
-		if ($xml->status == 'OK') {
-			$location = $xml->result->geometry->location;
-			$res['lat'] = (string)$location->lat[0];
-			$res['lng'] = (string)$location->lng[0];
-		}
-
-
 		// 受け取ったカテゴリーIDを配列に挿入
 		$category  = $_POST['cate'];
 
@@ -120,12 +157,6 @@ elseif( count($_FILES['upload_file']['tmp_name']) > 3 ){
 		$password = "denshi";
 
 		try{
-
-			// date取得
-			$today = getdate();
-			$d = $today['mday'];
-			$m = $today['mon'];
-			$y = $today['year'];
 
 			// PDOで接続
 			$dbh = new PDO($dsn, $user, $password);
@@ -144,7 +175,7 @@ elseif( count($_FILES['upload_file']['tmp_name']) > 3 ){
 			/*Tel:電話番号*/ $stmt -> bindValue(9, htmlspecialchars($_POST['fac_tel']), PDO::PARAM_STR);
 			/*MailAddress:メール*/ $stmt -> bindValue(10, htmlspecialchars($_POST['fac_email']), PDO::PARAM_STR);
 			/*Exposition:説明文*/ $stmt -> bindValue(11, htmlspecialchars($_POST['fac_text']), PDO::PARAM_STR);
-			/*PostDate:投稿日*/ $stmt -> bindValue(12, $y.'-'.$m.'-'.$d, PDO::PARAM_STR);
+			/*PostDate:投稿日*/ $stmt -> bindValue(12, date('Y-m-d'), PDO::PARAM_STR);
 			/*StartDate:予約可能開始日*/ $stmt -> bindValue(13, htmlspecialchars($_POST['date_from']), PDO::PARAM_STR);
 			/*StopDate:予約可能終了日*/ $stmt -> bindValue(14, htmlspecialchars($_POST['date_to']), PDO::PARAM_STR);
 			/*UpCancel:投稿状態Flag*/ $stmt -> bindValue(15, '1', PDO::PARAM_STR);	/* 1→投稿中 */
@@ -178,8 +209,8 @@ elseif( count($_FILES['upload_file']['tmp_name']) > 3 ){
 				$stmt -> execute();
 			}
 
-			// [仮]何もエラーがなければtextareaに入力した値を出力
-			$resMes = $_POST['fac_text'];
+			// [仮]何もエラーがなければ現在時刻を出力
+			$resMes = date('YmdHis');
 
 		}catch(PDOException $e){
 			$resMes .= "error";

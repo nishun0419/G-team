@@ -105,7 +105,7 @@
 					<div class="form-group">
         				<label for="kanso" class="col-md-4 control-label">簡易説明</label>
         				<div class="col-md-6" >
-        					<textarea id="fac_text"  name="fac_text" cols="48" rows="3" maxlength="20"  placeholder="アメニティの貸出サービス・片付け"></textarea>
+        					<textarea id="fac_text"  name="fac_text" cols="48" rows="3" maxlength=""  placeholder="アメニティの貸出サービス・片付け"></textarea>
     					</div>
 					</div>
 

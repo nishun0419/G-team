@@ -1,0 +1,9 @@
+body{
+  	background-color:#E0F8F7;
+}
+
+.select-box select{
+	width: 28%;
+	padding: 6px;
+}
+
