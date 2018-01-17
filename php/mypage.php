@@ -33,26 +33,17 @@
 			<div class="col-md-3">
 				メニュー
 				<div class="list-group">
+					<a class="list-group-item" href="/php/php/mypage.php"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>投稿施設一覧<span class='badge' id='fac_list_count'></span></a>
 					<a class="list-group-item" href="/php/php/toukou.php"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>投稿</a>
 					<a class="list-group-item" href="/php/serchcontroller"><span class="glyphicon glyphicon-search" aria-hidden="true"></span>検索</a>
-					<a class="list-group-item" href="/php/php/my_order_list.php"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>予約一覧</a>
-					<a class="list-group-item" href="/php/php/my_facility_list.php"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>投稿一覧</a>
-					<a class="list-group-item" href="/php/logincontroller?process=taikaiForm"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>退会</a>
+					<!-- <a class="list-group-item" href="/php/php/my_order_list.php"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>予約一覧</a>
+					<a class="list-group-item" href="/php/logincontroller?process=taikaiForm"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>退会</a> -->
+					<a class="list-group-item" href="/php/php/my_other.php"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>その他</a>
 				</div>
 			</div>
 			<div class="col-md-6 hidden-xs">
-				<ul class="nav nav-tabs">
-					<li class="active"><a href="#orderList" id="tabOrder" data-toggle="tab">予約リスト</a></li>
-					<li><a href="#facilityList" id="tabFacility" data-toggle="tab">投稿リスト</a></li>
-				</ul>
-
-				<div class="tab-content">
-					<div class="tab-pane active" id="orderList">
-						<p>予約リスト</p>
-					</div>
-					<div class="tab-pane" id="facilityList">
-						<p>投稿リスト</p>
-					</div>
+				<div class="tab-pane" id="facilityList">
+					<p>投稿施設一覧</p>
 				</div>
 			</div>
 			<div class="col-md-3 box">
@@ -62,8 +53,6 @@
 	</div>	
 	
 	 <!-- <script type="text/javascript" src="/php/js/getM.js"></script> -->
-	 <script type="text/javascript" src="/php/js/getOrder.js"></script>
-	 <script type="text/javascript" src="/php/js/dispMyOrder.js"></script>
 	 <script type="text/javascript" src="/php/js/dispMyFacility.js"></script>
 	 <script type="text/javascript" src="/php/js/getFacility.js"></script>
 	 <script type="text/javascript" src="/php/js/clickEvent.js"></script>

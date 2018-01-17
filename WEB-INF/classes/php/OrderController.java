@@ -79,6 +79,8 @@ public class OrderController extends HttpServlet{
 
 			String data = "UserID="+userID+"&UpID="+upID+"&Reservation="+reservation+"&process=order";
 
+			System.out.println(data);
+
 			URL url = new URL("http://localhost:8080/php/server/postorderserver.php");
 			uc = (HttpURLConnection)url.openConnection();
 			uc.setDoInput(true);
@@ -92,20 +94,19 @@ public class OrderController extends HttpServlet{
 			// uc.setRequestProperty("Accept=Language", "ja");
 
 			uc.connect();
-			OutputStream out = null;
+			// OutputStream out = null;
 			try{
-				out = uc.getOutputStream();
-				// BufferedWriter bw = new BufferedWriter(out);
-				PrintStream ps = new PrintStream(out);
-				ps.print(data);
-				ps.close();
+				OutputStreamWriter out = new OutputStreamWriter(uc.getOutputStream(),"utf-8");
+				BufferedWriter bw = new BufferedWriter(out);
+				// PrintStream ps = new PrintStream(out);
+				bw.write(data);
+				// ps.close();
+				bw.close();
+				out.close();
 				// out.flush();
 			}catch(IOException e){
 				dispatcherURL = "/php/shinki.php";
 			}finally{
-				if(out != null){
-					out.close();
-				}
 			}
 			// String data = "id="+id;
 			// bw.write("id=ninose&password=ninose");

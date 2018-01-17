@@ -25,6 +25,14 @@
   border: 1px solid #B6B4B4;
 }
 
+.center_list{
+  padding-top: 30px;
+}
+
+#facilityList_other{
+  display: none;
+}
+
 /*.delete_facility{
   height: 64px;
   margin-top: 15px;

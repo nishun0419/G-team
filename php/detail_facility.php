@@ -15,7 +15,7 @@
 <body>
 	<?php
 		require('navbar.php');
-		$id = $_GET["id"];
+		$id = htmlspecialchars($_GET["id"]);
 		if(isset($_SESSION["token"])){
 			unset($_SESSION["token"]);
 		}

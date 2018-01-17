@@ -24,19 +24,20 @@ public class SerchController extends HttpServlet{
 						dispatcherURL = "/php/serch.php?keyword=&area=&process=serch&minwidth=&maxwidth=&infra=";
 					}
 					else if(process.equals("serch")){
-						dispatcherURL = SerchParamCheck(request);
+						dispatcherURL = "/php/serch.php";
 					}
 					request.getRequestDispatcher(dispatcherURL).forward(request,response);
 			// }
 	}
 
-	private String SerchParamCheck(HttpServletRequest request){
-		String keyword = request.getParameter("keyword");
-		if(keyword.equals("") || keyword == null){
-			return dispatcherURL = "/php/serch.php";
-		}
-		else{
-			return dispatcherURL = "/php/serch.php?keyword=" + keyword;
-		}
-	}
+	// private String SerchParamCheck(HttpServletRequest request){
+	// 	String keyword = request.getParameter("keyword");
+	// 	System.out.println(keyword);
+	// 	if(keyword.equals("") || keyword == null){
+	// 		return dispatcherURL = "/php/serch.php";
+	// 	}
+	// 	else{
+	// 		return dispatcherURL = "/php/serch.php?keyword=" + keyword;
+	// 	}
+	// }
 }

@@ -3,7 +3,7 @@ function dispMyOrder(response, count){
 					  .append($("<div class='media'></div>")
 					  .append($("<a class='media-left' href='#'></a>")
 					  .append($("<img class='samune' id='ordersamune"+count+"'>")
-					  .attr({'src' : "/php/image/" + response.Image})))
+					  .attr({'src' : "/php/image/post_image/" + response.Image})))
 					  .append($("<div class='media-body'></div>")
 					  .text("〒" + response.PostNum + response.Address)
 					  .append($("<h4></h4>")
@@ -19,7 +19,7 @@ function dispMyOrder(response, count){
 			// 		  .text('削除'))
 			// 		  .append($("<div class='edit_facility'></div>")
 			// 		  .text('編集'));
-	if(response.Image === null){
+	if(response.Image === ""){
 		$("#ordersamune" + count).attr('src', '/php/image/noimage.jpg');
 	}
 }

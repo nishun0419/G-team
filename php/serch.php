@@ -13,6 +13,7 @@
 	<?php
 		require('navbar.php');
 		$process = "serch";
+		print_r($_GET);
 		if($_GET["keyword"]){
 			$param = htmlspecialchars($_GET["keyword"]);
 			// for($i = 0; $i < count($_GET["infra"]); $i++){
@@ -66,7 +67,7 @@
 	<div class="container main">
 		<div class="row">
 			<div class="col-md-4 serchbox">
-				<form class="form-horizontal" method="get" action="">
+				<form class="form-horizontal" method="GET" action="/php/serchcontroller">
 						<div class="col-md-10 sercharea">
 							<input type="text" class="form-control" id="paramValue" name="keyword" placeholder="キーワード検索">
 							<div>
@@ -137,6 +138,7 @@
 									<option value="200">200</option>
 								</select>㎡
 							</div>
+							<input type="hidden" name="process" value="serch">
 							<button type="submit" class="btn btn-primary serch">検索</button>
 							<div class="row">
 

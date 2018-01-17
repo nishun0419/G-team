@@ -15,7 +15,6 @@
 <body>
 <?php
 	require('navbar.php');
-	print_r(mb_get_info());
 ?>
 
 	<div class="container">
