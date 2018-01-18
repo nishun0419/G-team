@@ -26,7 +26,7 @@ function dispPdf(response){
    					body:[
    				 		[{text:'予約者名', alignment: 'center'},{text:response.FamilyName +'　' + response.GivenName,alignment:'center'}],
    				 		[{text:'フリガナ', alignment: 'center'}, {text:response.FamilyNameKana + '　' + response.GivenNameKana, alignment:'center'}],
-   				 		[{text:'住所', alignment: 'center'}, {text:'〒'+ response.UserPostNum + '　　' + response.UserAddress, alignment:'center'}],
+   				 		[{text:'住所', alignment: 'center'}, {text:'〒'+ response.UserPostNum + '　　' + response.UserPref + response.UserCity, alignment:'center'}],
    				 		[{text:'TEL', alignment: 'center'}, {text:response.UserTel,alignment: 'center'}],
    				 		[{text:'予約日', alignment: 'center'}, {text:response.orderdate,alignment:'center'}]
    					]

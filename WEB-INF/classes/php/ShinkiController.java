@@ -43,11 +43,13 @@ public class ShinkiController extends HttpServlet{
 			String password = request.getParameter("Password");
 			String re_password = request.getParameter("PasswordConfirm");
 			String postnum = request.getParameter("UserPostNum");
-			String address = request.getParameter("UserAdress")+request.getParameter("UserAdress2")+request.getParameter("UserAdress3");
+			String pref = request.getParameter("UserAdress");			
+			String city = request.getParameter("UserAdress2");
+			String address = request.getParameter("UserAdress3");
 			String tel = request.getParameter("Usertel");
 			String email = request.getParameter("UserMailAdress");
 
-			String data = "id="+id+"&family="+family+"&family_kana="+family_kana+"&given="+given+"&given_kana="+given_kana+"&password="+password+"&re_password="+re_password+"&postnum="+postnum+"&address="+address+"&tel="+tel+"&email="+email;
+			String data = "id="+id+"&family="+family+"&family_kana="+family_kana+"&given="+given+"&given_kana="+given_kana+"&password="+password+"&re_password="+re_password+"&postnum="+postnum+"&pref="+pref+"&city="+city+"&address="+address+"&tel="+tel+"&email="+email;
 			System.out.println(data);
 			URL url = new URL("http://localhost:8080/php/server/shinkiserver.php");
 			uc = (HttpURLConnection)url.openConnection();

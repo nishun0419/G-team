@@ -23,7 +23,7 @@
 		申込が完了しました。
 	</div>
 	<div class="text-center">
-		<a href="/php/index.php">トップに戻る</a>
+		<a href="/php/php/mypage.php">マイページに戻る</a>
 	</div>
 </body>
 </html>

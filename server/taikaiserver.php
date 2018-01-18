@@ -18,7 +18,7 @@
 			// }
 		//(!isset($_SESSION["userid"]) && !empty($_POST["id"]) && !empty($_POST["password"]))
 			
-				$dsn ="mysql:dbname=temaG;host=localhost;charset=utf8";
+				$dsn ="mysql:dbname=teamG;host=localhost;charset=utf8";
 				$user = "kobe";
 				$password = "denshi";
 				try{

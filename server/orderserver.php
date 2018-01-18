@@ -14,7 +14,7 @@
 		if($_GET["process"] === "preOrder"){//予約確認前の処理(バリデーション)
 			$sql = "select * from Reservations where UpID = ?";
 			$stmt  = $dbh -> prepare($sql);
-			$stmt -> bindValue(1, $_GET["UpID"], PDO::PARAM_INT);
+			$stmt -> bindValue(1, htmlspecialchars($_GET["UpID"]), PDO::PARAM_INT);
 			$stmt -> execute();
 			while($row = $stmt -> fetch(PDO::FETCH_ASSOC)){
 				$sql = "select * from ResDates where ResID = ?";
@@ -61,7 +61,8 @@
 										"PostNum" => $frow["PostNum"],
 										"Address" => $frow["Address"],
 										"Image" => $frow["Image1"],
-										"orderdate" => $rrow["Reservation"]
+										"orderdate" => $rrow["Reservation"],
+										"ResPrice" => $row["ResPrice"]
 						);
 					}
 				}
@@ -99,7 +100,8 @@
 								"FamilyNameKana" => $urow["FamilyNameKana"],
 								"GivenNameKana" => $urow["GivenNameKana"],
 								"UserPostNum" => $urow["UserPostNum"],
-								"UserAddress" => $urow["UserAddress"],
+								"UserCity" => $urow["UserCity"],
+								"UserPref" => $urow["UserPref"],
 								"UserTel" => $urow["UserTel"],
 								"orderdate" => $_GET["orderdate"]
 							);

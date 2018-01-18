@@ -42,7 +42,14 @@
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-md-5 serchbox vertical-center">
+				<?php 
+					if(!isset($_SESSION['UserName'])){ //UserNameがあれば大きく表示する
+						print '<div class="col-md-5 serchbox vertical-center">';
+					}
+					else{
+						print '<div class="col-md-8 col-md-offset-2 serchbox vertical-center">';
+					}
+				?>
 					<form class="form-horizontal" role="form" method="get" action="/php/serchcontroller">
 						<div class="text-center">
 							<h3>施設検索</h3>
@@ -120,7 +127,7 @@
 					</form>
 				</div>
 				<?php
-					if(!isset($_SESSION["UserName"])){
+					if(!isset($_SESSION["UserName"])){	//Usernameがなければ表示する
 				?>
 				<div class="col-md-5 col-md-offset-2 serchbox hidden-xs">
 					<form class="form-horizontal" role="form" method="get" action="/php/logincontroller">

@@ -15,7 +15,6 @@ $(function(){
 		$("#GivenName").val(responses[0].GivenName);
 		$("#FamilyNameKana").val(responses[0].FamilyNameKana);
 		$("#GivenNameKana").val(responses[0].GivenNameKana);
-		$("#UserID").val(responses[0].UserID);
 		$("#Usertel").val(responses[0].UserTel);
 		$("#UserMailAdress").val(responses[0].UserMailAddress);
 		$("#UserPostNum").val(responses[0].UserPostNum);

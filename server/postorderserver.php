@@ -14,7 +14,7 @@
 		if($_POST["process"] === "order"){	//申込
 			$sql = "select * from Reservations where UpID = ?";
 			$stmt  = $dbh -> prepare($sql);
-			$stmt -> bindValue(1, $_POST["UpID"], PDO::PARAM_INT);
+			$stmt -> bindValue(1, htmlspecialchars($_POST["UpID"]), PDO::PARAM_INT);
 			$stmt -> execute();
 			while($row = $stmt -> fetch(PDO::FETCH_ASSOC)){
 				$sql = "select * from ResDates where ResID = ?";
@@ -22,7 +22,7 @@
 				$rstmt -> bindValue(1, $row["ResID"], PDO::PARAM_INT);
 				$rstmt -> execute();
 				while($rrow = $rstmt -> fetch(PDO::FETCH_ASSOC)){
-					if($rrow["Reservation"] === $_POST["Reservation"]){//募集日時も分岐に加える（未実装）
+					if($rrow["Reservation"] === htmlspecialchars($_POST["Reservation"])){//募集日時も分岐に加える（未実装）
 						$error = true;
 					}
 				}
@@ -32,17 +32,26 @@
 				exit;
 			}
 			else{ 		//非エラー時の処理(申込の処理)
-				$sql="insert into Reservations(UserID,UpID) values(?,?)";
+
+				$sql = "select * from Posts where UpID = ?";
 				$stmt = $dbh -> prepare($sql);
-				$stmt -> bindValue(1, $_POST["UserID"],PDO::PARAM_STR);
-				$stmt -> bindValue(2, $_POST["UpID"],PDO::PARAM_INT);
+				$stmt -> bindValue(1, htmlspecialchars($_POST["UpID"]));
+				$stmt -> execute();
+				$row = $stmt -> fetch(PDO::FETCH_ASSOC);
+				$resPrice = $row['Price'];
+
+				$sql="insert into Reservations(UserID,UpID,ResPrice) values(?,?,?)";
+				$stmt = $dbh -> prepare($sql);
+				$stmt -> bindValue(1, htmlspecialchars($_POST["UserID"]),PDO::PARAM_STR);
+				$stmt -> bindValue(2, htmlspecialchars($_POST["UpID"]),PDO::PARAM_INT);
+				$stmt -> bindValue(3, $resPrice, PDO::PARAM_INT);
 				$stmt -> execute();
 				$resid = $dbh -> lastInsertId("ResID");
 
 				$sql="insert into ResDates(ResID,Reservation) values(?,?)";
 				$stmt = $dbh -> prepare($sql);
 				$stmt -> bindValue(1,$resid, PDO::PARAM_INT);
-				$stmt -> bindValue(2,$_POST["Reservation"],PDO::PARAM_STR);
+				$stmt -> bindValue(2,htmlspecialchars($_POST["Reservation"]),PDO::PARAM_STR);
 				$stmt -> execute();
 				echo "success";
 				exit;

@@ -15,7 +15,6 @@ try{
 						"GivenName" => $row["GivenName"],
 						"FamilyNameKana" => $row["FamilyNameKana"],
 						"GivenNameKana" => $row["GivenNameKana"],
-						"UserID" => $row["UserID"],
 						"UserPostNum" => $row["UserPostNum"],
 						"UserCity" => $row["UserCity"],
 						"UserPref" => $row["UserPref"],

@@ -111,20 +111,18 @@ public class LoginController extends HttpServlet{
 			// uc.setRequestProperty("Accept=Language", "ja");
 
 			uc.connect();
-			OutputStream out = null;
 			try{
-				out = uc.getOutputStream();
-				// BufferedWriter bw = new BufferedWriter(out);
-				PrintStream ps = new PrintStream(out);
-				ps.print(data);
-				ps.close();
+				OutputStreamWriter out = new OutputStreamWriter(uc.getOutputStream(),"utf-8");
+				BufferedWriter bw = new BufferedWriter(out);
+				// PrintStream ps = new PrintStream(out);
+				bw.write(data);
+				// ps.close();
+				bw.close();
+				out.close();
 				// out.flush();
 			}catch(IOException e){
 				dispatcherURL = "/php/shinki.php";
 			}finally{
-				if(out != null){
-					out.close();
-				}
 			}
 			// String data = "id="+id;
 			// bw.write("id=ninose&password=ninose");
@@ -180,7 +178,7 @@ public class LoginController extends HttpServlet{
 			String flag = request.getParameter("flag");
 			System.out.println(id);
 			System.out.println(password);
-			String data = "id="+id+"&password="+password+"&flag="+flag;
+			String data = "id="+id+"&password="+password;
 			URL url = new URL("http://localhost:8080/php/server/loginserver.php");
 			uc = (HttpURLConnection)url.openConnection();
 			uc.setDoInput(true);
@@ -194,20 +192,18 @@ public class LoginController extends HttpServlet{
 			// uc.setRequestProperty("Accept=Language", "ja");
 
 			uc.connect();
-			OutputStream out = null;
 			try{
-				out = uc.getOutputStream();
-				// BufferedWriter bw = new BufferedWriter(out);
-				PrintStream ps = new PrintStream(out);
-				ps.print(data);
-				ps.close();
+				OutputStreamWriter out = new OutputStreamWriter(uc.getOutputStream(),"utf-8");
+				BufferedWriter bw = new BufferedWriter(out);
+				// PrintStream ps = new PrintStream(out);
+				bw.write(data);
+				// ps.close();
+				bw.close();
+				out.close();
 				// out.flush();
 			}catch(IOException e){
 				dispatcherURL = "/php/shinki.php";
 			}finally{
-				if(out != null){
-					out.close();
-				}
 			}
 			// String data = "id="+id;
 			// bw.write("id=ninose&password=ninose");
@@ -265,20 +261,18 @@ public class LoginController extends HttpServlet{
 			// uc.setRequestProperty("Accept=Language", "ja");
 
 			uc.connect();
-			OutputStream out = null;
 			try{
-				out = uc.getOutputStream();
-				// BufferedWriter bw = new BufferedWriter(out);
-				PrintStream ps = new PrintStream(out);
-				ps.print(data);
-				ps.close();
+				OutputStreamWriter out = new OutputStreamWriter(uc.getOutputStream(),"utf-8");
+				BufferedWriter bw = new BufferedWriter(out);
+				// PrintStream ps = new PrintStream(out);
+				bw.write(data);
+				// ps.close();
+				bw.close();
+				out.close();
 				// out.flush();
 			}catch(IOException e){
 				dispatcherURL = "/php/shinki.php";
 			}finally{
-				if(out != null){
-					out.close();
-				}
 			}
 			// String data = "id="+id;
 			// bw.write("id=ninose&password=ninose");

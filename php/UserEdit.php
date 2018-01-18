@@ -65,12 +65,6 @@
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="UserID" class="col-md-4 control-label">ユーザーID</label>
-							<div class="col-md-6">
-								<input id="UserID" type="text" class="form-control" name="UserID" pattern="^[0-9A-Za-z]+$" title="半角英数字で入力してください。" required value="" placeholder="ユーザーID（半角英数字）で入力">
-							</div>
-						</div>
-						<div class="form-group">
 							<label for="Usertel" class="col-md-4 control-label">電話番号</label>
 							<div class="col-md-6">
 								<input id="Usertel" type="text" class="form-control" name="Usertel" pattern="\d{2,4}-\d{3,4}-\d{3,4}"  title="全角になっていないかハイフン(-)が入っているかもう一度確認してください。" required value="" placeholder="000-0000-0000">
