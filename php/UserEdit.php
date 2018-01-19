@@ -10,7 +10,6 @@
 	<link rel="stylesheet" type="text/css" href="/php/css/sinki.css">
     <script type="text/javascript" src="/php/js/jquery-3.1.1.min.js"></script>
     <script src="/php/js/bootstrap.min.js"></script>
-    <script src="/php/js/PassWordCheck.js"></script>
 <!--     <script src="//code.jquery.com/jquery-2.1.0.min.js" type="text/javascript"></script>
     <script src="/ajaxzip2/prototype.js"></script>
 	<script src="ajaxzip2/ajaxzip2.js" charset="UTF-8"></script> -->
@@ -22,10 +21,6 @@
 		if(!isset($_SESSION['UserName'])){
 			header("Location: /php/logincontroller");
 			exit;
-		}
-		if(isset($_SESSION['message_Shinki'])) {
-			print $_SESSION['message_Shinki'];
-			unset($_SESSION['message_Shinki']);
 		}
 	?>
 	<script type="text/javascript">
@@ -153,7 +148,9 @@
 						</div>
 						<div class="form-group">
 							<div class="col-md-8 col-md-offset-4">
-								<input type="hidden" name="process" value="createUser">
+								<input type="hidden" name="process" value="editUser">
+								<input type="hidden" name="username" value="<?php echo unserialize($_SESSION['UserName']); ?>">
+								<input type="hidden" name="id" value="<?php echo unserialize($_SESSION['UserID']); ?>">
 								<button type="submit" class="btn btn-primary" aria-label="Left Align">
 								<span class="glyphicon glyphicon-ok-circle" aria-hidden="true">
 								更新 

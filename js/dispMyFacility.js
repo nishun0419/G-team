@@ -17,7 +17,7 @@ function dispMyFacility(response, count){
 			// 		  .text('削除'))
 			// 		  .append($("<div class='edit_facility'></div>")
 			// 		  .text('編集'));
-	if(response.Image === null){
+	if(response.Image === ""){
 		$("#samune" + count).attr('src', '/php/image/noimage.jpg');
 	}
 }

@@ -33,8 +33,16 @@
 			<div class="col-md-3 hidden-xs">
 				メニュー
 				<div class="list-group">
-					<a class="list-group-item" href="/php/php/mypage.php"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>投稿施設一覧<span class='badge' id='fac_list_count'></span></a>
-					<a class="list-group-item" href="/php/php/toukou.php"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>投稿</a>
+					<?php
+						if(unserialize($_SESSION['flag']) === 'owner'){
+							print '<a class="list-group-item" href="/php/php/my_facility_list.php"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>投稿施設一覧<span class="badge" id="fac_list_count"></span></a>';
+							print'<a class="list-group-item" href="/php/php/toukou.php"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>投稿</a>';
+						}
+						else{
+							print '<a class="list-group-item" href="/php/php/my_order_list.php"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>予約一覧<span class="badge" id="order_list_count"></span></a>';
+						}
+
+					?>
 					<a class="list-group-item" href="/php/serchcontroller"><span class="glyphicon glyphicon-search" aria-hidden="true"></span>検索</a>
 					<!-- <a class="list-group-item" href="/php/php/my_order_list.php"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>予約一覧</a>
 					<a class="list-group-item" href="/php/logincontroller?process=taikaiForm"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>退会</a> -->

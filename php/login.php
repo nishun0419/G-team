@@ -45,7 +45,20 @@
 							<div class="col-md-6">
 								<input id="password" type="password" class="form-control" name="password">
 							</div>
-						</div>							
+						</div>	
+						<div class="form-group">
+							<div class="col-md-offset-4">
+								<div class="radio">
+									<label>
+										<input type="radio" name="flag" id="Radio1" value="customer" checked>施設利用者
+									</label>
+								</div>
+								<div class="radio">
+									<label>
+										<input type="radio" name="flag" id="Radio2" value="owner">施設管理者
+									</label>
+								</div>
+							</div>						
 						<div class="form-group">
 							<input type="hidden" name="process" value="login">
 							<?php //予約前画面に行くための値を入れる

@@ -57,7 +57,7 @@
 		</div>
 	</div>
 	<script type="text/javascript" src="/php/js/Map.js"></script>
-	<script type="text/javascript" src="/php/js/dispCalendar.js"></script>
+	<script type="text/javascript" src="/php/js/disp_fac_Calendar.js"></script>
 	<script type="text/javascript" src="/php/js/dispDetailFacility.js"></script>
 	<script type="text/javascript" src="/php/js/getFacility.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCZg9ufeYKKY11pds-r8Y-qkfDQLIN-2fw"></script>

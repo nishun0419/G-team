@@ -34,11 +34,11 @@
 						if(password_verify(htmlspecialchars($_POST['password']),$row['Password'])){
 							$_SESSION['UserName'] = serialize($row['FamilyName'].$row['GivenName']);
 							$_SESSION['UserID'] = serialize($row['UserID']);
-							if($_POST["flag"] === "orner"){
-								$_SESSION['flag'] = 1;
+							if($_POST["flag"] === "owner"){
+								$_SESSION['flag'] = serialize("owner");
 							}
 							else{
-								$_SESSION['flag'] = 0;
+								$_SESSION['flag'] = serialize("customer");
 							}
 							// $_SESSION['password'] = serialize($row['password']);
 						}

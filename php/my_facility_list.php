@@ -30,18 +30,17 @@
 	</script>
 	<div class="container">
 		<div class="row main">
-			<div class="col-md-3">
+			<div class="col-md-3 hidden-xs">
 				メニュー
 				<div class="list-group">
 					<?php
 						if(unserialize($_SESSION['flag']) === 'owner'){
 							print '<a class="list-group-item" href="/php/php/my_facility_list.php"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>投稿施設一覧<span class="badge" id="fac_list_count"></span></a>';
-							print '<a class="list-group-item" href="/php/php/toukou.php"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>投稿</a>';
+							print'<a class="list-group-item" href="/php/php/toukou.php"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>投稿</a>'
 						}
 						else{
 							print '<a class="list-group-item" href="/php/php/my_order_list.php"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>予約一覧<span class="badge" id="order_list_count"></span></a>';
 						}
-
 					?>
 					<a class="list-group-item" href="/php/serchcontroller"><span class="glyphicon glyphicon-search" aria-hidden="true"></span>検索</a>
 					<!-- <a class="list-group-item" href="/php/php/my_order_list.php"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>予約一覧</a>
@@ -49,28 +48,20 @@
 					<a class="list-group-item" href="/php/php/my_other.php"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>その他</a>
 				</div>
 			</div>
-			<div class="col-md-6 hidden-xs">
-				<?php
-					if(unserialize($_SESSION['flag']) === 'owner'){
-						print '<div id="facilityList">';
-						print '<p>投稿施設一覧</p>';
-					}
-					else{
-						print '<div id="orderList">';
-						print '<p>予約リスト</p>';
-					}
-				?>
+			<div class="col-md-6">
+				<div id="facilityList">
+					<a href="/php/php/mypage.php" class="back_mymenu visible-xs-inline-block">
+						メニューに戻る
+					</a>
+					<p>投稿施設一覧</p>
 				</div>
 			</div>
 			<div class="col-md-3 box">
 				<p>施設の広告?</p>
-			</div>
 		</div>
 	</div>	
 	
 	 <!-- <script type="text/javascript" src="/php/js/getM.js"></script> -->
-	 <script type="text/javascript" src="/php/js/getOrder.js"></script>
-	 <script type="text/javascript" src="/php/js/dispMyOrder.js"></script>
 	 <script type="text/javascript" src="/php/js/dispMyFacility.js"></script>
 	 <script type="text/javascript" src="/php/js/getFacility.js"></script>
 	 <script type="text/javascript" src="/php/js/clickEvent.js"></script>
