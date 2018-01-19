@@ -14,7 +14,7 @@ $(function(){
 function bodysnow(){
 	$('body').snowfall({
 	flakeCount :20, // 数
-   flakeIndex: 9999, 
+    flakeIndex: 5, 
    	maxSpeed : 6, // 最大速度
    	minSpeed : 1, // 最小速度
    	maxSize  : 20, // 最大サイズ

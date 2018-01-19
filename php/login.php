@@ -19,7 +19,7 @@
 		exit;
 	}
 	?>
-	<div class="container">
+	<div class="container main">
 		<div class="text-center"><h3>ログイン</h3></div>
 		<div class="col-md-8 col-md-offset-2">
 			<?php

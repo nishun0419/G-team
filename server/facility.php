@@ -337,8 +337,67 @@
 			$res[] = array("FacName" => $facname,
 							"orderdate" => $orderdate
 						);
+			}
 		}
-	}
+
+		else if($_GET["process"] === "edit_post"){
+			$sql = "select * from Posts where UpID = ?";
+			$stmt = $dbh -> prepare($sql);
+			$stmt -> bindValue(1, $_GET["UpID"], PDO::PARAM_STR);
+			$res = array();
+			$stmt -> execute();
+			$row = $stmt -> fetch(PDO::FETCH_ASSOC);
+			if($row){
+				$sql = "select * from PostCategorys where UpID = ?";
+				$stmt = $dbh -> prepare($sql);
+				$stmt -> bindValue(1, $_GET["UpID"], PDO::PARAM_STR);
+				$stmt -> execute();
+				$categorys = null;
+				$index = 0;
+				while($caterow = $stmt -> fetch(PDO::FETCH_ASSOC)){
+					$categorys[$index] = $caterow["CategoryID"];
+				}
+				$infraarray = null;
+				//インフラ情報を配列に格納
+				$infraarray[0] = $row["Network"];
+				$infraarray[1] = $row["Electrical"];
+				$infraarray[2] = $row["Water"];
+				$infraarray[3] = $row["Parking"];
+				$infraarray[4] = $row["Toilet"];
+				$infraarray[5] = $row["Gas"];
+				$infraarray[6] = $row["BarrierFree"];
+				$infraarray[7] = $row["FoodDrink"];
+				$infraarray[8] = $row["AirCondition"];
+				$infraarray[9] = $row["NoFire"];
+
+				$Payarray = null;
+				//支払い情報を配列に格納
+				$Payarray[0] = $row["CashPayFlag"];
+				$Payarray[1] = $row["CardPayFlag"];
+				$Payarray[2] = $row["CryptocurrencyPayFlag"];
+
+				//郵便番号をハイフン無しにする
+				$postnum = explode("-",$row["PostNum"]);
+
+				//$resに必要な情報を格納
+				$res[] = array("FacName" => $row["FacName"],
+							   "zip1" => $postnum[0],
+							   "zip2" => $postnum[1],
+							   "Address" => $row["Address"],
+							   "PeopleNum" => $row["PeopleNum"],
+							   "Tel" => $row["Tel"],
+							   "MailAddress" => $row["MailAddress"],
+							   "Exposition" => $row["Exposition"],
+							   "Price" => $row["Price"],
+							   "StartDate" => $row["StartDate"],
+							   "StopDate" => $row["StopDate"],
+							   "Area" => $row["Area"],
+							   "Infras" => $infraarray,
+							   "Categorys" =>$categorys,
+							   "Pays" => $Payarray 
+							);
+			}
+		}
 
 		header("Access-Control-Allow-Origin:*");
 		header("Content-Type: application/json");

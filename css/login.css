@@ -8,6 +8,10 @@ body{
 	background-image: url(/php/image/login_back.png);
 }
 
+.main{
+	margin-top: 70px;
+}
+
 .error_mes{
 	color:red;
 }

@@ -17,7 +17,7 @@
 		}
 
 		if(unserialize($_SESSION['flag']) === 'owner'){
-			header("Location: /php/logincontroller");
+			header("Location: /php/php/authority_error.php");
 		}
 	?>
 	<script type="text/javascript">
@@ -42,7 +42,7 @@
 						<input type="hidden" id="userid" name="UserID">
 						<input type="hidden" id="date" name="Reservation">
 						<input type="hidden" name="process" value="order">
-						<button class="btn cancel"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>キャンセル</button>
+						<button type="button" class="btn cancel"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>キャンセル</button>
 						<button type="submit" class="btn btn-primary ok"><span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>申し込む</button>
 					</form>
 				</div>
@@ -51,5 +51,6 @@
 	</div>
 	<script type="text/javascript" src="/php/js/dispOrder.js"></script>
 	<script type="text/javascript" src="/php/js/getFacility.js"></script>
+	<script type="text/javascript" src="/php/js/orderClickEvent.js"></script>
 </body>
 </html>

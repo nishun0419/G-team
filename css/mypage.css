@@ -8,7 +8,6 @@
 
 .samune{
   width: 64px;
-  height: 64px;
 }
 
 .facilityBox{
@@ -16,7 +15,13 @@
 }
 
 .media{
+  border: 1px solid #808080;
+}
+
+.fac_edit_button{
   border: 1px solid blue;
+  background-color: blue;
+  color: white;
 }
 
 /*my_order_list,my_facility_list用の追加CSS*/

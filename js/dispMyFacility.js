@@ -1,5 +1,5 @@
 function dispMyFacility(response, count){
-	$("#facilityList").append($("<div class='col-md-10 col-md-offset-1 facilityBox'><div>")
+	$("#facilityList").append($("<div class='facilityBox'><div>")
 					  .append($("<div class='media'></div>")
 					  .append($("<a class='media-left' href='#'></a>")
 					  .append($("<img class='samune' id='samune"+count+"'>")
@@ -10,6 +10,10 @@ function dispMyFacility(response, count){
 					  .append($("<a></a>")
 					  .attr({'href':'/php/php/order_check.php?id=' + response.UpID})
 					  .text(response.FacName)))
+					  .append($("<div class='text-right'></div>")
+					  .append($("<a class='fac_edit_button'></a>")
+					  .text("編集")
+					  .attr({'href':'/php/php/postEdit.php?UpID='+response.UpID})))
 					  )
 					  )
 					  );

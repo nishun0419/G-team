@@ -21,7 +21,7 @@ $( function() {
         dayNamesShort: ['日','月','火','水','木','金','土'],
         dayNamesMin: ['日','月','火','水','木','金','土'],
         weekHeader: '週',
-        dateFormat: 'yy/mm/dd',
+        dateFormat: 'yy-mm-dd',
         firstDay: 0,
         showMonthAfterYear: true,
         yearSuffix: '年',

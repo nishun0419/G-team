@@ -23,7 +23,7 @@
 	</div>
 	<?php
 		require('php/navbar.php');
-		if(isset($_SESSION["visit"])){
+		if(isset($_SESSION["visit"]) || isset($_SESSION["UserName"])){
 			$visitFlag = true;
 		}
 		else{
