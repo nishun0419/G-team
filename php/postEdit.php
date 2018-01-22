@@ -3,13 +3,14 @@
 <head>
 <meta charset="UTF-8" content="">
 <meta name="viewport">
-<title> 投稿画面</title>
+<title>施設情報編集</title>
 <link rel="stylesheet" type="text/css" href="/php/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="/php/css/navbar.css">
 <link rel="stylesheet" type="text/css" href="/php/css/jquery-ui.css">
 <link rel="stylesheet" type="text/css" href="/php/css/toukou.css">
 <script type="text/javascript" src="/php/js/jquery-3.1.1.min.js"></script>
 <script type="text/javascript" src="/php/js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="/php/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="/php/js/dispCalendar.js"></script>
 <script type="text/javascript" src="/php/js/checkbox1.js"></script>
 <script type="text/javascript" src="/php/js/ajaxzip3.js"></script>
@@ -29,7 +30,7 @@
 	var UpID = '<?php echo htmlspecialchars($_GET["UpID"]) ?>';
 </script>
 	<div class="container"><br><br><br>
-		<div class="text-center"><h3>投稿画面</h3></div>
+		<div class="text-center"><h3>施設情報編集</h3></div>
 			<div class="col-md-6 col-md-offset-3">
 				<form class="form-horizontal" role="form" method="post" action="toukoukakuninn.php" enctype="multipart/form-data">
 
@@ -109,7 +110,7 @@
       <input type="text" name="address2" class="form-control" size="60" readonly>
     </div>
   </div>
-  <div id="test"class="form-group">
+  <div id="test"　class="form-group">
     <div class="input-group">
 <span class="input-group-addon" id="basic-addon3">番地</span>
     <input type="text" name="address3" class="form-control">
@@ -132,7 +133,7 @@
 
 
 
-					<div id="test"class="form-group">
+					<div id="test"　class="form-group">
 						<div class="input-group">
 			  				<span class="input-group-addon" id="basic-addon4">日程</span>
         				<input type="text" class="form-control" id="datepickerFrom" name="StartDate" required  placeholder="クリックして下さい"/>

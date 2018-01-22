@@ -60,6 +60,7 @@
 										"FacName" => $frow["FacName"],
 										"PostNum" => $frow["PostNum"],
 										"Address" => $frow["Address"],
+										"Pref" => $frow["Pref"],
 										"Image" => $frow["Image1"],
 										"orderdate" => $rrow["Reservation"],
 										"ResPrice" => $row["ResPrice"]

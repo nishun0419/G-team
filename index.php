@@ -5,7 +5,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link href="/php/css/index.css" rel="stylesheet" type="text/css">
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-	 <link rel="stylesheet" type="text/css" href="css/navbar.css">
+	<link rel="stylesheet" type="text/css" href="css/navbar.css">
 	<link href="/php/css/animate.css" rel="stylesheet">
 	<script type="text/javascript" src="/php/js/jquery-3.1.1.min.js"></script>
 	<script src="/php/js/jquery.lettering.js"></script>
@@ -42,14 +42,7 @@
 				</div>
 			</div>
 			<div class="row">
-				<?php 
-					if(!isset($_SESSION['UserName'])){ //UserNameがあれば大きく表示する
-						print '<div class="col-md-5 serchbox vertical-center">';
-					}
-					else{
-						print '<div class="col-md-8 col-md-offset-2 serchbox vertical-center">';
-					}
-				?>
+				<div class="col-md-8 col-md-offset-2 serchbox">;
 					<form class="form-horizontal" role="form" method="get" action="/php/serchcontroller">
 						<div class="text-center">
 							<h3>施設検索</h3>
@@ -126,37 +119,6 @@
 						</div>
 					</form>
 				</div>
-				<?php
-					if(!isset($_SESSION["UserName"])){	//Usernameがなければ表示する
-				?>
-				<div class="col-md-5 col-md-offset-2 serchbox hidden-xs">
-					<form class="form-horizontal" role="form" method="get" action="/php/logincontroller">
-						<div class="text-center">
-							<h3>利用者ログイン</h3>
-						</div>
-						<div class="form-group">
-							<label for="id" class="col-md-4 control-label">ユーザーID</label>
-							<div class="col-md-6">
-								<input type="text" name="id" id="id">
-							</div>
-						</div>
-						<div class="form-group">
-							<label for="password" class="col-md-4 control-label">パスワード</label>
-							<div class="col-md-6">
-								<input type="password" name="password" id="password">
-							</div>
-						</div>
-						<div class="form-group">
-							<div class="col-md-8 col-md-offset-4">
-								<input type="hidden" name="process" value="login">
-								<button type="submit" class="btn index_login">ログイン</button>
-							</div>
-						</div>
-					</form>
-				</div>
-				<?php
-					}
-				?>
 			</div>
 		</div>
 	</div>

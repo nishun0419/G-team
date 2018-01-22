@@ -68,11 +68,11 @@
 				//エリア指定があるときの処理
 				if(isset($keyword)){
 					//キーワード入力があった時の処理
-					$sql = $sql."and Address like ?";
+					$sql = $sql."and Pref like ?";
 				}
 				else{
 					//なかった時の処理
-					$sql = $sql."where Address like ?";
+					$sql = $sql."where Pref like ?";
 				}
 			}
 			else{}
@@ -194,6 +194,7 @@
 				$res[] = array( "UpID" => $row["UpID"],
 								"FacName" => $row["FacName"],
 								"PostNum" => $row["PostNum"],
+								"Pref" => $row["Pref"],
 								"Address" => $row["Address"],
 								"Exposition" => $row["Exposition"],
 								"PeopleNum" => $row["PeopleNum"],
@@ -256,6 +257,7 @@
 								"FacName" => $row["FacName"],
 								"PostNum" => $row["PostNum"],
 								"Address" => $row["Address"],
+								"Pref" => $row["Pref"],
 								"Exposition" => $row["Exposition"],
 								"PeopleNum" => $row["PeopleNum"],
 								"images" => $images,
@@ -285,6 +287,7 @@
 								   "FacName" => $row["FacName"],
 								   "PostNum" => $row["PostNum"],
 								   "Address" => $row["Address"],
+								   "Pref" => $row["Pref"],
 								   "FullName" => $urow["FamilyName"].$urow["GivenName"]
 								);
 				}
@@ -302,6 +305,7 @@
 				$res[] = array("FacName" => $row["FacName"],
 							   "PostNum" => $row["PostNum"],
 							   "Address" => $row["Address"],
+							   "Pref" => $row["Pref"],
 							   "Image" => $row["Image1"],
 							   "UpID" =>  $row["UpID"]
 						);
@@ -383,6 +387,7 @@
 				$res[] = array("FacName" => $row["FacName"],
 							   "zip1" => $postnum[0],
 							   "zip2" => $postnum[1],
+							   "Pref" => $row["Pref"],
 							   "Address" => $row["Address"],
 							   "PeopleNum" => $row["PeopleNum"],
 							   "Tel" => $row["Tel"],

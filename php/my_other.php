@@ -55,6 +55,9 @@
 					<a href="/php/php/mypage.php" class="back_mymenu visible-xs-inline-block">
 						メニューに戻る
 					</a>
+					<div class="text-left user_edit_list">
+						<h3>ユーザー管理</h3>
+					</div>
 					<div>
 					<a href="/php/php/UserEdit.php">ユーザー情報変更</a>
 					</div>

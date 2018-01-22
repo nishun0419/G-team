@@ -27,7 +27,7 @@ function dispDetailFacility(response){
 					 .append($("<div class='text-left'></div>")
 					 .text("施設名：" + response.FacName))
 					 .append($("<div class='text-left'></div>")
-					 .text("住所：" + response.PostNum + response.Address))
+					 .text("住所：" + response.PostNum + response.Pref + response.Address))
 					 .append($("<div class='text-left'></div>")
 					 .text("人数：" + response.PeopleNum))
 					 .append($("<div class='text-left'></div>")

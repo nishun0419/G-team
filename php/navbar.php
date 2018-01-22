@@ -37,13 +37,14 @@
 			?>
 			<li><a href="/php/logincontroller" role="button">ログイン</a></li>
 			<li><a href="/php/shinkicontroller" role="button">新規登録</a></li>
+			<li><a href="/php/php/help.php" role="button">ヘルプ</a></li>
 			<?php }else{?>
 			<li class="dropdown">
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"><?php echo unserialize($_SESSION["UserName"])."さま"; ?> <span class="caret"></span></a>
 					<ul class="dropdown-menu" role="menu">
 						<li><a href="/php/server/logout.php">ログアウト</a></li>
 						<li><a href="/php/php/mypage.php">マイページに戻る</a></li>							
-						<li><a href="#">ヘルプ</a></li>
+						<li><a href="/php/php/help.php">ヘルプ</a></li>
 					</ul>
 			</li>
 			<?php } ?>

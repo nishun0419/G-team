@@ -10,6 +10,7 @@
 <link rel="stylesheet" type="text/css" href="/php/css/toukou.css">
 <script type="text/javascript" src="/php/js/jquery-3.1.1.min.js"></script>
 <script type="text/javascript" src="/php/js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="/php/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="/php/js/dispCalendar.js"></script>
 <script type="text/javascript" src="/php/js/checkbox1.js"></script>
 <script type="text/javascript" src="/php/js/ajaxzip3.js"></script>

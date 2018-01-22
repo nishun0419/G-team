@@ -77,7 +77,7 @@ body{
 	background-image: url(/php/image/titleback.jpg);
 	/* padding-top: 60px;
 	/* margin-top: -60px; */
-	padding-bottom: 70px;
+	padding-bottom: 40px;
 }
 
 .titleName{
@@ -89,8 +89,9 @@ body{
 }
 
 .serchbox{
-	height: 400px;
-	padding-top: 100px;
+	/*height: 200px;*/
+	padding-top: 30px;
+	padding-bottom: 10px;
 	background-color: rgba(255,255,255,0.8);
 	z-index: 6;
 }

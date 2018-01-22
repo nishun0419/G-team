@@ -31,11 +31,15 @@
 }
 
 .center_list{
-  padding-top: 30px;
+  /*padding-top: 30px;*/
 }
 
 #facilityList_other{
   display: none;
+}
+
+.user_edit_list{
+  /*margin-top: 20px;*/
 }
 
 /*.delete_facility{
