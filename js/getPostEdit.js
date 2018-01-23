@@ -9,8 +9,8 @@ $(function(){
 		},
 	})
 	.done(function(responses){
-		console.log("ss");
-		console.log(JSON.stringify(responses));
+		// console.log("ss");
+		// console.log(JSON.stringify(responses));
 		$("#fac_name").val(responses[0].FacName);
 		$("#zip1").val(responses[0].zip1);
 		$("#zip2").val(responses[0].zip2);

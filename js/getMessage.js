@@ -8,9 +8,9 @@ $(function(){
 		},
 	})
 	.done(function (responses){
-		console.log('成功');
-		console.log(dataprocess);
-		console.log(JSON.stringify(responses))
+		// console.log('成功');
+		// console.log(dataprocess);
+		// console.log(JSON.stringify(responses))
 		for(count = 0; count < responses.length; count++){
 			if(dataprocess === "detail"){
 				dispDetailMessage(responses[count]);

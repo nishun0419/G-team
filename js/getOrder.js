@@ -9,7 +9,7 @@ $(function(){
 		},
 	})
 	.done(function(responses){
-		console.log(JSON.stringify(responses));
+		// console.log(JSON.stringify(responses));
 		responses.sort(function(a,b){
 			return (a.orderdate > b.orderdate ? 1:-1);
 		})

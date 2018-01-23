@@ -10,7 +10,7 @@ $(function(){
 		},
 	})
 	.done(function(responses){
-		console.log(JSON.stringify(responses));
+		// console.log(JSON.stringify(responses));
 		if(Object.keys(responses).length === 0 ){
 			$("#serchResult").text("検索結果がありません");
 			console.log("無し");

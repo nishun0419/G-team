@@ -9,8 +9,8 @@ $(function(){
 		},
 	})
 	.done(function(responses){
-		console.log("ss");
-		console.log(JSON.stringify(responses));
+		// console.log("ss");
+		// console.log(JSON.stringify(responses));
 		$("#FamilyName").val(responses[0].FamilyName);
 		$("#GivenName").val(responses[0].GivenName);
 		$("#FamilyNameKana").val(responses[0].FamilyNameKana);
@@ -20,6 +20,7 @@ $(function(){
 		$("#UserPostNum").val(responses[0].UserPostNum);
 		$("#UserAdress").val(responses[0].UserPref);
 		$("#UserAdress2").val(responses[0].UserCity);
+		$("#UserAddress3").val(responses[0].UserAddress);
 
 	})
 	.fail(function(){

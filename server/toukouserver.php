@@ -11,7 +11,7 @@ $upfile=explode("\t",htmlspecialchars($_POST["upfile"]));
 
 // ログイン済か否か
 if(!isset($_SESSION['UserID'])){
-	$resMes = "UserIDがありません。";
+	$resMes = "ログインしてください。";
 }
 else{
 
@@ -55,7 +55,7 @@ else{
 		$resMes .= "人数が多すぎます。";
 	}
 	// 日付の形式(長さ)チェック
-	elseif(!preg_match('/^[0-9]{4}\/[0-9]{2}\/[0-9]{2}+$/', $_POST['StartDate']) || !preg_match('/^[0-9]{4}\/[0-9]{2}\/[0-9]{2}+$/', $_POST['StopDate'])){
+	elseif(!preg_match('/^[0-9]{4}-[0-9]{2}-[0-9]{2}+$/', $_POST['StartDate']) || !preg_match('/^[0-9]{4}-[0-9]{2}-[0-9]{2}+$/', $_POST['StopDate'])){
 		$resMes .= "日付は正しく入力してください。";
 	}
 	// 土地広さの形式・長さチェック
@@ -111,7 +111,7 @@ else{
 			$dbh = new PDO($dsn, $user, $password);
 
 			// Postテーブルにinsert
-			$sql = "insert into Posts(UserID,FacName,Price,PostNum,Pref,Address,lat,lon,PeopleNum,Tel,MailAddress,Exposition,PostDate,StartDate,StopDate,UpCancel,Image1,Image2,Image3,Area,Electrical,Water,Gas,Toilet,BarrierFree,Network,Parking,AirCondition,FoodDrink,NoFire,CashPayFlag,CardPayFlag,CryptocurrencyPayFlag) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+			$sql = "insert into Posts(UserID,FacName,Price,PostNum,Pref,Address,Lat,Lon,PeopleNum,Tel,MailAddress,Exposition,PostDate,StartDate,StopDate,UpCancel,Image1,Image2,Image3,Area,Electrical,Water,Gas,Toilet,BarrierFree,Network,Parking,AirCondition,FoodDrink,NoFire,CashPayFlag,CardPayFlag,CryptocurrencyPayFlag) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 			$stmt = $dbh -> prepare($sql);
 			/*UserID:ユーザID*/ $stmt -> bindValue(1, unserialize($_SESSION['UserID']), PDO::PARAM_STR);
 			/*FacName:施設名*/ $stmt -> bindValue(2, htmlspecialchars($_POST['FacName']), PDO::PARAM_STR);
@@ -119,8 +119,8 @@ else{
 			/*PostNum:郵便番号*/ $stmt -> bindValue(4, htmlspecialchars($_POST['PostNum']), PDO::PARAM_STR);
 			/*pref:都道府県*/ $stmt -> bindValue(5, htmlspecialchars($_POST['Pref']), PDO::PARAM_STR);
 			/*Address:住所*/ $stmt -> bindValue(6, htmlspecialchars($_POST['Address']), PDO::PARAM_STR);
-			/*lat:緯度*/ $stmt -> bindValue(7, $res['lat'], PDO::PARAM_STR);
-			/*lon:経度*/ $stmt -> bindValue(8, $res['lng'], PDO::PARAM_STR);
+			/*Lat:緯度*/ $stmt -> bindValue(7, $res['lat'], PDO::PARAM_STR);
+			/*Lon:経度*/ $stmt -> bindValue(8, $res['lng'], PDO::PARAM_STR);
 			/*PeopleNumNum:収容人数*/ $stmt -> bindValue(9, htmlspecialchars($_POST['PeopleNum']), PDO::PARAM_STR);
 			/*Tel:電話番号*/ $stmt -> bindValue(10, htmlspecialchars($_POST['Tel']), PDO::PARAM_STR);
 			/*MailAddress:メール*/ $stmt -> bindValue(11, htmlspecialchars($_POST['MailAddress']), PDO::PARAM_STR);

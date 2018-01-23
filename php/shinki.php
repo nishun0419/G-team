@@ -167,6 +167,21 @@
 								</div>
 						</div>
 						<div class="form-group">
+							<label for="User" class="col-md-4 control-label">ログイン時権限</label>
+							<div class="col-md-offset-4">
+								<div class="radio">
+									<label>
+										<input type="radio" name="flag" id="Radio1" value="customer" checked>施設利用者
+									</label>
+								</div>
+								<div class="radio">
+									<label>
+										<input type="radio" name="flag" id="Radio2" value="owner">施設管理者
+									</label>
+								</div>
+							</div>	
+						</div>
+						<div class="form-group">
 							<div class="col-md-8 col-md-offset-4">
 								<input type="hidden" name="process" value="createUser">
 								<button type="submit" class="btn btn-primary" aria-label="Left Align">

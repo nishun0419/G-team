@@ -8,7 +8,7 @@ function dispMyOrder(response, count){
 					  .text("〒" + response.PostNum + response.Address)
 					  .append($("<h4></h4>")
 					  .append($("<a></a>")
-					  .attr({'href':'#' + response.UpID})
+					  .attr({'href':'/php/php/order_detail.php?ResID=' + response.ResID})
 					  .text(response.FacName)))
 					  .append($("<div class='text-right'></div>")
 					  .text(response.orderdate))

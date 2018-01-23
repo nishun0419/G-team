@@ -35,8 +35,8 @@
 				<div class="list-group">
 					<?php
 						if(unserialize($_SESSION['flag']) === 'owner'){
-							print '<a class="list-group-item" href="/php/php/my_facility_list.php"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>投稿施設一覧<span class="badge" id="fac_list_count"></span></a>';
-							print '<a class="list-group-item" href="/php/php/toukou.php"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>投稿</a>';
+							print '<a class="list-group-item" href="/php/php/my_facility_list.php"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>登録施設一覧<span class="badge" id="fac_list_count"></span></a>';
+							print '<a class="list-group-item" href="/php/php/toukou.php"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>施設登録</a>';
 						}
 						else{
 							print '<a class="list-group-item" href="/php/php/my_order_list.php"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>予約一覧<span class="badge" id="order_list_count"></span></a>';

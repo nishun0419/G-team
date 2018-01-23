@@ -116,9 +116,10 @@
 
 					$stmt -> execute();
 
-					// セッションにUserNameとUserIDの値を追加
+					// セッションにUserNameとUserIDの値、管理者or利用者のflagを追加
 					$_SESSION['UserName'] = serialize(htmlspecialchars($_POST['family'].$_POST['given']));
 					$_SESSION['UserID'] = serialize(htmlspecialchars($_POST['id']));
+					$_SESSION['flag'] = serialize(htmlspecialchars($_POST['flag']));
 				}
 				else{
 					// ダブりあった時のエラー

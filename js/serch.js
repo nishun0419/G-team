@@ -1,10 +1,10 @@
 $(function(){//位置情報を使わない検索
 
-	console.log(serchparam);
-	console.log(area);
-	console.log(infras);
-	console.log(minwidth);
-	console.log(maxwidth);
+	// console.log(serchparam);
+	// console.log(area);
+	// console.log(infras);
+	// console.log(minwidth);
+	// console.log(maxwidth);
 	$("#paramValue").val(serchparam);
 	$("#area").val(area);
 	$("#minwidth").val(minwidth);
@@ -37,8 +37,8 @@ $(function(){//位置情報を使わない検索
 		},
 	})
 	.done(function(responses){
-		console.log("成功");
-		console.log(JSON.stringify(responses));
+		// console.log("成功");
+		// console.log(JSON.stringify(responses));
 		if(Object.keys(responses).length === 0 ){
 			$("#serchResult").text("検索結果がありません");
 			console.log("無し");

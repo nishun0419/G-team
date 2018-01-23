@@ -13,7 +13,11 @@ function dispMyFacility(response, count){
 					  .append($("<div class='text-right'></div>")
 					  .append($("<a class='fac_edit_button'></a>")
 					  .text("編集")
-					  .attr({'href':'/php/php/postEdit.php?UpID='+response.UpID})))
+					  .attr({'href':'/php/php/postEdit.php?UpID='+response.UpID}))
+					  .append($("<a class='fac_cancel_button'></a>")
+					  .text("取り下げ")
+					  .attr({'href':'/php/php/postEdit.php?UpID='+response.UpID}))
+					  )
 					  )
 					  )
 					  );

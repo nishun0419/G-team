@@ -3,7 +3,6 @@
 	header("Content-Type:text/html;charset=UTF-8");
 	session_start();
 	$resMes = "success";
-	$name = $_POST['username'];
 
 	// バリデーションチェック
 	// 名前の形式・長さチェック
@@ -92,6 +91,7 @@
 	}
 	
 	$_SESSION['UserID'] = serialize(htmlspecialchars($_POST['id']));
+	$_SESSION['flag'] = serialize(htmlspecialchars($_POST['flag']));
 
 	if(!isset($_SESSION['message_UEdit'])){
 		$resMes = session_name(). '='. session_id();

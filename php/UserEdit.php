@@ -143,7 +143,7 @@
 						<div class="form-group">
 							<label for="UserAdress3" class="col-md-4 control-label"></label>
 								<div class="col-md-6">
-									<input type="text" class="form-control" name="UserAdress3" placeholder="建物名～号室">
+									<input type="text" class="form-control" id="UserAddress3" name="UserAdress3" placeholder="建物名～号室">
 								</div>
 						</div>
 						<div class="form-group">
@@ -151,6 +151,7 @@
 								<input type="hidden" name="process" value="editUser">
 								<input type="hidden" name="username" value="<?php echo unserialize($_SESSION['UserName']); ?>">
 								<input type="hidden" name="id" value="<?php echo unserialize($_SESSION['UserID']); ?>">
+								<input type="hidden" name="flag" value="<?php echo unserialize($_SESSION['flag']); ?>">
 								<button type="submit" class="btn btn-primary" aria-label="Left Align">
 								<span class="glyphicon glyphicon-ok-circle" aria-hidden="true">
 								更新 

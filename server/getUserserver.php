@@ -19,7 +19,8 @@ try{
 						"UserCity" => $row["UserCity"],
 						"UserPref" => $row["UserPref"],
 						"UserTel" => $row["UserTel"],
-						"UserMailAddress" => $row["UserMailAddress"] 
+						"UserMailAddress" => $row["UserMailAddress"],
+						"UserAddress" => $row["UserAddress"] 
 				);
 	}
 	header("Access-Control-Allow-Origin:*");

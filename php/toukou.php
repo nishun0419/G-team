@@ -2,7 +2,7 @@
 <html lang = "ja">
 <head>
 <meta charset="UTF-8" content="">
-<meta name="viewport" content="width=device-width, inital-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title> 投稿画面</title>
 <link rel="stylesheet" type="text/css" href="/php/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="/php/css/navbar.css">
@@ -110,7 +110,6 @@
 							<label><input type="checkbox" name="Barrierfree" value="バリアフリー"/>バリアフリー</label>
 							<label><input type="checkbox" name="FoodDrink" value="飲食"/>飲食</label>
 							<label><input type="checkbox" name="AirCondition" value="冷暖房使用可能"/>冷暖房使用可能</label>
-							<label><input type="checkbox" name="ame_smoke" value="喫煙可能"/>喫煙可能</label>
 							<label><input type="checkbox" name="NoFire" value="火気厳禁"/>火気厳禁</label>
 					</div>
 
@@ -157,9 +156,10 @@
 					<div id="check" class="form-button_group">
 						<br>
 						<label  class=""><strong><h4>支払い方法</strong></h4></label><br>
-							<label><input type="checkbox" name="pay_cash"  value="現金"/>現金</label>
-							<label><input type="checkbox" name="pay_card"  value="カード"/>カード</label>
-							<label><input type="checkbox" name="pay_cry"   value="暗号通貨" disabled>暗号通貨</label>
+							
+							<label><input type="checkbox" name="pay_cash" value="現金"/>現金</label>
+							<label><input type="checkbox" name="pay_card" value="カード"/>カード</label>
+							<label><input type="checkbox" name="pay_cry" value="暗号通貨" disabled>暗号通貨</label>
 							<br><br>
 					</div>
 
@@ -167,7 +167,7 @@
 
 							<input type="hidden" id="facilityIdent">
 							<input type="hidden" id="userid">
-							<button class="btn btn-default cancel">キャンセル</button>
+							<button class="btn btn-default cancel" onClick="location.href='mypage.php'">キャンセル</button>
 							<button type="submit" class="btn btn-primary ok">確認する</button>
 					</div>
 				</form>

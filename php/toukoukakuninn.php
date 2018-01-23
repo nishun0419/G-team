@@ -32,7 +32,7 @@ if($page_flag === 1):
 	<div class="container"><br><br><br>
 		<div class="text-center"><h3>投稿確認画面</h3></div>
 			<div class="col-md-6 col-md-offset-3">
-				<form class="form-horizontal" role="form" method="post" action="toukoukakuninn.php" enctype="multipart/form-data">
+				<form class="form-horizontal" role="form" method="post" action="../server/toukouserver.php" enctype="multipart/form-data">
 
 					<div class="form-group">
 
@@ -99,24 +99,59 @@ if($page_flag === 1):
 						<?php
 
 						$i = 0;
-						for($i; $i<3; $i++){
-							if (is_uploaded_file ( $_FILES ['upload_file'] ['tmp_name'] [$i] )) {
-								// 確認画面で画像プレビューするための一時ディレクトリを作成。
-								if (! file_exists ( 'upload' )) {
-			        				mkdir ( 'upload' );
-			    			}
-
-		    				$file = 'upload/' . basename ( $_FILES ['upload_file'] ['name'] [$i] );
-					    	if (move_uploaded_file ( $_FILES ['upload_file'] ['tmp_name'] [$i], $file )) {
-					       	echo '<p><img width="50% height="50%" src="', $file, '"></p>';
-					    	} else {
-					        echo 'アップロードに失敗しました。';
-					    	}
-							} else {
-					    	echo 'ファイルを選択してください。';
+						$dir = '../image/post_image';		// 保存場所のpath
+						$upfile = array('','','');	// アップロードファイル保存用の配列
+						$errflg = "";
+						if( !empty($_FILES['upload_file']['tmp_name'][0]) ){
+							$finfo = new finfo(FILEINFO_MIME_TYPE);
+							$tmp_name = array();
+							$ext = array();
+							// 拡張子チェック
+							for($i = 0 ; $i < count($_FILES['upload_file']['tmp_name']) ; $i++){
+								$tmpName[$i] = $_FILES['upload_file']['tmp_name'][$i];
+								$mime_type = $finfo->file($tmpName[$i]);
+								switch ($mime_type) {
+									case "image/png":
+										$ext[$i] = "png";
+										break;
+									case "image/jpeg":
+										$ext[$i] = "jpg";
+										break;
+									case "image/gif":
+										$ext[$i] = "gif";
+										break;
+									default:
+										echo 'アップロードできる画像形式はpng,jpg,gifです。';
+										$errflg = "error";
+										break;
+								}
 							}
+							// エラー無ければ
+							if(empty($errflg)){
+								for($i = 0 ; $i < count($_FILES['upload_file']['tmp_name']) ; $i++){
+									// HTTP POSTでアップロードされてるかのチェック
+									if(is_uploaded_file($_FILES['upload_file']['tmp_name'][$i])){	
+										// TODO:rand
+										$fileName = sha1(sha1_file($tmpName[$i]).date('YmdHis')).".".$ext[$i];	//念のため、ファイルからハッシュ生成->ファイル名に
+										// ファイルの移動
+										if(move_uploaded_file($tmpName[$i], "$dir/$fileName")){
+											chmod($dir.'/'.$fileName, 0604);	// パーミッション0604
+											$upfile[$i] =  "$fileName";		// DB保存用にファイル名を配列に保存
+											echo '<p><img width="50% height="50%" src="', "$dir/$fileName", '"></p>';
+										}else{
+											$resMes = "画像のアップロードエラー。";
+										}
+									}else{
+										$resMes = "画像のアップロードエラー。";
+									}
+								}
+							}
+						}else{
+							echo 'ファイル未選択。';
 						}
+
 						?>
+						<input type="hidden" name="upfile" value="<?php echo implode("\t", $upfile); ?>"/>
 
 
 
@@ -125,45 +160,64 @@ if($page_flag === 1):
 					<div class="form-group">
 						<div class="input-group">
 							<span class="input-group-addon" id="basic-addon3">説明</span>
-							<textarea class=form-control readonly><?php echo $_POST['Exposition']; ?></textarea>
+							<textarea class=form-control name="Exposition" readonly><?php echo $_POST['Exposition']; ?></textarea>
 					</div>
 					</div>
 
 					<div id="" class="form-button-group">
 						<br><label for="amenity" class=""><h4><strong>アメニティ</strong></h4></label><br>
-
+						<input type="hidden" name="ame_net" value="0"/>
+						<input type="hidden" name="ame_elect" value="0"/>
+						<input type="hidden" name="ame_water" value="0"/>
+						<input type="hidden" name="ame_parking" value="0"/>
+						<input type="hidden" name="ame_toilet" value="0"/>
+						<input type="hidden" name="ame_gas" value="0"/>
+						<input type="hidden" name="ame_barrierfree" value="0"/>
+						<input type="hidden" name="ame_food" value="0"/>
+						<input type="hidden" name="ame_aircon" value="0"/>
+						<input type="hidden" name="ame_fire" value="0"/>
 						<?php
 
 							// input属性でnameが指定されてる場合
 						if( isset($_POST['Network']) && $_POST['Network'] != "" ){
 						  print($_POST['Network']."　");
+						  echo '<input type="hidden" name="ame_net" value="1"/>';
 						}
 						if( isset($_POST['Electrical']) && $_POST['Electrical'] != ""){
 						  print($_POST['Electrical']."　");
+						  echo '<input type="hidden" name="ame_elect" value="1"/>';
 						}
 						if( isset($_POST['Water']) && $_POST['Water'] !== ""){
 							print($_POST['Water']."　");
+							echo '<input type="hidden" name="ame_water" value="1"/>';
 						}
 						if( isset($_POST['Parking']) && $_POST['Parking'] !==""){
 							print($_POST['Parking']."　");
+							echo '<input type="hidden" name="ame_parking" value="1"/>';
 						}
 						if( isset($_POST['Toilet'] )&& $_POST['Toilet'] !==""){
 							print($_POST['Toilet']."　");
+							echo '<input type="hidden" name="ame_toilet" value="1"/>';
 						}
 						if( isset($_POST['Gas']) && $_POST['Gas'] !==""){
 							print($_POST['Gas']."　");
+							echo '<input type="hidden" name="ame_gas" value="1"/>';
 						}
 						if( isset($_POST['Barrierfree']) && $_POST['Barrierfree'] !==""){
 							print($_POST['Barrierfree']."　");
+							echo '<input type="hidden" name="ame_barrierfree" value="1"/>';
 						}
 						if( isset($_POST['FoodDrink']) && $_POST['FoodDrink'] !==""){
 							print($_POST['FoodDrink']."　");
+							echo '<input type="hidden" name="ame_food" value="1"/>';
 						}
 						if( isset($_POST['AirCondition']) && $_POST['AirCondition'] !==""){
 							print($_POST['AirCondition']);
+							echo '<input type="hidden" name="ame_aircon" value="1"/>';
 						}
 						if( isset($_POST['NoFire']) && $_POST['NoFire'] !==""){
 							print($_POST['NoFire']."　");
+							echo '<input type="hidden" name="ame_fire" value="1"/>';
 						}
 						?>
 
@@ -180,6 +234,7 @@ if($page_flag === 1):
 							for($i=0; $i<=10; $i++){
 								if( isset($kategory[$i]) && $kategory[$i] !=="" ){
 									print($kategory[$i]."　");
+									echo '<input type="hidden" name="cate[]" value="',$i+1,'"/>';
 								}
 							}
 						?>
@@ -212,15 +267,21 @@ if($page_flag === 1):
 
 					<div id="check" class="form-button_group">
 							<br><label  class=""><h4><strong>支払い方法</strong></h4></label><br>
+							<input type="hidden" name="pay_cash" value="0"/>
+							<input type="hidden" name="pay_card" value="0"/>
+							<input type="hidden" name="pay_cry" value="0">
 						<?php
 						if( isset($_POST['pay_cash']) && $_POST['pay_cash'] != "" ){
 							print($_POST['pay_cash']."　");
+							echo '<input type="hidden" name="pay_cash" value="1"/>';
 							}
 						if( isset($_POST['pay_card']) && $_POST['pay_card'] != "" ){
 								print($_POST['pay_card']."　");
+								echo '<input type="hidden" name="pay_card" value="1"/>';
 							}
 						if( isset($_POST['pay_cry']) && $_POST['pay_cry'] != "" ){
 								print($_POST['pay_cry']."　");
+								echo '<input type="hidden" name="pay_cry" value="1"/>';
 							}
 						?>
 
@@ -232,7 +293,7 @@ if($page_flag === 1):
 
 					<input type="hidden" id="facilityIdent">
 					<input type="hidden" id="userid">
-					<button class="btn btn-default cancel">キャンセル</button>
+					<button class="btn btn-default cancel" onClick="location.href='mypage.php'">キャンセル</button>
 					<button type="submit" class="btn btn-primary ok">登録する</button>
 
 			</div>

@@ -10,8 +10,8 @@ function getPdf(date){
 		},
 	})
 	.done(function(responses){
-		console.log('成功');
-		console.log(JSON.stringify(responses));
+		// console.log('成功');
+		// console.log(JSON.stringify(responses));
 		dispPdf(responses[0]);
 	})
 	.fail(function(){

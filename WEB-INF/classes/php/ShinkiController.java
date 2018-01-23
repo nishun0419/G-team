@@ -52,8 +52,9 @@ public class ShinkiController extends HttpServlet{
 			String address = request.getParameter("UserAdress3");
 			String tel = request.getParameter("Usertel");
 			String email = request.getParameter("UserMailAdress");
+			String flag = request.getParameter("flag");
 
-			String data = "id="+id+"&family="+family+"&family_kana="+family_kana+"&given="+given+"&given_kana="+given_kana+"&password="+password+"&re_password="+re_password+"&postnum="+postnum+"&pref="+pref+"&city="+city+"&address="+address+"&tel="+tel+"&email="+email;
+			String data = "id="+id+"&family="+family+"&family_kana="+family_kana+"&given="+given+"&given_kana="+given_kana+"&password="+password+"&re_password="+re_password+"&postnum="+postnum+"&pref="+pref+"&city="+city+"&address="+address+"&tel="+tel+"&email="+email+"&flag="+flag;
 			System.out.println(data);
 			URL url = new URL("http://localhost:8080/php/server/shinkiserver.php");
 			uc = (HttpURLConnection)url.openConnection();
@@ -138,8 +139,9 @@ public class ShinkiController extends HttpServlet{
 			String city = request.getParameter("UserAdress2");
 			String address = request.getParameter("UserAdress3");
 			String username = request.getParameter("username");
+			String flag = request.getParameter("flag");
 
-			String data = "id="+id+"&family="+family+"&family_kana="+family_kana+"&given="+given+"&given_kana="+given_kana+"&postnum="+postnum+"&pref="+pref+"&city="+city+"&address="+address+"&tel="+tel+"&email="+email+"&username="+username;
+			String data = "id="+id+"&family="+family+"&family_kana="+family_kana+"&given="+given+"&given_kana="+given_kana+"&postnum="+postnum+"&pref="+pref+"&city="+city+"&address="+address+"&tel="+tel+"&email="+email+"&username="+username+"&flag="+flag;
 			System.out.println(data);
 			URL url = new URL("http://localhost:8080/php/server/usereditserver.php");
 			uc = (HttpURLConnection)url.openConnection();

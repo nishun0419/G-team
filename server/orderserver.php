@@ -63,7 +63,8 @@
 										"Pref" => $frow["Pref"],
 										"Image" => $frow["Image1"],
 										"orderdate" => $rrow["Reservation"],
-										"ResPrice" => $row["ResPrice"]
+										"ResPrice" => $row["ResPrice"],
+										"ResID" => $row["ResID"]
 						);
 					}
 				}
@@ -109,6 +110,39 @@
 						}
 
 					}
+				}
+			}
+		}
+		else if($_GET["process"] === "order_detail"){
+			$sql = "select * from ResDates where ResID = ?";
+			$stmt = $dbh -> prepare($sql);
+
+			$stmt -> bindValue(1, htmlspecialchars($_GET["ResID"]), PDO::PARAM_STR);
+			$stmt -> execute();
+			$res = array();
+			$row = $stmt -> fetch(PDO::FETCH_ASSOC);
+			if($row){
+				$fac_order = $row["Reservation"];
+			}
+			$sql = "select * from Reservations where ResID = ?";
+			$stmt = $dbh -> prepare($sql);
+			$stmt -> bindValue(1,htmlspecialchars($_GET["ResID"]), PDO::PARAM_STR);
+			$stmt -> execute();
+			$row = $stmt -> fetch(PDO::FETCH_ASSOC);
+			if($row){
+				$sql = "select * from Posts where UpID = ?";
+				$stmt = $dbh -> prepare($sql);
+				$stmt -> bindValue(1,$row["UpID"], PDO::PARAM_STR);
+				$stmt -> execute();
+				$frow = $stmt -> fetch(PDO::FETCH_ASSOC);
+				if($frow){
+					$res[] = array("fac_name" => $frow["FacName"],
+								   "PostNum" => $frow["PostNum"],
+									"Pref" => $frow["Pref"],
+									"Address" => $frow["Address"],
+									"fac_price" => $row["ResPrice"],
+									"fac_order" => $fac_order
+								);
 				}
 			}
 		}

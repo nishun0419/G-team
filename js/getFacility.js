@@ -10,8 +10,8 @@ $(function(){
 		},
 	})
 	.done(function (responses){
-		console.log('成功');
-		console.log(JSON.stringify(responses));
+		// console.log('成功');
+		// console.log(JSON.stringify(responses));
 		if(dataprocess === "detail"){	//詳細情報
 			dispDetailFacility(responses[0]);
 			// if(responses[0].orderdate !== null){
