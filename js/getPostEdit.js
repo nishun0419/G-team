@@ -15,10 +15,13 @@ $(function(){
 		$("#zip1").val(responses[0].zip1);
 		$("#zip2").val(responses[0].zip2);
 		AjaxZip3.zip2addr('zip1','zip2','address1','address2');
+		// var work = $("#address2").val();
+		$("#address2").val(responses[0].Address);
 		$("#fac_email").val(responses[0].MailAddress);
 		$("#fac_tel").val(responses[0].Tel);
 		$("#datepickerFrom").val(responses[0].StartDate);
 		$("#datepickerTo").val(responses[0].StopDate);
+		$("#exposition").val(responses[0].Exposition);
 		$("#people").val(responses[0].PeopleNum);
 		$("#fac_area").val(responses[0].Area);
 		$("#price").val(responses[0].Price);
