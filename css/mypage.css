@@ -31,6 +31,22 @@
   color: white;
 }
 
+.up_button{
+  border: 1px solid #21FF06;
+  background-color: #21FF06;
+  color: white;
+}
+
+/* ホバーエフェクト */
+
+.cancel_button{
+  cursor: pointer;
+}
+
+.up_button{
+  cursor: pointer;
+}
+
 /*my_order_list,my_facility_list用の追加CSS*/
 
 .back_mymenu{

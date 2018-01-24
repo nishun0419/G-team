@@ -13,7 +13,7 @@
 	<?php
 		require('navbar.php');
 		$process = "serch";
-		print_r($_GET);
+		// print_r($_GET);
 		if($_GET["keyword"]){
 			$param = htmlspecialchars($_GET["keyword"]);
 			// for($i = 0; $i < count($_GET["infra"]); $i++){

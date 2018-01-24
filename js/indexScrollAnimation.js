@@ -10,7 +10,7 @@ $(function(){
 		// 	}
 		// }
 
-		if($(this).scrollTop() > 450){
+		if($(this).scrollTop() > 300){
 			for(var i = 0; i < 3; i++){
 				$('.secondInfo').eq(i).css({'visibility':'visible'}).delay(i * 500).animate({opacity: 1},500);
 			}

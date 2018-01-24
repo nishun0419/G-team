@@ -36,7 +36,7 @@
 			$infras = $_GET["infras"];
 			}
 			$y = 1; //bindValueの添え字
-			$sql = "select * from Posts ";
+			$sql = "select * from Posts where UpCancel = ?";
 			if(isset($para) && $para !== null && $para !== "" ){
 			//キーワードがあるときの処理
 
@@ -47,16 +47,11 @@
 					$keywords = explode(' ',$dates);//スペースごとに分割する
 					$count = count($keywords);	//配列の長さ
 					for($i = 0; $i < $count; $i++){
-						if($i === 0){
-							$sql = $sql."where (FacName like ? or Exposition like ?) ";
-						}
-						else{
-							$sql = $sql."and (FacName like ? or Exposition like ?) ";
-						}
+						$sql = $sql."and (FacName like ? or Exposition like ?) ";
 					}
 				}
 				else{	//スペースがないとき
-						$sql = $sql."where (FacName like ? or Exposition like ?) ";
+						$sql = $sql."and (FacName like ? or Exposition like ?) ";
 						$keywords[0] = $dates;
 				}
 
@@ -66,25 +61,14 @@
 			if(isset($area) && $area !== null && $area !== ""){
 				$areaflag = true;
 				//エリア指定があるときの処理
-				if(isset($keyword)){
-					//キーワード入力があった時の処理
-					$sql = $sql."and Pref like ?";
-				}
-				else{
-					//なかった時の処理
-					$sql = $sql."where Pref like ?";
-				}
+				$sql = $sql."and Pref like ?";
+				
 			}
 			else{}
 
 			if(isset($infras) && is_array($infras)){
 				$infraflag = true;
-				if(isset($keywords) || isset($areaflag)){
-						$sql = $sql."and ";
-				}
-				else{
-						$sql = $sql."where ";
-				}
+				$sql = $sql."and ";
 				for($i = 0; $i < count($infras); $i++){
 					if($i > 0){
 						$sql = $sql."and ";
@@ -126,12 +110,7 @@
 			else{}
 
 			if($minwidth || $maxwidth){
-				if(isset($keywords) || isset($areaflag) || isset($infraflag)){
-						$sql = $sql."and ";
-				}
-				else{
-						$sql = $sql."where ";
-				}
+				$sql = $sql."and ";
 				if($minwidth && $maxwidth){
 					$minmaxflag = true;
 					$sql = $sql. "Area between ? and ?";
@@ -144,8 +123,12 @@
 					$maxflag = true;
 					$sql = $sql. "Area <= ?";
 				}
-			}	
+			}
+			else{}	
 			$stmt = $dbh -> prepare($sql);
+			//Upcancel
+			$stmt -> bindValue($y, '1', PDO::PARAM_STR);
+			$y++;
 			if(isset($keywords)){
 				for($i = 0; $i < count($keywords); $i++){
 					$stmt -> bindValue($y, '%'.$keywords[$i].'%', PDO::PARAM_STR);
@@ -307,7 +290,8 @@
 							   "Address" => $row["Address"],
 							   "Pref" => $row["Pref"],
 							   "Image" => $row["Image1"],
-							   "UpID" =>  $row["UpID"]
+							   "UpID" =>  $row["UpID"],
+							   "UpCancel" => $row["UpCancel"]
 						);
 			}
 
