@@ -44,7 +44,7 @@
           <div id="test" class="form-group">
             <div class="input-group">
 				      <span class="input-group-addon" id="basic-addon3">都道府県</span>
-				      <input type="text" name="address1" class="form-control" size="60" readonly>
+				      <input type="text" id="address1" name="address1" class="form-control" size="60" readonly>
 						</div>
 				</div>
 				<div id="test" class="form-group">
@@ -160,6 +160,7 @@
 
 							<input type="hidden" id="facilityIdent">
 							<input type="hidden" id="userid">
+							<input type="hidden" id="UpID" name="UpID" value="<?php echo htmlspecialchars($_GET['UpID']); ?>">
 							<button class="btn btn-default cancel">キャンセル</button>
 							<button type="submit" class="btn btn-primary ok">確認する</button>
 					</div>

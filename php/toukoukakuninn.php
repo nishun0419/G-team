@@ -62,7 +62,7 @@ if($page_flag === 1):
               		<!-- <div class="col-md-6"> -->
 									<div class="input-group">
 									<span class="input-group-addon" id="basic-addon3">住所</span>
-											<input id="" type="text" class="form-control" name="Address" value="<?php echo $_POST['address2'].$_POST['address3'] ?>" aria-describedby="basic-addon3" readonly required >
+											<input id="" type="text" class="form-control" name="Address" value="<?php echo $_POST['address2'] ?>" aria-describedby="basic-addon3" readonly required >
             			<!-- </div> -->
             			</div>
       				</div>
@@ -291,8 +291,16 @@ if($page_flag === 1):
 
 			<div class="button-group text-center">
 
+			<?php
+				$UpID = "";
+				if(isset($_POST['UpID'])){
+					$UpID = htmlspecialchars($_POST['UpID']);
+				}
+			?>
+
 					<input type="hidden" id="facilityIdent">
 					<input type="hidden" id="userid">
+					<input type="hidden" id="UpID" name="UpID" value="<?php echo $UpID; ?>">
 					<button class="btn btn-default cancel" onClick="location.href='mypage.php'">キャンセル</button>
 					<button type="submit" class="btn btn-primary ok">登録する</button>
 

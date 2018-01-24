@@ -114,19 +114,24 @@
 			}
 		}
 		else if($_GET["process"] === "order_detail"){
-			$sql = "select * from ResDates where ResID = ?";
+			$sql = "select * from ResDates where ResID = ? and DATE(Reservation) >= ?";
 			$stmt = $dbh -> prepare($sql);
-
+			$date = date('Y-m-d');
 			$stmt -> bindValue(1, htmlspecialchars($_GET["ResID"]), PDO::PARAM_STR);
+			$stmt -> bindValue(2, $date, PDO::PARAM_STR);
 			$stmt -> execute();
 			$res = array();
 			$row = $stmt -> fetch(PDO::FETCH_ASSOC);
 			if($row){
 				$fac_order = $row["Reservation"];
 			}
-			$sql = "select * from Reservations where ResID = ?";
+			else{
+				exit;  //エラーページに遷移させるため
+			}
+			$sql = "select * from Reservations where ResID = ? and UserID = ?";
 			$stmt = $dbh -> prepare($sql);
 			$stmt -> bindValue(1,htmlspecialchars($_GET["ResID"]), PDO::PARAM_STR);
+			$stmt -> bindValue(2,htmlspecialchars($_GET["UserID"]),PDO::PARAM_STR);
 			$stmt -> execute();
 			$row = $stmt -> fetch(PDO::FETCH_ASSOC);
 			if($row){
@@ -144,6 +149,9 @@
 									"fac_order" => $fac_order
 								);
 				}
+			}
+			else{
+				exit;  //エラーページに遷移させるためにエラーを出させる
 			}
 		}
 		header("Access-Control-Allow-Origin:*");

@@ -3,30 +3,30 @@
 <head>
 	<meta charset="UTF-8">
 	<link rel="stylesheet" type="text/css" href="/php/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="/php/css/order_finish.css">
+	<link rel="stylesheet" type="text/css" href="/php/css/reregistrationl.css">
 	<script type="text/javascript" src="/php/js/jquery-3.1.1.min.js"></script>
 	<script type="text/javascript" src="/php/js/bootstrap.min.js"></script>
-	<title>申込確認</title>
+	<title>再登録完了画面</title>
 </head>
 <body>
 	<?php
 		require('navbar.php');
 	?>
-	 <div class="container main">
-    	<div class="row well well-lg">
-			<div class="message col-md-8 col-md-offset-2"/>
-				
-	<div class="text-center ">
-		申込が完了しました。
-	</div>
-	<div class="col-md-8 col-md-offset-2">
+<div class="container main">
+    <div class="row well well-lg">
+		<div class="message col-md-8 col-md-offset-2"/>	
+			<div class="text-center">
+				再登録が完了しました。
+			<div class="col-md-8 col-md-offset-2">
 				<button type="button" onclick="location.href='/php/php/mypage.php'" class="btn btn-primary center-block">
-				<span class="glyphicon glyphicon-ok-sign" aria-hidden="true">
+					<span class="glyphicon glyphicon-ok-sign" aria-hidden="true">
 						マイページに戻る
-					</span>
-					
+					</span>	
 				</button>
 			</div>
+		</div>
+	</div>	
+</div>
 	
 </body>
 </html>

@@ -5,7 +5,8 @@ $(function(){
 		dataType: "json",
 		data:{
 			ResID : ResID,
-			process: "order_detail"
+			process: "order_detail",
+			UserID : UserID
 		},
 	})
 	.done(function(responses){
@@ -17,6 +18,7 @@ $(function(){
 
 	.fail(function(){
 		console.log('失敗');
+		location.href = '/php/php/error.php'; 
 	});
 
 });

@@ -360,6 +360,7 @@
 				$index = 0;
 				while($caterow = $stmt -> fetch(PDO::FETCH_ASSOC)){
 					$categorys[$index] = $caterow["CategoryID"];
+					$index++;
 				}
 				$infraarray = null;
 				//インフラ情報を配列に格納

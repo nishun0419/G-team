@@ -27,6 +27,8 @@ public class OrderController extends HttpServlet{
 						dispatcherURL = preOrder(request);
 					}else if(process.equals("order")){
 						dispatcherURL = userOrder(request);
+					}else if(process.equals("order_cancel")){
+						dispatcherURL = userOrderCancel(request);
 					}
 					request.getRequestDispatcher(dispatcherURL).forward(request,response);
 			// }
@@ -106,6 +108,74 @@ public class OrderController extends HttpServlet{
 				// out.flush();
 			}catch(IOException e){
 				dispatcherURL = "/php/shinki.php";
+			}finally{
+			}
+			// String data = "id="+id;
+			// bw.write("id=ninose&password=ninose");
+			// bw.close();
+			
+			final int status = uc.getResponseCode();
+			if(status == HttpURLConnection.HTTP_OK){
+				String line;
+				InputStream is = uc.getInputStream();
+				BufferedReader br = new BufferedReader(new InputStreamReader(is,"utf-8"));
+				while((line = br.readLine()) != null){
+					if(line.equals("error")){
+						dispatcherURL = "/php/error.php";
+					}
+					else{
+						dispatcherURL = "/php/order_finish.php";
+					}
+				}
+				br.close();
+			}
+		}catch(Exception e){
+			dispatcherURL = "/php/error.php";
+			System.out.println(e);
+
+		}finally{
+			if(uc != null){
+				uc.disconnect();
+			}
+		}
+		return dispatcherURL;
+	}
+
+	private String userOrderCancel(HttpServletRequest request){
+		HttpURLConnection uc = null;
+		try{
+			String userID = request.getParameter("userid");
+			String resID = request.getParameter("resID");
+
+			String data = "UserID="+userID+"&ResID="+resID+"&process=order_cancel";
+
+			System.out.println(data);
+
+			URL url = new URL("http://localhost:8080/php/server/postorderserver.php");
+			uc = (HttpURLConnection)url.openConnection();
+			uc.setDoInput(true);
+			uc.setDoOutput(true);
+			uc.setRequestMethod("POST");
+			// uc.setInstanceFollowRedirects(false);
+			// uc.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+			uc.setReadTimeout(10000);
+			uc.setConnectTimeout(20000);
+			// uc.setRequestProperty("User-Agent", "*");
+			// uc.setRequestProperty("Accept=Language", "ja");
+
+			uc.connect();
+			// OutputStream out = null;
+			try{
+				OutputStreamWriter out = new OutputStreamWriter(uc.getOutputStream(),"utf-8");
+				BufferedWriter bw = new BufferedWriter(out);
+				// PrintStream ps = new PrintStream(out);
+				bw.write(data);
+				// ps.close();
+				bw.close();
+				out.close();
+				// out.flush();
+			}catch(IOException e){
+				dispatcherURL = "/php/error.php";
 			}finally{
 			}
 			// String data = "id="+id;

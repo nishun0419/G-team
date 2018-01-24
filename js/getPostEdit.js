@@ -9,12 +9,13 @@ $(function(){
 		},
 	})
 	.done(function(responses){
-		// console.log("ss");
-		// console.log(JSON.stringify(responses));
+		console.log("ss");
+		console.log(JSON.stringify(responses));
 		$("#fac_name").val(responses[0].FacName);
 		$("#zip1").val(responses[0].zip1);
 		$("#zip2").val(responses[0].zip2);
-		AjaxZip3.zip2addr('zip1','zip2','address1','address2');
+		// AjaxZip3.zip2addr('zip1','zip2','address1','address2');
+		$("#address1").val(responses[0].Pref);
 		// var work = $("#address2").val();
 		$("#address2").val(responses[0].Address);
 		$("#fac_email").val(responses[0].MailAddress);
@@ -39,7 +40,7 @@ $(function(){
 		//カテゴリー
 		var categorys = responses[0].Categorys;
 			for(i = 0; i < categorys.length; i++){
-				$(".categorys").eq(categorys[i] - 0).prop("checked",true);
+				$(".categorys").eq(categorys[i] - 1).prop("checked",true);
 			}
 
 		//支払い方法

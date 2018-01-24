@@ -28,6 +28,26 @@
 		var ident = null;
 		var userid = '<?php echo unserialize($_SESSION["UserID"]); ?>';
 	</script>
+	<div class="modal fade" id="post_cancel" tabindex="-1">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"><span>×</span></button>
+				<h4 class="modal-title">登録取り下げ</h4>
+			</div>
+			<div class="modal-body">
+				登録を取り下げます。よろしいですか？
+			</div>
+			<div class="modal-footer">
+				<form method="post" action="/php/server/upcencelserver.php">
+					<button type="button" class="btn btn-default" data-dismiss="modal">キャンセル</button>
+					<input type="hidden" name="UpID" id="upID">
+					<button type="submit" class="btn btn-primary">取り下げ</button>
+				</form>
+			</div>
+		</div>
+	</div>
+	</div>
 	<div class="container">
 		<div class="row main">
 			<div class="col-md-3 hidden-xs">
@@ -65,5 +85,6 @@
 	 <script type="text/javascript" src="/php/js/dispMyFacility.js"></script>
 	 <script type="text/javascript" src="/php/js/getFacility.js"></script>
 	 <script type="text/javascript" src="/php/js/clickEvent.js"></script>
+	 <script type="text/javascript" src="/php/js/mypage_ClickEvent.js"></script>
 </body>
 </html>

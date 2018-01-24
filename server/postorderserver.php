@@ -57,6 +57,40 @@
 				exit;
 
 			}
+		}elseif($_POST["process"] === "order_cancel"){
+			$sql = "select * from Reservations where ResID = ? and UserID = ?";
+			$stmt = $dbh -> prepare($sql);
+			$stmt -> bindValue(1, htmlspecialchars($_POST["ResID"]), PDO::PARAM_STR);
+			$stmt -> bindValue(2, htmlspecialchars($_POST["UserID"]), PDO::PARAM_STR);
+			$stmt -> execute();
+			$row = $stmt -> fetch(PDO::FETCH_ASSOC);
+			if($row){
+				$sql = "select * from ResDates where ResID = ?";
+				$rstmt = $dbh -> prepare($sql);
+				$rstmt -> bindValue(1, htmlspecialchars($_POST["ResID"]), PDO::PARAM_STR);
+				$rstmt -> execute();
+				$rrow = $rstmt -> fetch(PDO::FETCH_ASSOC);
+				if($rrow){
+					$sql = "delete from Reservations where ResID = ?";
+					$stmt = $dbh -> prepare($sql);
+					$stmt -> bindValue(1, htmlspecialchars($_POST["ResID"]), PDO::PARAM_STR);
+					$stmt -> execute();
+					$sql = "delete from ResDates where ResID = ?";
+					$stmt = $dbh -> prepare($sql);
+					$stmt -> bindValue(1, htmlspecialchars($_POST["ResID"]), PDO::PARAM_STR);
+					$stmt -> execute();
+					echo "success";
+					exit;
+				}
+				else{
+					echo "error";
+					exit; //エラーページ遷移
+				}
+			}
+			else{
+				echo "error";
+				exit; //エラーページ遷移
+			}
 		}
 		
 	}catch(PDOException $e){

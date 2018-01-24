@@ -109,47 +109,141 @@ else{
 
 			// PDOで接続
 			$dbh = new PDO($dsn, $user, $password);
+	
+			// UpIDがない場合(新規投稿=insert)
+			if(empty($_POST['UpID'])){
+	
+				// Postテーブルにinsert
+				$sql = "insert into Posts(UserID,FacName,Price,PostNum,Pref,Address,Lat,Lon,PeopleNum,Tel,MailAddress,Exposition,PostDate,StartDate,StopDate,UpCancel,Image1,Image2,Image3,Area,Electrical,Water,Gas,Toilet,BarrierFree,Network,Parking,AirCondition,FoodDrink,NoFire,CashPayFlag,CardPayFlag,CryptocurrencyPayFlag) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+				$stmt = $dbh -> prepare($sql);
+				/*UserID:ユーザID*/ $stmt -> bindValue(1, unserialize($_SESSION['UserID']), PDO::PARAM_STR);
+				/*FacName:施設名*/ $stmt -> bindValue(2, htmlspecialchars($_POST['FacName']), PDO::PARAM_STR);
+				/*Price:料金*/ $stmt -> bindValue(3, htmlspecialchars($_POST['Price']), PDO::PARAM_STR);
+				/*PostNum:郵便番号*/ $stmt -> bindValue(4, htmlspecialchars($_POST['PostNum']), PDO::PARAM_STR);
+				/*pref:都道府県*/ $stmt -> bindValue(5, htmlspecialchars($_POST['Pref']), PDO::PARAM_STR);
+				/*Address:住所*/ $stmt -> bindValue(6, htmlspecialchars($_POST['Address']), PDO::PARAM_STR);
+				/*Lat:緯度*/ $stmt -> bindValue(7, $res['lat'], PDO::PARAM_STR);
+				/*Lon:経度*/ $stmt -> bindValue(8, $res['lng'], PDO::PARAM_STR);
+				/*PeopleNum:収容人数*/ $stmt -> bindValue(9, htmlspecialchars($_POST['PeopleNum']), PDO::PARAM_STR);
+				/*Tel:電話番号*/ $stmt -> bindValue(10, htmlspecialchars($_POST['Tel']), PDO::PARAM_STR);
+				/*MailAddress:メール*/ $stmt -> bindValue(11, htmlspecialchars($_POST['MailAddress']), PDO::PARAM_STR);
+				/*Exposition:説明文*/ $stmt -> bindValue(12, htmlspecialchars($_POST['Exposition']), PDO::PARAM_STR);
+				/*PostDate:投稿日*/ $stmt -> bindValue(13, date('Y-m-d'), PDO::PARAM_STR);
+				/*StartDate:予約可能開始日*/ $stmt -> bindValue(14, htmlspecialchars($_POST['StartDate']), PDO::PARAM_STR);
+				/*StopDate:予約可能終了日*/ $stmt -> bindValue(15, htmlspecialchars($_POST['StopDate']), PDO::PARAM_STR);
+				/*UpCancel:投稿状態Flag*/ $stmt -> bindValue(16, '1', PDO::PARAM_STR);	/* 1→投稿中 */
+				/*Image1:画像1*/ $stmt -> bindValue(17, $upfile['0'], PDO::PARAM_STR);
+				/*Image2:画像2*/ $stmt -> bindValue(18, $upfile['1'], PDO::PARAM_STR);
+				/*Image3:画像3*/ $stmt -> bindValue(19, $upfile['2'], PDO::PARAM_STR);
+				/*Area:土地の広さ*/ $stmt -> bindValue(20, htmlspecialchars($_POST['Area']), PDO::PARAM_STR);
+				/*Electrical:電気○×*/ $stmt -> bindValue(21, htmlspecialchars($_POST['ame_elect']), PDO::PARAM_STR);
+				/*Water:水道○×*/ $stmt -> bindValue(22, htmlspecialchars($_POST['ame_water']), PDO::PARAM_STR);
+				/*Gas:ガス○×*/ $stmt -> bindValue(23, htmlspecialchars($_POST['ame_gas']), PDO::PARAM_STR);
+				/*Toilet:トイレ○×*/ $stmt -> bindValue(24, htmlspecialchars($_POST['ame_toilet']), PDO::PARAM_STR);
+				/*BarrierFree:バリアフリー○×*/ $stmt -> bindValue(25, htmlspecialchars($_POST['ame_barrierfree']), PDO::PARAM_STR);
+				/*Network:ネットワーク○×*/ $stmt -> bindValue(26, htmlspecialchars($_POST['ame_net']), PDO::PARAM_STR);
+				/*Parking:駐車場○×*/ $stmt -> bindValue(27, htmlspecialchars($_POST['ame_parking']), PDO::PARAM_STR);
+				/*AirCondition:冷暖房器具○×*/ $stmt -> bindValue(28, htmlspecialchars($_POST['ame_aircon']), PDO::PARAM_STR);
+				/*FoodDrink:飲食○×*/ $stmt -> bindValue(29, htmlspecialchars($_POST['ame_food']), PDO::PARAM_STR);
+				/*NoFire:火気厳禁○×*/ $stmt -> bindValue(30, htmlspecialchars($_POST['ame_fire']), PDO::PARAM_STR);
+				/*CashPayFlag:現金支払Flag*/ $stmt -> bindValue(31, htmlspecialchars($_POST['pay_cash']), PDO::PARAM_STR);
+				/*CardPayFlag:カード支払Flag*/ $stmt -> bindValue(32, htmlspecialchars($_POST['pay_card']), PDO::PARAM_STR);
+				/*CryptocurrencyPayFlag:暗号通貨支払Flag*/ $stmt -> bindValue(33, htmlspecialchars($_POST['pay_cry']), PDO::PARAM_STR);
 
-			// Postテーブルにinsert
-			$sql = "insert into Posts(UserID,FacName,Price,PostNum,Pref,Address,Lat,Lon,PeopleNum,Tel,MailAddress,Exposition,PostDate,StartDate,StopDate,UpCancel,Image1,Image2,Image3,Area,Electrical,Water,Gas,Toilet,BarrierFree,Network,Parking,AirCondition,FoodDrink,NoFire,CashPayFlag,CardPayFlag,CryptocurrencyPayFlag) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-			$stmt = $dbh -> prepare($sql);
-			/*UserID:ユーザID*/ $stmt -> bindValue(1, unserialize($_SESSION['UserID']), PDO::PARAM_STR);
-			/*FacName:施設名*/ $stmt -> bindValue(2, htmlspecialchars($_POST['FacName']), PDO::PARAM_STR);
-			/*Price:料金*/ $stmt -> bindValue(3, htmlspecialchars($_POST['Price']), PDO::PARAM_STR);
-			/*PostNum:郵便番号*/ $stmt -> bindValue(4, htmlspecialchars($_POST['PostNum']), PDO::PARAM_STR);
-			/*pref:都道府県*/ $stmt -> bindValue(5, htmlspecialchars($_POST['Pref']), PDO::PARAM_STR);
-			/*Address:住所*/ $stmt -> bindValue(6, htmlspecialchars($_POST['Address']), PDO::PARAM_STR);
-			/*Lat:緯度*/ $stmt -> bindValue(7, $res['lat'], PDO::PARAM_STR);
-			/*Lon:経度*/ $stmt -> bindValue(8, $res['lng'], PDO::PARAM_STR);
-			/*PeopleNumNum:収容人数*/ $stmt -> bindValue(9, htmlspecialchars($_POST['PeopleNum']), PDO::PARAM_STR);
-			/*Tel:電話番号*/ $stmt -> bindValue(10, htmlspecialchars($_POST['Tel']), PDO::PARAM_STR);
-			/*MailAddress:メール*/ $stmt -> bindValue(11, htmlspecialchars($_POST['MailAddress']), PDO::PARAM_STR);
-			/*Exposition:説明文*/ $stmt -> bindValue(12, htmlspecialchars($_POST['Exposition']), PDO::PARAM_STR);
-			/*PostDate:投稿日*/ $stmt -> bindValue(13, date('Y-m-d'), PDO::PARAM_STR);
-			/*StartDate:予約可能開始日*/ $stmt -> bindValue(14, htmlspecialchars($_POST['StartDate']), PDO::PARAM_STR);
-			/*StopDate:予約可能終了日*/ $stmt -> bindValue(15, htmlspecialchars($_POST['StopDate']), PDO::PARAM_STR);
-			/*UpCancel:投稿状態Flag*/ $stmt -> bindValue(16, '1', PDO::PARAM_STR);	/* 1→投稿中 */
-			/*Image1:画像1*/ $stmt -> bindValue(17, $upfile['0'], PDO::PARAM_STR);
-			/*Image2:画像2*/ $stmt -> bindValue(18, $upfile['1'], PDO::PARAM_STR);
-			/*Image3:画像3*/ $stmt -> bindValue(19, $upfile['2'], PDO::PARAM_STR);
-			/*Area:土地の広さ*/ $stmt -> bindValue(20, htmlspecialchars($_POST['Area']), PDO::PARAM_STR);
-			/*Electrical:電気○×*/ $stmt -> bindValue(21, htmlspecialchars($_POST['ame_elect']), PDO::PARAM_STR);
-			/*Water:水道○×*/ $stmt -> bindValue(22, htmlspecialchars($_POST['ame_water']), PDO::PARAM_STR);
-			/*Gas:ガス○×*/ $stmt -> bindValue(23, htmlspecialchars($_POST['ame_gas']), PDO::PARAM_STR);
-			/*Toilet:トイレ○×*/ $stmt -> bindValue(24, htmlspecialchars($_POST['ame_toilet']), PDO::PARAM_STR);
-			/*BarrierFree:バリアフリー○×*/ $stmt -> bindValue(25, htmlspecialchars($_POST['ame_barrierfree']), PDO::PARAM_STR);
-			/*Network:ネットワーク○×*/ $stmt -> bindValue(26, htmlspecialchars($_POST['ame_net']), PDO::PARAM_STR);
-			/*Parking:駐車場○×*/ $stmt -> bindValue(27, htmlspecialchars($_POST['ame_parking']), PDO::PARAM_STR);
-			/*AirCondition:冷暖房器具○×*/ $stmt -> bindValue(28, htmlspecialchars($_POST['ame_aircon']), PDO::PARAM_STR);
-			/*FoodDrink:飲食○×*/ $stmt -> bindValue(29, htmlspecialchars($_POST['ame_food']), PDO::PARAM_STR);
-			/*NoFire:火気厳禁○×*/ $stmt -> bindValue(30, htmlspecialchars($_POST['ame_fire']), PDO::PARAM_STR);
-			/*CashPayFlag:現金支払Flag*/ $stmt -> bindValue(31, htmlspecialchars($_POST['pay_cash']), PDO::PARAM_STR);
-			/*CardPayFlag:カード支払Flag*/ $stmt -> bindValue(32, htmlspecialchars($_POST['pay_card']), PDO::PARAM_STR);
-			/*CryptocurrencyPayFlag:暗号通貨支払Flag*/ $stmt -> bindValue(33, htmlspecialchars($_POST['pay_cry']), PDO::PARAM_STR);
+				$stmt -> execute();
 
-			$stmt -> execute();
+				$id = $dbh -> lastInsertId('UpID');
 
-			$id = $dbh -> lastInsertId('UpID');
+			// UpIDがあって、それがちゃんと整数である場合(投稿編集=update)
+			}elseif( preg_match('/^[0-9]+$/', $_POST['UpID']) ){
+
+				$UpID = htmlspecialchars($_POST['UpID']);
+
+				$sql = "select * from Posts where UpID=? and UserID=?";
+				$stmt = $dbh -> prepare($sql);
+				$stmt -> bindValue(1, $UpID, PDO::PARAM_STR);
+				$stmt -> bindValue(2, unserialize($_SESSION['UserID']), PDO::PARAM_STR);
+				$stmt -> execute();
+
+				// 受け取ったUpIDとセッションのUserIDで該当施設があれば(不正防止)
+				if($stmt -> fetch(PDO::FETCH_ASSOC)){
+					
+					// 面倒だったので、一旦カテゴリ保存用のテーブル内データは消して、
+					$sql = "delete from PostCategorys where UpID=?";
+					$stmt = $dbh -> prepare($sql);
+					$stmt -> bindValue(1, $UpID, PDO::PARAM_STR);
+					$stmt -> execute();
+
+					// 施設投稿テーブルをupdate(画像以外)
+					$sql = "update Posts set FacName=?,Price=?,PostNum=?,Pref=?,Address=?,Lat=?,Lon=?,PeopleNum=?,Tel=?,MailAddress=?,Exposition=?,PostDate=?,StartDate=?,StopDate=?,Area=?,Electrical=?,Water=?,Gas=?,Toilet=?,BarrierFree=?,Network=?,Parking=?,AirCondition=?,FoodDrink=?,NoFire=?,CashPayFlag=?,CardPayFlag=?,CryptocurrencyPayFlag=? where UpID=?";
+					$stmt = $dbh -> prepare($sql);
+					/*FacName:施設名*/ $stmt -> bindValue(1, htmlspecialchars($_POST['FacName']), PDO::PARAM_STR);
+					/*Price:料金*/ $stmt -> bindValue(2, htmlspecialchars($_POST['Price']), PDO::PARAM_STR);
+					/*PostNum:郵便番号*/ $stmt -> bindValue(3, htmlspecialchars($_POST['PostNum']), PDO::PARAM_STR);
+					/*pref:都道府県*/ $stmt -> bindValue(4, htmlspecialchars($_POST['Pref']), PDO::PARAM_STR);
+					/*Address:住所*/ $stmt -> bindValue(5, htmlspecialchars($_POST['Address']), PDO::PARAM_STR);
+					/*Lat:緯度*/ $stmt -> bindValue(6, $res['lat'], PDO::PARAM_STR);
+					/*Lon:経度*/ $stmt -> bindValue(7, $res['lng'], PDO::PARAM_STR);
+					/*PeopleNum:収容人数*/ $stmt -> bindValue(8, htmlspecialchars($_POST['PeopleNum']), PDO::PARAM_STR);
+					/*Tel:電話番号*/ $stmt -> bindValue(9, htmlspecialchars($_POST['Tel']), PDO::PARAM_STR);
+					/*MailAddress:メール*/ $stmt -> bindValue(10, htmlspecialchars($_POST['MailAddress']), PDO::PARAM_STR);
+					/*Exposition:説明文*/ $stmt -> bindValue(11, htmlspecialchars($_POST['Exposition']), PDO::PARAM_STR);
+					/*PostDate:投稿日*/ $stmt -> bindValue(12, date('Y-m-d'), PDO::PARAM_STR);
+					/*StartDate:予約可能開始日*/ $stmt -> bindValue(13, htmlspecialchars($_POST['StartDate']), PDO::PARAM_STR);
+					/*StopDate:予約可能終了日*/ $stmt -> bindValue(14, htmlspecialchars($_POST['StopDate']), PDO::PARAM_STR);
+					/*Area:土地の広さ*/ $stmt -> bindValue(15, htmlspecialchars($_POST['Area']), PDO::PARAM_STR);
+					/*Electrical:電気○×*/ $stmt -> bindValue(16, htmlspecialchars($_POST['ame_elect']), PDO::PARAM_STR);
+					/*Water:水道○×*/ $stmt -> bindValue(17, htmlspecialchars($_POST['ame_water']), PDO::PARAM_STR);
+					/*Gas:ガス○×*/ $stmt -> bindValue(18, htmlspecialchars($_POST['ame_gas']), PDO::PARAM_STR);
+					/*Toilet:トイレ○×*/ $stmt -> bindValue(19, htmlspecialchars($_POST['ame_toilet']), PDO::PARAM_STR);
+					/*BarrierFree:バリアフリー○×*/ $stmt -> bindValue(20, htmlspecialchars($_POST['ame_barrierfree']), PDO::PARAM_STR);
+					/*Network:ネットワーク○×*/ $stmt -> bindValue(21, htmlspecialchars($_POST['ame_net']), PDO::PARAM_STR);
+					/*Parking:駐車場○×*/ $stmt -> bindValue(22, htmlspecialchars($_POST['ame_parking']), PDO::PARAM_STR);
+					/*AirCondition:冷暖房器具○×*/ $stmt -> bindValue(23, htmlspecialchars($_POST['ame_aircon']), PDO::PARAM_STR);
+					/*FoodDrink:飲食○×*/ $stmt -> bindValue(24, htmlspecialchars($_POST['ame_food']), PDO::PARAM_STR);
+					/*NoFire:火気厳禁○×*/ $stmt -> bindValue(25, htmlspecialchars($_POST['ame_fire']), PDO::PARAM_STR);
+					/*CashPayFlag:現金支払Flag*/ $stmt -> bindValue(26, htmlspecialchars($_POST['pay_cash']), PDO::PARAM_STR);
+					/*CardPayFlag:カード支払Flag*/ $stmt -> bindValue(27, htmlspecialchars($_POST['pay_card']), PDO::PARAM_STR);
+					/*CryptocurrencyPayFlag:暗号通貨支払Flag*/ $stmt -> bindValue(28, htmlspecialchars($_POST['pay_cry']), PDO::PARAM_STR);
+					/*UpID:投稿ID*/ $stmt -> bindValue(29, $UpID, PDO::PARAM_STR);
+
+					$stmt -> execute();
+
+					// 画像があれば追加処理
+					if(!empty($upfile['0'])){
+
+						// 先に保存されてる画像を消しちゃう処理(物理)
+						$sql = "select Image1,Image2,Image3 from Posts where UpID=?";
+						$stmt = $dbh -> prepare($sql);
+						$stmt -> bindValue(1, $UpID, PDO::PARAM_STR);
+						$stmt -> execute();
+
+						$dir = '../image/post_image/';	// 保存場所のpath
+						$files = $stmt -> fetch(PDO::FETCH_ASSOC);
+
+						for($i=1 ; $i <= 3 ; $i++){
+							if(file_exists($dir.$files["Image$i"])){
+								unlink($dir.$files["Image$i"]);
+							}
+						}
+
+						// その後、今回の画像(の名前)をupdate
+						$sql = "update Posts set Image1=?,Image2=?,Image3=? where UpID=?";
+						$stmt = $dbh -> prepare($sql);
+						/*Image1:画像1*/ $stmt -> bindValue(1, $upfile['0'], PDO::PARAM_STR);
+						/*Image2:画像2*/ $stmt -> bindValue(2, $upfile['1'], PDO::PARAM_STR);
+						/*Image3:画像3*/ $stmt -> bindValue(3, $upfile['2'], PDO::PARAM_STR);
+						/*UpID:投稿ID*/ $stmt -> bindValue(4, $UpID, PDO::PARAM_STR);
+						$stmt -> execute();
+
+					}
+
+					// PostCategorysはinsertの処理と一緒に
+					$id = $UpID;
+				}
+
+			}
+
 			// 受け取ったカテゴリーIDがなくなるまでloop(1件ずつPostCategorysテーブルにinsert)
 			foreach ($category as $value) {
 				$sql = "insert into PostCategorys(UpID,CategoryID) values(?,?)";
