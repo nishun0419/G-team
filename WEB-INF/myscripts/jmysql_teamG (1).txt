@@ -21,7 +21,8 @@ create table Users(
 	UserCity varchar(255) NOT NULL,
 	UserAddress varchar(255),
 	UserTel varchar(255) NOT NULL,
-	UserMailAddress varchar(255) NOT NULL
+	UserMailAddress varchar(255) NOT NULL,
+	TaikaiFlag boolean NOT NULL default '0'
 ) ENGINE=InnoDB;
 
 create table Categorys(

@@ -84,13 +84,18 @@ else{
 	else{
 		$address = $_POST['Pref'].$_POST['Address'];
 		$req = 'http://maps.google.com/maps/api/geocode/xml?address='.urlencode($address).'&sensor=false';
-		$xml = simplexml_load_file($req) or die('XML parsing error');
-		if($xml->status == 'OK'){
-			$location = $xml->result->geometry->location;
-			$res['lat'] = (string)$location->lat[0];
-			$res['lng'] = (string)$location->lng[0];
-		}else{
-			$resMes = "緯度経度取得エラー。";
+		$xml = simplexml_load_file($req);
+		// 緯度経度が取得できるまでsleepしつつループ
+		while(true){
+			if($xml->status === 'OK'){
+				sleep(2);
+				$xml = simplexml_load_file($req);
+			}else{
+				$location = $xml->result->geometry->location;
+				$res['lat'] = (string)$location->lat[0];
+				$res['lng'] = (string)$location->lng[0];
+				break;
+			}
 		}
 	}
 

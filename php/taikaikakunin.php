@@ -31,7 +31,7 @@
     <input type="hidden" name="id" value="<?php echo unserialize($_SESSION['UserID']) ?>">
     <input type="hidden" name="process" value="taikaiconfirm">
     <button type="submit" class="btn btn-success">退会する</button>
-    <button type="button" class="btn btn-danger">キャンセル</button>
+    <button type="button" class="btn btn-danger" onClick="location.href='/php/php/mypage.php'">キャンセル</button>
     </form>
 
     </div>

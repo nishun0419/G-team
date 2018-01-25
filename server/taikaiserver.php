@@ -31,10 +31,32 @@
 					$row = $stmt -> fetch(PDO::FETCH_ASSOC);
 					if($row){
 						//delete
-							$sql = "delete from Users where UserID = ?";
+							$sql = "update Users set TaikaiFlag = ? where UserID = ?";
+							$rstmt = $dbh -> prepare($sql);
+							$rstmt -> bindValue(1, '1',PDO::PARAM_STR);
+							$rstmt -> bindValue(2, $row['UserID'],PDO::PARAM_STR);
+							$rstmt -> execute();
+							//PostsのUpCancelを変える
+							$sql = "update Posts set UpCancel=? where UserID = ?";
 							$stmt = $dbh -> prepare($sql);
-							$stmt -> bindValue(1, $row['UserID'],PDO::PARAM_STR);
+							$stmt -> bindValue(1, '0', PDO::PARAM_STR);
+							$stmt -> bindValue(2, $row['UserID'], PDO::PARAM_STR);
 							$stmt -> execute();
+							//	予約情報を削除
+							$sql = "select * from Reservations where UserID = ?";
+							$resmt = $dbh -> prepare($sql);
+							$resmt -> bindValue(1,$row['UserID'], PDO::PARAM_STR);
+							$resmt -> execute();
+							while($res = $resmt -> fetch(PDO::FETCH_ASSOC)){
+								$sql = " delete from ResDates where ResID = ?";
+								$stmt = $dbh -> prepare($sql);
+								$stmt -> bindValue(1,$res['ResID'],PDO::PARAM_STR);
+								$stmt -> execute(); 
+							}
+							$sql = "delete from Reservations where UserID = ?";
+							$stmt = $dbh -> prepare($sql);
+							$stmt -> bindValue(1,$row['UserID'],PDO::PARAM_STR);
+							 $flag = $stmt -> execute(); 
 							if($flag){
 
 							}

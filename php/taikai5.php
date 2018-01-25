@@ -42,7 +42,7 @@
 		<input type="hidden" name="userid" value="<?php echo unserialize($_SESSION['UserID']) ?>">
 		<input type="hidden" name="username" value="<?php echo unserialize($_SESSION['UserName']) ?>">
 	<button type="submit" class="btn btn-success">退会</button>
-	<button type="button" class="btn btn-danger">キャンセル</button>
+	<button type="button" class="btn btn-danger" onClick="location.href='/php/php/mypage.php'">キャンセル</button>
 	</div>
  	</form>
  	</div>

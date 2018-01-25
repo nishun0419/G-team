@@ -32,13 +32,19 @@
 					$row = $stmt -> fetch(PDO::FETCH_ASSOC);
 					if($row){
 						if(password_verify(htmlspecialchars($_POST['password']),$row['Password'])){
-							$_SESSION['UserName'] = serialize($row['FamilyName'].$row['GivenName']);
-							$_SESSION['UserID'] = serialize($row['UserID']);
-							if($_POST["flag"] === "owner"){
-								$_SESSION['flag'] = serialize("owner");
+							if($row['TaikaiFlag'] ==='0'){
+								$_SESSION['UserName'] = serialize($row['FamilyName'].$row['GivenName']);
+								$_SESSION['UserID'] = serialize($row['UserID']);
+							
+								if($_POST["flag"] === "owner"){
+									$_SESSION['flag'] = serialize("owner");
+								}
+								else{
+									$_SESSION['flag'] = serialize("customer");
+								}
 							}
 							else{
-								$_SESSION['flag'] = serialize("customer");
+								$_SESSION['message_Login'] = "ユーザーIDが違います";
 							}
 							// $_SESSION['password'] = serialize($row['password']);
 						}

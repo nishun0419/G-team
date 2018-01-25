@@ -62,7 +62,7 @@
 						<div class="form-group">
 							<label for="Usertel" class="col-md-4 control-label">電話番号</label>
 							<div class="col-md-6">
-								<input id="Usertel" type="text" class="form-control" name="Usertel" pattern="\d{1,5}-\d{4}-\d{4}"  title="全角になっていないかハイフン(-)が入っているかもう一度確認してください。" required value="" placeholder="000-0000-0000">
+								<input id="Usertel" type="text" class="form-control" name="Usertel" pattern="\d{1,5}-\d{1,4}-\d{4}"  title="全角になっていないかハイフン(-)が入っているかもう一度確認してください。" required value="" placeholder="000-0000-0000">
 							</div>
 						</div>
 						<div class="form-group">

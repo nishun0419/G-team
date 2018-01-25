@@ -60,9 +60,19 @@ if($page_flag === 1):
 			</div>
 					<div class="form-group">
               		<!-- <div class="col-md-6"> -->
+              			<?php 
+              			$address = "";
+              			// UpIDがない(新規登録)のときはaddress3も
+              			if(empty($_POST['UpID'])){
+              				$address = $_POST['address2'].$_POST['address3'];
+              			}else{
+              				$address = $_POST['address2'];
+              			}
+
+              			?>
 									<div class="input-group">
 									<span class="input-group-addon" id="basic-addon3">住所</span>
-											<input id="" type="text" class="form-control" name="Address" value="<?php echo $_POST['address2'] ?>" aria-describedby="basic-addon3" readonly required >
+											<input id="" type="text" class="form-control" name="Address" value="<?php echo $address ?>" aria-describedby="basic-addon3" readonly required >
             			<!-- </div> -->
             			</div>
       				</div>
