@@ -30,12 +30,11 @@
 					$stmt -> execute();
 					$row = $stmt -> fetch(PDO::FETCH_ASSOC);
 					if($row){
-						
 						//delete
 							$sql = "delete from Users where UserID = ?";
 							$stmt = $dbh -> prepare($sql);
-							$stmt -> bindValue(1,htmlspecialchars($_POST['id']),PDO::PARAM_STR);
-							$flag = $stmt -> execute();
+							$stmt -> bindValue(1, $row['UserID'],PDO::PARAM_STR);
+							$stmt -> execute();
 							if($flag){
 
 							}

@@ -66,9 +66,14 @@
 				}		
 		}
 		if(!isset($_SESSION["message_Login"])){
-		$resMes = session_name(). '='. session_id();
+			$resMes = session_name(). '='. session_id();
 		}
 		else{
+				if(isset($_POST["process"])){
+					$_SESSION['UserName'] = serialize($_POST['username']);
+					$_SESSION['UserID'] = serialize($_POST['userid']);
+					$_SESSION['flag'] = serialize($_POST['flag']);
+				}
 		$resMes = $resMes . "\n" .session_name(). '='. session_id();
 		}
 		echo $resMes;

@@ -1,4 +1,4 @@
-<DOCTYPE html> 
+<!DOCTYPE html> 
 <html lang="en"> 
 <head> 
     <meta charset="UTF-8"> 
@@ -38,6 +38,9 @@
 	</div>
 	<div class="col-md-offset-4">
 		<input type="hidden" name="process" value="taikaiCheck">
+		<input type="hidden" name="flag" value="<?php echo unserialize($_SESSION['flag']) ?>">
+		<input type="hidden" name="userid" value="<?php echo unserialize($_SESSION['UserID']) ?>">
+		<input type="hidden" name="username" value="<?php echo unserialize($_SESSION['UserName']) ?>">
 	<button type="submit" class="btn btn-success">退会</button>
 	<button type="button" class="btn btn-danger">キャンセル</button>
 	</div>

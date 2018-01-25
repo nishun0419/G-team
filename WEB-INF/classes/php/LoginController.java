@@ -176,9 +176,11 @@ public class LoginController extends HttpServlet{
 			String id = request.getParameter("id");
 			String password = request.getParameter("password");
 			String flag = request.getParameter("flag");
+			String userid = request.getParameter("userid");
+			String username = request.getParameter("username");
 			System.out.println(id);
 			System.out.println(password);
-			String data = "id="+id+"&password="+password;
+			String data = "id="+id+"&password="+password+"&flag="+flag+"&userid="+userid+"&username="+username+"&process=tankai";
 			URL url = new URL("http://localhost:8080/php/server/loginserver.php");
 			uc = (HttpURLConnection)url.openConnection();
 			uc.setDoInput(true);
@@ -247,7 +249,7 @@ public class LoginController extends HttpServlet{
 		try{
 			String id = request.getParameter("id");
 			System.out.println(id);
-			String data = "id="+id;
+			String data ="id="+id;
 			URL url = new URL("http://localhost:8080/php/server/taikaiserver.php");
 			uc = (HttpURLConnection)url.openConnection();
 			uc.setDoInput(true);
