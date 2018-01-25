@@ -192,7 +192,7 @@ public class OrderController extends HttpServlet{
 						dispatcherURL = "/php/error.php";
 					}
 					else{
-						dispatcherURL = "/php/order_finish.php";
+						dispatcherURL = "/php/order_cancel_finish.php";
 					}
 				}
 				br.close();
