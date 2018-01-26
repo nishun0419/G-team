@@ -145,7 +145,7 @@
 							<br><br>
 					</div>
 					<div class="button-group text-center">
-							<button type="button" class="btn btn-default cancel" onClick="location.href='mypage.php'">キャンセル</button>
+							<button type="submit" class="btn btn-default cancel" formaction="mypage.php" formnovalidate>キャンセル</button>
 							<button type="submit" class="btn btn-primary ok">確認する</button>
 					</div>
 				</form>

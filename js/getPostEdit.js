@@ -39,7 +39,7 @@ $(function(){
 
 		//カテゴリー
 		var categorys = responses[0].Categorys;
-			for(i = 0; i < categorys.length; i++){
+			for(i = 0; i < categorys.length + 1; i++){
 				$(".categorys").eq(categorys[i] - 1).prop("checked",true);
 			}
 

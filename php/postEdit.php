@@ -161,7 +161,7 @@
 							<input type="hidden" id="facilityIdent">
 							<input type="hidden" id="userid">
 							<input type="hidden" id="UpID" name="UpID" value="<?php echo htmlspecialchars($_GET['UpID']); ?>">
-							<button class="btn btn-default cancel">キャンセル</button>
+							<button type="submit" class="btn btn-default cancel" formaction="mypage.php" formnovalidate>キャンセル</button>
 							<button type="submit" class="btn btn-primary ok">確認する</button>
 					</div>
 				</form>

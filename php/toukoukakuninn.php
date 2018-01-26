@@ -311,7 +311,7 @@ if($page_flag === 1):
 					<input type="hidden" id="facilityIdent">
 					<input type="hidden" id="userid">
 					<input type="hidden" id="UpID" name="UpID" value="<?php echo $UpID; ?>">
-					<button class="btn btn-default cancel" onClick="location.href='mypage.php'">キャンセル</button>
+					<button type="submit" class="btn btn-default cancel" formaction="mypage.php" formnovalidate>キャンセル</button>
 					<button type="submit" class="btn btn-primary ok">登録する</button>
 
 			</div>
