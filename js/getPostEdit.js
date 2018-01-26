@@ -39,9 +39,11 @@ $(function(){
 
 		//カテゴリー
 		var categorys = responses[0].Categorys;
+		if(categorys !== null){
 			for(i = 0; i < categorys.length + 1; i++){
 				$(".categorys").eq(categorys[i] - 1).prop("checked",true);
 			}
+		}
 
 		//支払い方法
 		var payarray = responses[0].Pays;
