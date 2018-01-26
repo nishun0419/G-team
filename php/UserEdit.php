@@ -50,13 +50,13 @@
 						<div class="form-group">
 							<label for="FamilyNameKana" class="col-md-4 control-label">姓(全角カナ)</label>
 							<div class="col-md-6">
-								<input id="FamilyNameKana" type="text" class="form-control" name="FamilyNameKana" pattern="[\u30A1-\u30F6]*" title="全角カナで入力してください。" required value="" placeholder="性(全角カナ)">
+								<input id="FamilyNameKana" type="text" class="form-control" name="FamilyNameKana" pattern="[\u30A1-\u30F6\―]*" title="全角カナで入力してください。" required value="" placeholder="性(全角カナ)">
 							</div>
 						</div>
 						<div class="form-group">
 							<label for="GivenNameKana" class="col-md-4 control-label">名(全角カナ)</label>
 							<div class="col-md-6">
-								<input id="GivenNameKana" type="text" class="form-control" name="GivenNameKana" pattern="[\u30A1-\u30F6]*" title="全角カナで入力してください。" required value="" placeholder="名(全角カナ)">
+								<input id="GivenNameKana" type="text" class="form-control" name="GivenNameKana" pattern="[\u30A1-\u30F6\―]*" title="全角カナで入力してください。" required value="" placeholder="名(全角カナ)">
 							</div>
 						</div>
 						<div class="form-group">
