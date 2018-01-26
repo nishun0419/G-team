@@ -145,7 +145,7 @@
 							<br><br>
 					</div>
 					<div class="button-group text-center">
-							<button type="submit" class="btn btn-default cancel" formaction="mypage.php" formnovalidate>キャンセル</button>
+							<button type="button" class="btn btn-default cancel">キャンセル</button>
 							<button type="submit" class="btn btn-primary ok">確認する</button>
 					</div>
 				</form>
@@ -153,5 +153,6 @@
 		</div>
 
 <script type="text/javascript" src="/php/js/gazou1.js"></script>
+<script type="text/javascript" src="/php/js/toukouClickEvent.js"></script>
 </body>
 </html>

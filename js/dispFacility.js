@@ -6,7 +6,7 @@ function dispFacility(response, i){ //検索結果表示
 					 .append($("<div class='text-left fac_name'></div>")
 					 .append($("<a></a>")
 					 .text(response.FacName)
-					 .attr({'href':'/php/php/detail_Facility.php?id=' + response.UpID})))
+					 .attr({'href':'/php/php/detail_facility.php?id=' + response.UpID})))
 					 .append($("<div class='text-left'></div>")
 					 .text("〒"+response.PostNum + response.Pref + response.Address))
 					 .append($("<div class='text-left'></div>")
