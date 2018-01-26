@@ -22,7 +22,14 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="/php/index.php">
+			<?php
+				if(!isset($_SESSION["UserName"])){
+					print '<a class="navbar-brand" href="/php/index.php">';
+				}
+				else{
+					print '<a class="navbar-brand" href="/php/php/mypage.php">';
+				}
+			?>
 				CHINook
 			</a>
 		</div>
