@@ -65,7 +65,7 @@
 					<div class="form-group">
 						<div class="input-group">
 							<span class="input-group-addon" id="basic-addon3">電話番号</span>
-							<input id="fac_tel" type="text" class="form-control" name="Tel" pattern="\d{1,5}-\d{1,4}-\d{ ,4}" required value="" maxlength="14" placeholder="0000-0000-0000">
+							<input id="fac_tel" type="text" class="form-control" name="Tel" pattern="\d{1,5}-\d{1,4}-\d{1,4}" required value="" maxlength="14" placeholder="0000-0000-0000">
             			</div>
           			</div>
 					<div class="form-group">
@@ -85,7 +85,7 @@
 					<div class="form-group">
 						<div class="input-group">
 							<span class="input-group-addon" id="basic-addon3">説明</span>
-							<textarea class="form-control"  name="Exposition" maxlength="20"  placeholder="アメニティの貸出サービス・片付け"></textarea>
+							<textarea class="form-control"  name="Exposition" maxlength="1000"  placeholder="アメニティの貸出サービス・片付け"></textarea>
 						</div>
 					</div>
 					<div id="select" class="form-button_group">

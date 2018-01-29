@@ -103,7 +103,9 @@ else{
 	if(empty($resMes)){
 
 		// 受け取ったカテゴリーIDを配列に挿入
-		$category  = $_POST['cate'];
+		if(!empty($_POST['cate'])){
+			$category  = $_POST['cate'];
+		}
 
 		// DBに接続
 		$dsn ="mysql:dbname=teamG;host=localhost;charset=utf8";
@@ -250,12 +252,14 @@ else{
 			}
 
 			// 受け取ったカテゴリーIDがなくなるまでloop(1件ずつPostCategorysテーブルにinsert)
-			foreach ($category as $value) {
-				$sql = "insert into PostCategorys(UpID,CategoryID) values(?,?)";
-				$stmt = $dbh -> prepare($sql);
-				$stmt -> bindValue(1, $id, PDO::PARAM_STR);
-				$stmt -> bindValue(2, $value, PDO::PARAM_STR);
-				$stmt -> execute();
+			if(!empty($_POST['cate'])){
+				foreach ($category as $value) {
+					$sql = "insert into PostCategorys(UpID,CategoryID) values(?,?)";
+					$stmt = $dbh -> prepare($sql);
+					$stmt -> bindValue(1, $id, PDO::PARAM_STR);
+					$stmt -> bindValue(2, $value, PDO::PARAM_STR);
+					$stmt -> execute();
+				}
 			}
 
 

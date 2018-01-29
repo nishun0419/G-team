@@ -49,7 +49,7 @@
 			$minwidth = null;
 		}
 
-		if($_GET["infra"]){
+		if(isset($_GET["infra"])){
 			$infras = json_encode($_GET["infra"]);
 		}
 		else{
@@ -64,6 +64,7 @@
 		var maxwidth = '<?php echo $maxwidth; ?>';
 		var infras = JSON.parse('<?php echo $infras; ?>');
 	</script>
+	<div class="back_color"></div>
 	<div class="container main">
 		<div class="row">
 			<div class="col-md-4 serchbox">
@@ -191,6 +192,7 @@
 			<div class="col-md-8" id="serchResult"></div>
 		</div>
 	</div>
+	<script type="text/javascript" src="/php/js/separate.js"></script>
 	<script type="text/javascript" src="/php/js/dispFacility.js"></script>
 	<!-- <script type="text/javascript" src="/php/js/firstSerch.js"></script> -->
 	<script type="text/javascript" src="/php/js/serchClickEvent.js"></script>

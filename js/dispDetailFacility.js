@@ -54,7 +54,7 @@ function dispDetailFacility(response){
 					 .append($("<label class='infraLabel' id='infra10'></label>")
 					 .text("火気OK")))
 					 .append($("<div class='text-right' id='price'></div>")
-					 .text("￥"+response.Price)))
+					 .text("￥"+ separate(response.Price))))
 					 .append($("<div id='map'></div>"))))
 					 .append($("<div class='row'></div>")
 					 .append($("<div id='calendar'></div>"))));

@@ -89,7 +89,7 @@
 					<div class="form-group">
 						<div class="input-group">
 							<span class="input-group-addon" id="basic-addon3">説明</span>
-									<textarea class="form-control" id="exposition" name="Exposition" maxlength="20"  placeholder="アメニティの貸出サービス・片付け"></textarea>
+									<textarea class="form-control" id="exposition" name="Exposition" maxlength="1000"  placeholder="アメニティの貸出サービス・片付け"></textarea>
 						</div>
 					</div>
 

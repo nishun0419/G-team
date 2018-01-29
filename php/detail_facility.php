@@ -56,6 +56,7 @@
 			<div id="detail_Info"></div>
 		</div>
 	</div>
+	<script type="text/javascript" src="/php/js/separate.js"></script>
 	<script type="text/javascript" src="/php/js/Map.js"></script>
 	<script type="text/javascript" src="/php/js/disp_fac_Calendar.js"></script>
 	<script type="text/javascript" src="/php/js/dispDetailFacility.js"></script>

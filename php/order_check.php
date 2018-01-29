@@ -35,6 +35,7 @@
 	</div>
 	<script type="text/javascript" src="/php/js/getFacility.js"></script>
 	<!-- <script type="text/javascript" src="/php/js/dispOrderCheck.js"></script> -->
+	<script type="text/javascript" src="/php/js/separate.js"></script>
 	<script type="text/javascript" src="/php/js/getPdf.js"></script>
 	<script type="text/javascript" src="/php/js/dispPdf.js"></script>
 	<script type="text/javascript" src="/php/js/dispOrderCheck.js"></script>

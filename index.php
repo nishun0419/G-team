@@ -36,10 +36,8 @@
 	</script>
 	<div id="titletop">
 		<div class="container">
-			<div class="row titleName">
-				<div class="text-center centerTitle">
-					<h1>新しいマッチングサイト</h1>
-				</div>
+			<div class="row">
+				<img class="img-responsive" src="/php/image/chinook-top-image.png">
 			</div>
 			<div class="row">
 				<div class="col-md-4 firstInfo">

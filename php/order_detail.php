@@ -71,6 +71,7 @@
 			<button type="button" class="button go_mypage">マイページに戻る</button>
 		</div> 
 	</div>
+	<script type="text/javascript" src="/php/js/separate.js"></script>
 	<script type="text/javascript" src="/php/js/getOrder_detail.js"></script>
 	<script type="text/javascript" src="/php/js/order_detail_ClickEvent.js"></script>
 </body>

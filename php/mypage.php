@@ -89,6 +89,7 @@
 	</div>	
 	
 	 <!-- <script type="text/javascript" src="/php/js/getM.js"></script> -->
+	 <script type="text/javascript" src="/php/js/separate.js"></script>
 	 <script type="text/javascript" src="/php/js/getOrder.js"></script>
 	 <script type="text/javascript" src="/php/js/dispMyOrder.js"></script>
 	 <script type="text/javascript" src="/php/js/dispMyFacility.js"></script>

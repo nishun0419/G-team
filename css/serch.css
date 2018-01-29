@@ -1,3 +1,22 @@
+body{
+	position: relative;
+	background-repeat: no-repeat;
+	background-position: center;
+	/*background-attachment: fixed;*/
+	background-size: cover;
+	/*http://frame-illust.com/?p=358*/
+	background-image: url(/php/image/titlesecond.png);
+	z-index: 0;
+}
+.back_color{
+	position: fixed;
+	z-index: 1;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(255,255,255,0.3);
+	margin-top: -70px;
+
+}
 .main{
 	margin-top: 80px;
 }
@@ -8,6 +27,8 @@
 .serchbox{
 	border: 1px solid blue;
 	padding-top: 10px;
+	z-index: 2;
+	background-color: #fff;
 }
 .serchLabel{
 	padding-left: 30px;
@@ -17,9 +38,17 @@
 /*	padding-top: 10px;
 	padding-bottom: 10px;
 	margin-top: 10px;*/
-	border:1px solid #DEDDDD;
+	/*border:1px solid #DEDDDD;*/
 	padding-top: 10px;
 	margin-top: 5px;
+	position: relative;
+	background-repeat: no-repeat;
+	background-position: center;
+	/*background-attachment: fixed;*/
+	background-size: cover;
+	/*http://frame-illust.com/?p=358*/
+	background-image: url(/php/image/note.jpg);
+	z-index: 2;
 }
 .facilityImage{
 	height: 300px;
@@ -35,4 +64,10 @@
 	color: white;
 	top: 0px;
 	background-color: rgba(0,0,0,0.8);
+}
+
+.pin_image{
+	position: absolute;
+	top: 0px;
+	right: 0px;
 }
