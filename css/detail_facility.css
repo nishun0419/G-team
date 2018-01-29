@@ -1,14 +1,41 @@
+body{
+	position: relative;
+	background-repeat: no-repeat;
+	background-position: center;
+	/*background-attachment: fixed;*/
+	background-size: cover;
+	/*http://frame-illust.com/?p=358*/
+	background-image: url(/php/image/titlesecond.png);
+	z-index: 0;
+}
+.back_color{
+	position: fixed;
+	z-index: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(255,255,255,0.1);
+	/*margin-top: -70px;*/
+
+}
+
 #detail_Info{
 	margin-top: 80px;
+	z-index: 2;
 }
 #map{
 	height: 300px;
 	min-width: 100%;
 	margin: auto;
+	z-index: 2;
+	border-right: 7px solid rgba(0,0,0,0.3);
+
 }
 
 #facility_info_box{
-	border: 1px solid blue;
+	border: 1px solid #656565;
+	/*border-right: 7px solid rgba(0,0,0,0.3);*/
+	background-color: #fff;
+	z-index: 2;
 }
 
 #calendar_val{
@@ -16,6 +43,9 @@
 }
 #calendar{
 	width: 100%;
+	z-index: 2;
+	border-right: 7px solid rgba(0,0,0,0.3);
+	
 }
 
 

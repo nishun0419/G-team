@@ -26,7 +26,7 @@
 		var ident = '<?php echo $id; ?>';
 		var userid = null;
 	</script>
-
+	<div class="back_color"></div>
 	<!-- モーダル・ダイアログ -->
 	<div class="modal fade" id="orderModal" tabindex="-1">
 		<div class="modal-dialog">

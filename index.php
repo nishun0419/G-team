@@ -35,10 +35,8 @@
 		var visitflag="<?php echo $visitFlag; ?>"; 
 	</script>
 	<div id="titletop">
+		<img class="img-responsive" src="/php/image/chinook-top-image.png">
 		<div class="container">
-			<div class="row">
-				<img class="img-responsive" src="/php/image/chinook-top-image.png">
-			</div>
 			<div class="row">
 				<div class="col-md-4 firstInfo">
 					<div class="row">
