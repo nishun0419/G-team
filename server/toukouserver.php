@@ -86,9 +86,15 @@ else{
 		$req = 'http://maps.google.com/maps/api/geocode/xml?address='.urlencode($address).'&sensor=false';
 		$xml = simplexml_load_file($req);
 		// 緯度経度が取得できるまでsleepしつつループ
+		$count = 0;
 		while(true){
-			if($xml->status === 'OK'){
+			if($count === 2){
+				$resMes = "存在しない住所、もしくはサーバー側のエラーが発生しました。<br>	もう一回やり直してください";
+				break;
+			}
+			if((string)$xml->status !== 'OK'){
 				sleep(2);
+				$count++;
 				$xml = simplexml_load_file($req);
 			}else{
 				$location = $xml->result->geometry->location;
