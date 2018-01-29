@@ -14,7 +14,7 @@ function dispFacility(response, i){ //検索結果表示
 					 .append($("<div class='price'></div>")
 					 .text("￥" + separate(response.Price)))
 					 .append($("<img class='pin_image'>")
-					 .attr({'src' : "/php/image/" + "pin.png"}))
+					 .attr({'src' : "/php/image/" + "pin1.png"}))
 					 );
 	if(response.image === ""){
 		$("#facility_img"+i).attr('src', '/php/image/noimage.jpg');
