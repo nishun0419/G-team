@@ -68,7 +68,7 @@
 								print "<input type='hidden' name='reservation' value=". htmlspecialchars($_GET['Reservation']).">";
 			}
 							?>
-							<div class="col-md-8 col-md-offset-4">
+							<div class="text-center">
 								<button type="submit" class="btn btn-primary">
 									ログイン
 								</button>
