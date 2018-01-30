@@ -183,7 +183,7 @@
 									<input type="checkbox" name="infra[]" class="infra" value="9">飲食OK
 								</label>
 								<label>
-									<input type="checkbox" name="infra[]" class="infra" value="10">火気OK
+									<input type="checkbox" name="infra[]" class="infra" value="10">火気NG
 								</label>
 							</div>
 						</div>

@@ -151,7 +151,7 @@
 						<br>
 						<label  class=""><strong><h4>支払い方法</strong></h4></label><br>
 							<label><input type="checkbox" class="pays" name="pay_cash"  value="現金"/>現金</label>
-							<label><input type="checkbox" class="pays" name="pay_card"  value="カード"/>カード</label>
+							<label><input type="checkbox" class="pays" name="pay_card"  value="カード" disabled>カード</label>
 							<label><input type="checkbox" class="pays" name="pay_cry"   value="暗号通貨" disabled>暗号通貨</label>
 							<br><br>
 					</div>
