@@ -1,5 +1,5 @@
 function dispPdf(response){
-	// console.log(JSON.stringify(response));
+	console.log(JSON.stringify(response));
 	var docDefinition = {
    content: [
    	{
@@ -20,22 +20,38 @@ function dispPdf(response){
    		columns:[
    			{width:'*',text:''},
    			{
-   				width: 'auto',
-   				margin:[0,20],
+   				width:'auto',				
+          margin:[0,20],
    				table:{
+            width:'auto',
    					body:[
+              [{text:'予約者情報', colSpan: 2, alignment:'center', fillColor: '#cccccc'},{}],
    				 		[{text:'予約者名', alignment: 'center'},{text:response.FamilyName +'　' + response.GivenName,alignment:'center'}],
    				 		[{text:'フリガナ', alignment: 'center'}, {text:response.FamilyNameKana + '　' + response.GivenNameKana, alignment:'center'}],
    				 		[{text:'住所', alignment: 'center'}, {text:'〒'+ response.UserPostNum + '　　' + response.UserPref + response.UserCity, alignment:'center'}],
    				 		[{text:'TEL', alignment: 'center'}, {text:response.UserTel,alignment: 'center'}],
-   				 		[{text:'予約日', alignment: 'center'}, {text:response.orderdate,alignment:'center'}]
+   				 		[{text:'予約日', alignment: 'center'}, {text:response.orderdate,alignment:'center'}],
+              [{text:'予約施設情報', colSpan: 2, alignment:'center', fillColor: '#cccccc'},{}],
+              [{text:'施設名', alignment: 'center'},{text:response.FacName,alignment:'center'}],
+              [{text:'住所', alignment: 'center'}, {text:'〒'+ response.PostNum + '　　' + response.Pref + response.Address, alignment:'center'}],
+              [{text:'TEL', alignment: 'center'}, {text:response.Tel,alignment: 'center'}],
+              [{text:'料金', alignment: 'center'},{text:separate(response.ResPrice),alignment: 'center'}]
    					]
    				}
    			},
    			{width:'*',text:''},
    		]
 
-   	}
+   	},
+    {
+      text:'支払い状況',
+      alignment:'center',
+      fontSize:20
+    },
+    {
+      text:'支払い済み　・　未支払い',
+      alignment:'center',
+    }
    	]			
  };
 //フォント

@@ -25,11 +25,11 @@ function dispDetailFacility(response){
 					 .append($("<div class='col-md-6 no-float'></div>")
 					 .append($("<div id='facility_info_box'></div>")
 					 .append($("<div class='text-left'></div>")
-					 .text("施設名：" + response.FacName))
-					 .append($("<div class='text-left'></div>")
 					 .text("住所：" + response.PostNum + response.Pref + response.Address))
 					 .append($("<div class='text-left'></div>")
 					 .text("人数：" + response.PeopleNum))
+					 .append($("<div class='text-left'></div>")
+					 .text("広さ：" + response.Area + "㎡"))
 					 .append($("<div class='text-left'></div>")
 					 .text("説明：" + response.Exposition))
 					 .append($("<div class='text-left infra_Zone'></div>")
@@ -72,5 +72,6 @@ function dispDetailFacility(response){
 				$("#infra" + index).show();
 			}
 		}
+		$("#fac_name").text(response.FacName);
 	document.addEventListener( 'DOMContentLoaded', initMap(response.Address));
 }

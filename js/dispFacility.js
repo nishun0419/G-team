@@ -22,11 +22,9 @@ function dispFacility(response, i){ //検索結果表示
 }
 
 function facname_cast(name){
-	len = name.length;
+	var len = name.length;
 	if(len > 12){
-		return name.substring(len - 12) + "..."
+		return name.substring(0, 12) + "...";
 	}
-	else{
-		return name;
-	}
+	return name;
 }

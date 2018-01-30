@@ -18,8 +18,12 @@ body{
 
 }
 
+.main{
+	margin-top: 70px;
+}
+
 #detail_Info{
-	margin-top: 80px;
+	/*margin-top: 80px;*/
 	z-index: 2;
 }
 #map{

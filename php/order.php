@@ -14,10 +14,12 @@
 		// echo $_GET["calendar_val"];
 		if(!isset($_SESSION["UserName"])){
 			header("Location: /php/logincontroller?process=order_to_login&url=".urlencode("/php/order.php")."&UpID=".htmlspecialchars($_GET["UpID"])."&Reservation=".htmlspecialchars($_GET["Reservation"]));
+			exit;
 		}
 		if(isset($_SESSION['flag'])){
 			if(unserialize($_SESSION['flag']) === 'owner'){
 				header("Location: /php/php/authority_error.php");
+				exit;
 			}
 		}
 	?>

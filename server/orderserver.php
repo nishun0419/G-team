@@ -89,26 +89,38 @@
 					$resstmt = $dbh -> prepare($sql);
 					$resstmt -> bindValue(1, $urow["ResID"], PDO::PARAM_INT);
 					$resstmt -> execute();
-					$urow = $resstmt -> fetch(PDO::FETCH_ASSOC);
-					if($urow){
+					$row = $resstmt -> fetch(PDO::FETCH_ASSOC);
+					if($row){
 						$sql = "select * from Users where UserID = ?";
 						$resstmt = $dbh -> prepare($sql);
-						$resstmt -> bindValue(1,$urow["UserID"], PDO::PARAM_STR);
+						$resstmt -> bindValue(1,$row["UserID"], PDO::PARAM_STR);
 						$resstmt -> execute();
 						$urow = $resstmt -> fetch(PDO::FETCH_ASSOC);
 						if($urow){
-							$res[] = array("FamilyName" => $urow["FamilyName"],
-								"GivenName" => $urow["GivenName"],
+							$sql = "select * from Posts where UpID = ?";
+							$stmt = $dbh -> prepare($sql);
+							$stmt -> bindValue(1, $_GET["facilityid"],PDO::PARAM_STR);
+							$stmt -> execute();
+							$frow = $stmt -> fetch(PDO::FETCH_ASSOC);
+							if($frow){
+								$res[] = array("FamilyName" => $urow["FamilyName"],
+									"GivenName" => $urow["GivenName"],
 								"FamilyNameKana" => $urow["FamilyNameKana"],
 								"GivenNameKana" => $urow["GivenNameKana"],
 								"UserPostNum" => $urow["UserPostNum"],
 								"UserCity" => $urow["UserCity"],
 								"UserPref" => $urow["UserPref"],
 								"UserTel" => $urow["UserTel"],
-								"orderdate" => $_GET["orderdate"]
-							);
+								"orderdate" => $_GET["orderdate"],
+								"ResPrice" => $row["ResPrice"],
+								"FacName" => $frow["FacName"],
+								"PostNum" => $frow["PostNum"],
+								"Pref" => $frow["Pref"],
+								"Address" => $frow["Address"],
+								"Tel" => $frow["Tel"]
+								);
+							}
 						}
-
 					}
 				}
 			}

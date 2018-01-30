@@ -248,7 +248,8 @@
 								"StartDate" => $StartDate,
 								"StopDate" => $row["StopDate"],
 								"orderdate" => $orderdate,
-								"infraLabel" => $infra_label
+								"infraLabel" => $infra_label,
+								"Area" => $row["Area"]
 						);
 			}
 		}

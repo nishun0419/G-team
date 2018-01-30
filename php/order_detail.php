@@ -66,7 +66,7 @@
 			</div>
 
 		</div>
-		<div class="col-md-4 col-md-offset-4 button_group">
+		<div class="button_group text-center">
 			<button type="button" class="button order_cancel_button">予約取り下げ</button>
 			<button type="button" class="button go_mypage">マイページに戻る</button>
 		</div> 
