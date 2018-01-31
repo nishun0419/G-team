@@ -125,7 +125,7 @@
 					<div id="" class="form-group hirosa">
 						<div class="input-group">
 							<span class="input-group-addon" id="basic-addon4">広さ</span>
-							<input id="fac_area" type="text" class="form-control" name="Area" pattern="^-?\d{1,}\.\d*$"required value=""maxlength="6" placeholder="00.00">
+							<input id="fac_area" type="text" class="form-control" name="Area" pattern="^-?\d{1,}\.\d*$"required value="" maxlength="8" placeholder="00.00">
 							<span class="input-group-addon" id="basic-addon2">m&#178;</span>
 						</div>
 					</div>
