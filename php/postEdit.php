@@ -134,7 +134,7 @@
 										<div id="" class="form-group hirosa">
 											<div class="input-group">
 													<span class="input-group-addon" id="basic-addon4">広さ</span>
-												<input id="fac_area" type="text" class="form-control" name="Area" pattern="^-?\d{1,}\.\d*$"required value=""maxlength="6" placeholder="00.00">
+												<input id="fac_area" type="text" class="form-control" name="Area" pattern="^-?\d{1,}\.\d*$"required value="" maxlength="8" placeholder="00.00">
 													<span class="input-group-addon" id="basic-addon2">m&#178;</span>
 											</div>
 										</div>
@@ -142,7 +142,7 @@
 						<div id="test" class="form-group">
 							<div class="input-group">
 								<span class="input-group-addon" id="basic-addon4">料金</span>
-							<input id="price" type="text" class="form-control" name="Price" pattern="^([0-9]{0,7})$"maxlength="7" required value="">
+							<input id="price" type="text" class="form-control" name="Price" pattern="^([0-9]{0,7})$" maxlength="7" required value="">
 								<span class="input-group-addon" id="basic-addon2">円</span>
 						</div>
 					</div>
