@@ -2,16 +2,20 @@ body{
 	position: relative;
 	background-repeat: no-repeat;
 	background-position: center;
-	/*background-attachment: fixed;*/
+	background-attachment: fixed;
 	background-size: cover;
 	/*http://frame-illust.com/?p=358*/
 	background-image: url(/php/image/order_back2.png);
 	z-index: 0;
 }
 
-#orderbox{
+.main{
 	margin-top: 80px;
-	border: 1px solid blue;
+}
+
+.td_back{
+	text-align: center;
+	background-color: #fff;
 }
 
 .ordermessage{

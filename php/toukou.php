@@ -22,7 +22,7 @@
 
 	<div class="container"><br><br><br>
 		<div class="text-center"><h3>投稿画面</h3></div>
-			<div class="col-md-6 col-md-offset-3">
+			<div id="toukou_form" class="col-md-6 col-md-offset-3">
 				<form class="form-horizontal" role="form" method="post" action="toukoukakuninn.php" enctype="multipart/form-data">
 					<div class="form-group">
 						<div class="input-group">

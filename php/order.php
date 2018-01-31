@@ -4,6 +4,7 @@
 	<meta charset="UTF-8">
 	<link rel="stylesheet" type="text/css" href="/php/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="/php/css/order.css">
+	<link rel="stylesheet" type="text/css" href="css/navbar.css">
 	<script type="text/javascript" src="/php/js/jquery-3.1.1.min.js"></script>
 	<script type="text/javascript" src="/php/js/bootstrap.min.js"></script>
 	<title>申込確認</title>
@@ -30,9 +31,22 @@
 		var calendar_val = '<?php echo htmlspecialchars($_GET["Reservation"]) ?>';
 		var userid = '<?php echo unserialize($_SESSION["UserID"]) ?>';
 	</script>
-	<div class="container">
+	<div class="container main">
 		<div class="row">
-			<div id="order_Info"></div>
+			<table class="table table-bordered" id="order_Info">
+				<tr>
+					<td class="info">施設名</td><td class="td_back"><sapn id="fac_name"></sapn></td>
+				</tr>
+				<tr>
+					<td class="info">住所</td><td class="td_back"><span id="address"></span></td>
+				</tr>
+				<tr>
+					<td class="info">予約日</td><td class="td_back"><span id="order_date"></span></td>
+				</tr>
+				<tr>
+					<td class="info">料金</td><td class="td_back"><span id="price"></span></td>
+				</tr>
+			</table>
 		</div>
 		<div class="row">
 			<div class="text-center ordermessage">
@@ -52,6 +66,7 @@
 			</div>
 		</div>
 	</div>
+	<script type="text/javascript" src="/php/js/separate.js"></script>
 	<script type="text/javascript" src="/php/js/dispOrder.js"></script>
 	<script type="text/javascript" src="/php/js/getFacility.js"></script>
 	<script type="text/javascript" src="/php/js/orderClickEvent.js"></script>

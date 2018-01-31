@@ -5,7 +5,7 @@ function dispMyOrder(response, count){
 					  .append($("<img class='samune' id='ordersamune"+count+"'>")
 					  .attr({'src' : "/php/image/post_image/" + response.Image})))
 					  .append($("<div class='media-body'></div>")
-					  .text("〒" + response.PostNum + response.Address)
+					  .text("〒" + response.PostNum + "　" + response.Pref + response.Address)
 					  .append($("<h4></h4>")
 					  .append($("<a></a>")
 					  .attr({'href':'/php/php/order_detail.php?ResID=' + response.ResID})

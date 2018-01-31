@@ -4,6 +4,7 @@
 	<meta charset="UTF-8">
 	<link rel="stylesheet" type="text/css" href="/php/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="/php/css/order_finish.css">
+	<link rel="stylesheet" type="text/css" href="/php/css/navbar.css">
 	<script type="text/javascript" src="/php/js/jquery-3.1.1.min.js"></script>
 	<script type="text/javascript" src="/php/js/bootstrap.min.js"></script>
 	<title>申込確認</title>

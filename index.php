@@ -161,12 +161,12 @@
 	<div class="container titlethird">
 		<div class="row">
 			<div class="text-left">
-				<h2>CHINookでは全国のあらゆる空き施設を検索できます</h2>
+				<h2>Chinookでは全国のあらゆる空き施設を検索できます</h2>
 			</div>
 			<div class="col-md-4 secondInfo">
-				<img class="img-responsive secondInfoImg" src="/php/image/denshi.png">
+				<img class="img-responsive secondInfoImg" src="/php/image/hall_l.jpg">
 				<div class="text-left">
-					<h3>神戸電子専門学校</h3>
+					<h3>A施設</h3>
 				</div>
 				<div class="text-left">
 					兵庫県神戸市中央区北野町１−１−8

@@ -2,10 +2,10 @@ body{
 	position: relative;
 	background-repeat: no-repeat;
 	background-position: center;
-	/*background-attachment: fixed;*/
+	background-attachment: fixed;
 	background-size: cover;
 	/*http://frame-illust.com/?p=358*/
-	background-image: url(/php/image/titlesecond.png);
+	background-image: url(/php/image/serch_back.png);
 	z-index: 0;
 }
 .back_color{
@@ -13,8 +13,8 @@ body{
 	z-index: 0;
 	width: 100%;
 	height: 100%;
-	background-color: rgba(255,255,255,0.1);
-	/*margin-top: -70px;*/
+	/*background-color: rgba(165,89,65,0.4);*/
+	margin-top: -70px;
 
 }
 

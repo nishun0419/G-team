@@ -6,6 +6,7 @@
 	<title>Serch</title>
 	<link href="/php/css/bootstrap.min.css" rel="stylesheet" type="text/css">
 	<link rel="stylesheet" type="text/css" href="/php/css/serch.css">
+	<link rel="stylesheet" type="text/css" href="/php/css/navbar.css">
     <script type="text/javascript" src="/php/js/jquery-3.1.1.min.js"></script>
     <script src="/php/js/bootstrap.min.js"></script>
 </head>

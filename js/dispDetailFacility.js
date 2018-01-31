@@ -25,7 +25,7 @@ function dispDetailFacility(response){
 					 .append($("<div class='col-md-6 no-float'></div>")
 					 .append($("<div id='facility_info_box'></div>")
 					 .append($("<div class='text-left'></div>")
-					 .text("住所：" + response.PostNum + response.Pref + response.Address))
+					 .text("住所：〒" + response.PostNum +"　" + response.Pref + response.Address))
 					 .append($("<div class='text-left'></div>")
 					 .text("人数：" + response.PeopleNum))
 					 .append($("<div class='text-left'></div>")

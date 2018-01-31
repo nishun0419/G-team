@@ -272,6 +272,7 @@
 								   "PostNum" => $row["PostNum"],
 								   "Address" => $row["Address"],
 								   "Pref" => $row["Pref"],
+								   "Price" => $row["Price"],
 								   "FullName" => $urow["FamilyName"].$urow["GivenName"]
 								);
 				}

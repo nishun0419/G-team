@@ -6,7 +6,7 @@ function dispPdf(response){
    		columns:[
    			{text:MyUserName + '　様'
    			},
-   			{text: 'CHINooK株式会社\n運営係',
+   			{text: 'Chinook株式会社\n運営係',
    			 alignment: 'right'
    			}
    		]

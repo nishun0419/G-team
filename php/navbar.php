@@ -30,7 +30,7 @@
 					print '<a class="navbar-brand" href="/php/php/mypage.php">';
 				}
 			?>
-				CHINook
+				<img class = "nav_text" src="/php/image/chinook-top-image-text.png">
 			</a>
 		</div>
 		<div id=navmenu class="collapse navbar-collapse">

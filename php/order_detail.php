@@ -6,6 +6,7 @@
 <title>予約確認</title>
 <link rel="stylesheet" type="text/css" href="/php/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="/php/css/order_detail.css">
+<link rel="stylesheet" type="text/css" href="/php/css/navbar.css">
 <script type="text/javascript" src="/php/js/jquery-3.1.1.min.js"></script>
 <script type="text/javascript" src="/php/js/bootstrap.min.js"></script>
 </head>
@@ -46,19 +47,19 @@
 			</div>
 			<table class="table table-bordered">
 				<tr>
-					<td>施設名</td><td><div class="text-center"><span id="fac_name">??</span></div></td>
+					<td class="info">施設名</td><td class="td_back"><div class="text-center"><span id="fac_name">??</span></div></td>
 				</tr>
 				<tr>
-				<td>住所</td><td><div class="text-center"><span id="fac_address">??</span></div></td>
+					<td class="info">住所</td><td class="td_back"><div class="text-center"><span id="fac_address">??</span></div></td>
 				</tr>
 				<tr>
-					<td>料金</td><td><div class="text-center"><span id="fac_price">??</span></div></td>
+					<td class="info">料金</td><td class="td_back"><div class="text-center"><span id="fac_price">??</span></div></td>
 				</tr>
 				<tr>
-					<td>予約日</td><td><div class="text-center"><span id="fac_order">??</span></div></td>
+					<td class="info">予約日</td><td class="td_back"><div class="text-center"><span id="fac_order">??</span></div></td>
 				</tr>
 				<tr>
-					<td>予約者名</td><td><div class="text-center"><span id="user_name"><?php echo unserialize($_SESSION["UserName"]); ?></span></div></td>
+					<td class="info">予約者名</td><td class="td_back"><div class="text-center"><span id="user_name"><?php echo unserialize($_SESSION["UserName"]); ?></span></div></td>
 				</tr>
 			</table>
 			<div class="text-center">

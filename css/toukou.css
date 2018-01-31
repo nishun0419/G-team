@@ -1,0 +1,14 @@
+body{
+  position: relative;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  background-size: cover;
+  /*http://frame-illust.com/?p=358*/
+  background-image: url(/php/image/order_back2.png);
+  z-index: 0;
+}
+
+#toukou_form{
+	background-color: rgba(255,255,255,0.8);
+}

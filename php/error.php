@@ -5,6 +5,7 @@
 	<title>エラー</title>
 	<link rel="stylesheet" type="text/css" href="/php/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="/php/css/error.css">
+	<link rel="stylesheet" type="text/css" href="/php/css/navbar.css">
 </head>
 <body>
 	<?php

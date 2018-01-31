@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="stylesheet" type="text/css" href="/php/css/bootstrap.min.css"> 
     <link rel="stylesheet" type="text/css" href="/php/css/taikaikakunin.css"> 
+    <link rel="stylesheet" type="text/css" href="/php/css/navbar.css">
     <script type="text/javascript" src="/php/js/jquery-3.1.1.min.js"></script> 
     <script type="text/javascript" src="/php/js/bootstrap.min.js"></script> 
     <title>退会確認画面</title> 
