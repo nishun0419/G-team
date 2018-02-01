@@ -11,6 +11,7 @@
 	<link rel="stylesheet" type="text/css" href="/php/css/login.css">
 	<script type="text/javascript" src="/php/js/jquery-3.1.1.min.js"></script>
 	<script src="/php/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="/php/js/footerFixed.js"></script>
 </head>
 <body>
 	<?php

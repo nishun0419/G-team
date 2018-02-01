@@ -1,7 +1,9 @@
-body{
-	height: 100vh;
+#footer{
+	background-color: #0484B9;
 }
+
 .footer_text{
+	/*position: absolute;*/
 	background-color: #0484B9;
 	color: white;
 }
