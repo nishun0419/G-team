@@ -39,7 +39,7 @@
 				登録を取り下げます。よろしいですか？
 			</div>
 			<div class="modal-footer">
-				<form method="post" action="/php/server/upcencelserver.php">
+				<form method="post" action="/php/server/upcancelserver.php">
 					<button type="button" class="btn btn-default" data-dismiss="modal">キャンセル</button>
 					<input type="hidden" name="UpID" id="upID">
 					<button type="submit" class="btn btn-primary upCancelbutton">OK</button>

@@ -76,9 +76,9 @@ body{
 	height: 25em;
 }
 
-.ui-datepicker-today{
-	/*background:　#1484e6 url(images/ui-bg_diagonals-thick_22_1484e6_40x40.png) 50% 50% repeat !important;*/
-	background-color: #FF6F05;
+td.ui-datepicker-today a{
+	background-image: url(images/ui-bg_diagonals-thick_22_1484e6_40x40.png) 50% 50% repeat !important;
+	/*background-color: #FF6F05;*/
 }
 
 .infraLabel{

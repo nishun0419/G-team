@@ -1,3 +1,38 @@
+body{
+	position: relative;
+  	background-repeat: no-repeat;
+  	background-position: center;
+  	background-attachment: fixed;
+  	background-size: cover;
+  /*http://frame-illust.com/?p=358*/
+  	background-image: url(/php/image/order_back2.png);
+  	z-index: 0;
+}
+
 .main{
 	margin-top: 70px;
+}
+
+.help_index{
+	font-size: 20px;
+	background-color: rgba(255,255,255,0.8);
+	margin-top: 10px;
+}
+
+.help_main{
+	margin-top: 50px;
+	background-color: rgba(255,255,255,0.8);
+}
+
+.help_box{
+	height: 300px;
+}
+
+.help_text{
+	margin-top: 15px;
+	font-size: 20px;
+}
+
+h3{
+	color: #FF713F;
 }

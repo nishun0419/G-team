@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<title>エラー</title>
 	<link rel="stylesheet" type="text/css" href="/php/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="css/navbar.css">
+	<link rel="stylesheet" type="text/css" href="/php/css/navbar.css">
 	<link rel="stylesheet" type="text/css" href="/php/css/error.css">
 	<script type="text/javascript" src="/php/js/jquery-3.1.1.min.js"></script>
 	<script src="/php/js/bootstrap.min.js"></script>

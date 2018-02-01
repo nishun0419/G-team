@@ -6,6 +6,7 @@
 	<link href="/php/css/index.css" rel="stylesheet" type="text/css">
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="css/navbar.css">
+	<link rel="stylesheet" type="text/css" href="/php/css/footer.css">
 	<link href="/php/css/animate.css" rel="stylesheet">
 	<script type="text/javascript" src="/php/js/jquery-3.1.1.min.js"></script>
 	<script src="/php/js/jquery.lettering.js"></script>
@@ -35,7 +36,7 @@
 		var visitflag="<?php echo $visitFlag; ?>"; 
 	</script>
 	<div id="titletop">
-		<img class="img-responsive" src="/php/image/chinook-top-image.png">
+		<img class="img-responsive center-block" src="/php/image/chinook-top-image.png">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-4 firstInfo">
@@ -192,7 +193,9 @@
 			</div>
 		</div>
 	</div>
-
+	<?php
+		require('php/footer.php');
+	?> 
 	<script type="text/javascript" src="/php/js/snowfall.js"></script>
 	<script type="text/javascript" src="/php/js/texteffect.js"></script>
 	<script type="text/javascript" src="/php/js/indexScrollAnimation.js"></script>
