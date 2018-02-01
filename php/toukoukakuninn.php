@@ -13,6 +13,7 @@
 <script type="text/javascript" src="/php/js/dispCalendar.js"></script>
 <script type="text/javascript" src="/php/js/ajaxzip3.js"></script>
 <script type="text/javascript" src="/php/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/php/js/toukouClickEvent.js"></script>
 </head>
 <body>
 <?php
@@ -311,7 +312,7 @@ if($page_flag === 1):
 					<input type="hidden" id="facilityIdent">
 					<input type="hidden" id="userid">
 					<input type="hidden" id="UpID" name="UpID" value="<?php echo $UpID; ?>">
-					<button type="submit" class="btn btn-default cancel" formaction="mypage.php" formnovalidate>キャンセル</button>
+					<button type="button" class="btn btn-default cancel">キャンセル</button>
 					<button type="submit" class="btn btn-primary ok">登録する</button>
 
 			</div>
