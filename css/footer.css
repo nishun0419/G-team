@@ -1,3 +1,6 @@
+body{
+	height: 100vh;
+}
 .footer_text{
 	background-color: #0484B9;
 	color: white;

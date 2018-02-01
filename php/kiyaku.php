@@ -7,6 +7,7 @@
 	<title>新規登録</title>
 	<link rel="stylesheet" type="text/css" href="/php/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="/php/css/navbar.css">
+	<link rel="stylesheet" type="text/css" href="/php/css/footer.css">
 	<link rel="stylesheet" type="text/css" href="/php/css/kiyaku.css">
     <script type="text/javascript" src="/php/js/jquery-3.1.1.min.js"></script>
     <script src="/php/js/bootstrap.min.js"></script>
@@ -87,6 +88,9 @@
 	以上<br>
 </div>
 </div>
+<?php
+	require('footer.php');
+?> 
 
 </body>
 </html>

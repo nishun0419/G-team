@@ -8,6 +8,7 @@
 	<link rel="stylesheet" type="text/css" href="/php/css/jquery-ui.css">
 	<link rel="stylesheet" type="text/css" href="/php/css/detail_facility.css">
 	<link rel="stylesheet" type="text/css" href="/php/css/navbar.css">
+	<link rel="stylesheet" type="text/css" href="/php/css/footer.css">
 	<script type="text/javascript" src="/php/js/jquery-3.1.1.min.js"></script>
 	<script type="text/javascript" src="/php/js/jquery-ui.min.js"></script>
 
@@ -66,5 +67,8 @@
 	<script type="text/javascript" src="/php/js/dispDetailFacility.js"></script>
 	<script type="text/javascript" src="/php/js/getFacility.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCZg9ufeYKKY11pds-r8Y-qkfDQLIN-2fw"></script>
+    <?php
+		require('footer.php');
+	?> 
 </body>
 </html>

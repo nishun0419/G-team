@@ -6,6 +6,7 @@
 	<link rel="stylesheet" type="text/css" href="/php/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="/php/css/error.css">
 	<link rel="stylesheet" type="text/css" href="/php/css/navbar.css">
+	<link rel="stylesheet" type="text/css" href="/php/css/footer.css">
 </head>
 <body>
 	<?php
@@ -23,5 +24,8 @@
 			<a href="/php/serchcontroller">戻る</a>
 		</div>
 	</div>
+	<?php
+		require('footer.php');
+	?> 
 </body>
 </html>
