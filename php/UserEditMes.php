@@ -8,8 +8,10 @@
 	<link rel="stylesheet" type="text/css" href="/teamG/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="/teamG/css/navbar.css">
 	<link rel="stylesheet" type="text/css" href="/teamG/css/sinki.css">
+	<link rel="stylesheet" type="text/css" href="/teamG/css/footer.css">
     <script type="text/javascript" src="/teamG/js/jquery-3.1.1.min.js"></script>
     <script src="/teamG/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/teamG/js/footerFixed.js"></script>
 <!--     <script src="//code.jquery.com/jquery-2.1.0.min.js" type="text/javascript"></script>
     <script src="/ajaxzip2/prototype.js"></script>
 	<script src="ajaxzip2/ajaxzip2.js" charset="UTF-8"></script> -->
@@ -39,5 +41,8 @@
 			?>
 		</div>
 	</div>
+	<?php 
+		require('footer.php');
+	?>
 </body>
 </html>

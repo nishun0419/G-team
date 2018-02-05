@@ -8,6 +8,7 @@
 <link rel="stylesheet" type="text/css" href="/teamG/css/navbar.css">
 <link rel="stylesheet" type="text/css" href="/teamG/css/jquery-ui.css">
 <link rel="stylesheet" type="text/css" href="/teamG/css/toukou.css">
+<link rel="stylesheet" type="text/css" href="/teamG/css/footer.css">
 <script type="text/javascript" src="/teamG/js/jquery-3.1.1.min.js"></script>
 <script type="text/javascript" src="/teamG/js/jquery-ui.min.js"></script>
 <script type="text/javascript" src="/teamG/js/dispCalendar.js"></script>
@@ -151,6 +152,9 @@
 				</form>
 			</div>
 		</div>
+		<?php 
+			require('footer.php');
+		?>
 
 <script type="text/javascript" src="/teamG/js/gazou1.js"></script>
 <script type="text/javascript" src="/teamG/js/toukouClickEvent.js"></script>

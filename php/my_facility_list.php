@@ -82,6 +82,7 @@
 				<p>施設の広告?</p>
 		</div>
 	</div>	
+</div>
 	<?php
 		require('footer.php');
 	?> 

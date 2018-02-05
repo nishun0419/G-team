@@ -7,6 +7,7 @@
 	<link rel="stylesheet" type="text/css" href="/teamG/css/jquery-ui.css">
 	<link rel="stylesheet" type="text/css" href="/teamG/css/order_check.css">
 	<link rel="stylesheet" type="text/css" href="/teamG/css/navbar.css">
+	<link rel="stylesheet" type="text/css" href="/teamG/css/footer.css">
 	<script type="text/javascript" src="/teamG/js/jquery-3.1.1.min.js"></script>
 	<script type="text/javascript" src="/teamG/js/jquery-ui.min.js"></script>
 	<script type="text/javascript" src="/teamG/js/bootstrap.min.js"></script>
@@ -34,6 +35,9 @@
 			<div class="col-md-10 col-md-offset-1" id="calendar"></div>
 		</div>
 	</div>
+	<?php 
+		require('footer.php');
+	?>
 	<script type="text/javascript" src="/teamG/js/getFacility.js"></script>
 	<!-- <script type="text/javascript" src="/teamG/js/dispOrderCheck.js"></script> -->
 	<script type="text/javascript" src="/teamG/js/separate.js"></script>
