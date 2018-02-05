@@ -2,11 +2,13 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<link rel="stylesheet" type="text/css" href="/php/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="/php/css/order_finish.css">
-	<link rel="stylesheet" type="text/css" href="/php/css/navbar.css">
-	<script type="text/javascript" src="/php/js/jquery-3.1.1.min.js"></script>
-	<script type="text/javascript" src="/php/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="/teamG/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="/teamG/css/order_finish.css">
+	<link rel="stylesheet" type="text/css" href="/teamG/css/navbar.css">
+	<link rel="stylesheet" type="text/css" href="/teamG/css/footer.css">
+	<script type="text/javascript" src="/teamG/js/jquery-3.1.1.min.js"></script>
+	<script type="text/javascript" src="/teamG/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="/teamG/js/footerFixed.js"></script>
 	<title>申込確認</title>
 </head>
 <body>
@@ -21,13 +23,19 @@
 		申込が完了しました。
 	</div>
 	<div class="col-md-8 col-md-offset-2">
-				<button type="button" onclick="location.href='/php/php/mypage.php'" class="btn btn-primary center-block">
+				<button type="button" onclick="location.href='/teamG/php/mypage.php'" class="btn btn-primary center-block">
 				<span class="glyphicon glyphicon-ok-sign" aria-hidden="true">
 						マイページに戻る
 					</span>
 					
 				</button>
 			</div>
+	</div>
+</div>
+</div>
+<?php 
+	require('footer.php');
+?>
 	
 </body>
 </html>

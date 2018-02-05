@@ -2,11 +2,13 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<link rel="stylesheet" type="text/css" href="/php/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="/php/css/order.css">
-	<link rel="stylesheet" type="text/css" href="css/navbar.css">
-	<script type="text/javascript" src="/php/js/jquery-3.1.1.min.js"></script>
-	<script type="text/javascript" src="/php/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="/teamG/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="/teamG/css/order.css">
+	<link rel="stylesheet" type="text/css" href="/teamG/css/navbar.css">
+	<link rel="stylesheet" type="text/css" href="/teamG/css/footer.css">
+	<script type="text/javascript" src="/teamG/js/jquery-3.1.1.min.js"></script>
+	<script type="text/javascript" src="/teamG/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="/teamG/js/footerFixed.js"></script>
 	<title>申込確認</title>
 </head>
 <body>
@@ -14,12 +16,12 @@
 		require('navbar.php');
 		// echo $_GET["calendar_val"];
 		if(!isset($_SESSION["UserName"])){
-			header("Location: /php/logincontroller?process=order_to_login&url=".urlencode("/php/order.php")."&UpID=".htmlspecialchars($_GET["UpID"])."&Reservation=".htmlspecialchars($_GET["Reservation"]));
+			header("Location: /teamG/logincontroller?process=order_to_login&url=".urlencode("/php/order.php")."&UpID=".htmlspecialchars($_GET["UpID"])."&Reservation=".htmlspecialchars($_GET["Reservation"]));
 			exit;
 		}
 		if(isset($_SESSION['flag'])){
 			if(unserialize($_SESSION['flag']) === 'owner'){
-				header("Location: /php/php/authority_error.php");
+				header("Location: /teamG/php/authority_error.php");
 				exit;
 			}
 		}
@@ -54,7 +56,7 @@
 			</div>
 			<div class="col-md-10 col-md-offset-1 button_group">
 				<div class="col-md-6 col-md-offset-4">
-					<form method="POST" action="/php/ordercontroller">
+					<form method="POST" action="/teamG/ordercontroller">
 						<input type="hidden" id="facilityIdent" name="UpID">
 						<input type="hidden" id="userid" name="UserID">
 						<input type="hidden" id="date" name="Reservation">
@@ -66,9 +68,12 @@
 			</div>
 		</div>
 	</div>
-	<script type="text/javascript" src="/php/js/separate.js"></script>
-	<script type="text/javascript" src="/php/js/dispOrder.js"></script>
-	<script type="text/javascript" src="/php/js/getFacility.js"></script>
-	<script type="text/javascript" src="/php/js/orderClickEvent.js"></script>
+	<?php
+		require('footer.php');
+	?>
+	<script type="text/javascript" src="/teamG/js/separate.js"></script>
+	<script type="text/javascript" src="/teamG/js/dispOrder.js"></script>
+	<script type="text/javascript" src="/teamG/js/getFacility.js"></script>
+	<script type="text/javascript" src="/teamG/js/orderClickEvent.js"></script>
 </body>
 </html>

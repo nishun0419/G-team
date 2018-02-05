@@ -4,15 +4,16 @@
 <meta charset="UTF-8" content="">
 <meta name="viewport" content="width=device-width, inital-scale=1">
 <title> 投稿画面</title>
-<link rel="stylesheet" type="text/css" href="/php/css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="/php/css/navbar.css">
-<link rel="stylesheet" type="text/css" href="/php/css/jquery-ui.css">
-<link rel="stylesheet" type="text/css" href="/php/css/toukou.css">
-<script type="text/javascript" src="/php/js/jquery-3.1.1.min.js"></script>
-<script type="text/javascript" src="/php/js/jquery-ui.min.js"></script>
-<script type="text/javascript" src="/php/js/dispCalendar.js"></script>
-<script type="text/javascript" src="/php/js/ajaxzip3.js"></script>
-<script type="text/javascript" src="/php/js/bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css" href="/teamG/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="/teamG/css/navbar.css">
+<link rel="stylesheet" type="text/css" href="/teamG/css/jquery-ui.css">
+<link rel="stylesheet" type="text/css" href="/teamG/css/toukou.css">
+<link rel="stylesheet" type="text/css" href="/teamG/css/footer.css">
+<script type="text/javascript" src="/teamG/js/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="/teamG/js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="/teamG/js/dispCalendar.js"></script>
+<script type="text/javascript" src="/teamG/js/ajaxzip3.js"></script>
+<script type="text/javascript" src="/teamG/js/bootstrap.min.js"></script>
 </head>
 <body>
 <?php
@@ -149,7 +150,7 @@
 
 					<div id="check" class="form-button_group">
 						<br>
-						<label  class=""><strong><h4>支払い方法</strong></h4></label><br>
+						<label class=""><strong><h4>支払い方法</h4></strong></label><br>
 							<label><input type="checkbox" class="pays" name="pay_cash"  value="現金"/>現金</label>
 							<label><input type="checkbox" class="pays" name="pay_card"  value="カード" disabled>カード</label>
 							<label><input type="checkbox" class="pays" name="pay_cry"   value="暗号通貨" disabled>暗号通貨</label>
@@ -167,9 +168,11 @@
 				</form>
 			</div>
 		</div>
+	<?php 
+		require('footer.php');
+	?>
 
-
-<script type="text/javascript" src="/php/js/gazou1.js"></script>
-<script type="text/javascript" src="/php/js/getPostEdit.js"></script>
+<script type="text/javascript" src="/teamG/js/gazou1.js"></script>
+<script type="text/javascript" src="/teamG/js/getPostEdit.js"></script>
 </body>
 </html>

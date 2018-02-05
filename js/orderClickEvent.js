@@ -1,6 +1,6 @@
 $(function(){
 	$('.cancel').on('click', function(){
-		location.href='/php/serchcontroller';
+		location.href='/teamG/serchcontroller';
 	});
 });
 

@@ -4,16 +4,17 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title> 投稿確認画面</title>
-<link rel="stylesheet" type="text/css" href="/php/css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="/php/css/navbar.css">
-<link rel="stylesheet" type="text/css" href="/php/css/jquery-ui.css">
-<link rel="stylesheet" type="text/css" href="/php/css/toukou.css">
-<script type="text/javascript" src="/php/js/jquery-3.1.1.min.js"></script>
-<script type="text/javascript" src="/php/js/jquery-ui.min.js"></script>
-<script type="text/javascript" src="/php/js/dispCalendar.js"></script>
-<script type="text/javascript" src="/php/js/ajaxzip3.js"></script>
-<script type="text/javascript" src="/php/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="/php/js/toukouClickEvent.js"></script>
+<link rel="stylesheet" type="text/css" href="/teamG/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="/teamG/css/navbar.css">
+<link rel="stylesheet" type="text/css" href="/teamG/css/jquery-ui.css">
+<link rel="stylesheet" type="text/css" href="/teamG/css/toukou.css">
+<link rel="stylesheet" type="text/css" href="/teamG/css/footer.css">
+<script type="text/javascript" src="/teamG/js/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="/teamG/js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="/teamG/js/dispCalendar.js"></script>
+<script type="text/javascript" src="/teamG/js/ajaxzip3.js"></script>
+<script type="text/javascript" src="/teamG/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/teamG/js/toukouClickEvent.js"></script>
 </head>
 <body>
 <?php
@@ -320,8 +321,10 @@ if($page_flag === 1):
 				</form>
 		</div>
 </div>
-
-<script type="text/javascript" src="/php/js/gazou1.js"></script>
+<?php 
+	require('footer.php');
+?>
+<script type="text/javascript" src="/teamG/js/gazou1.js"></script>
 <?php endif; ?>
 </body>
 </html>

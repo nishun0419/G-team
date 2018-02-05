@@ -58,7 +58,7 @@ else{
 
 		$dbh = null;
 		// 遷移
-		header("Location: /php/php/".$url);
+		header("Location: /teamG/php/".$url);
 		exit;
 
 	}catch(PDOException $e){

@@ -5,19 +5,19 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>ログイン</title>
-	<link rel="stylesheet" type="text/css" href="/php/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="/php/css/navbar.css">
-	<link rel="stylesheet" type="text/css" href="/php/css/footer.css">
-	<link rel="stylesheet" type="text/css" href="/php/css/login.css">
-	<script type="text/javascript" src="/php/js/jquery-3.1.1.min.js"></script>
-	<script src="/php/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="/php/js/footerFixed.js"></script>
+	<link rel="stylesheet" type="text/css" href="/teamG/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="/teamG/css/navbar.css">
+	<link rel="stylesheet" type="text/css" href="/teamG/css/footer.css">
+	<link rel="stylesheet" type="text/css" href="/teamG/css/login.css">
+	<script type="text/javascript" src="/teamG/js/jquery-3.1.1.min.js"></script>
+	<script src="/teamG/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="/teamG/js/footerFixed.js"></script>
 </head>
 <body>
 	<?php
 	require('navbar.php');
 	if(isset($_SESSION['UserID'])){
-		header("Location: /php/logincontroller?process=autoLogin&sessionId=".session_id());
+		header("Location: /teamG/logincontroller?process=autoLogin&sessionId=".session_id());
 		exit;
 	}
 	?>
@@ -30,7 +30,7 @@
 				unset($_SESSION['message_Login']);
 			}
 			?>
-			<form class="form-horizontal" role="form" method="POST" action="/php/logincontroller">
+			<form class="form-horizontal" role="form" method="POST" action="/teamG/logincontroller">
 				<div class="panel panel-primary">
 					<div class="panel-heading">
 						ログイン

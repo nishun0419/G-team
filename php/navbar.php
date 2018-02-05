@@ -24,13 +24,13 @@
 			</button>
 			<?php
 				if(!isset($_SESSION["UserName"])){
-					print '<a class="navbar-brand" href="/php/index.php">';
+					print '<a class="navbar-brand" href="/teamG/index.php">';
 				}
 				else{
-					print '<a class="navbar-brand" href="/php/php/mypage.php">';
+					print '<a class="navbar-brand" href="/teamG/php/mypage.php">';
 				}
 			?>
-				<img class = "nav_text" src="/php/image/chinook-top-image-text.png">
+				<img class = "nav_text" src="/teamG/image/chinook-top-image-text.png">
 			</a>
 		</div>
 		<div id=navmenu class="collapse navbar-collapse">
@@ -42,16 +42,16 @@
 			<?php
 				if(!isset($_SESSION["UserName"])){ 
 			?>
-			<li><a href="/php/logincontroller" role="button">ログイン</a></li>
-			<li><a href="/php/shinkicontroller" role="button">新規登録</a></li>
-			<li><a href="/php/php/help.php" role="button">ヘルプ</a></li>
+			<li><a href="/teamG/logincontroller" role="button">ログイン</a></li>
+			<li><a href="/teamG/shinkicontroller" role="button">新規登録</a></li>
+			<li><a href="/teamG/php/help.php" role="button">ヘルプ</a></li>
 			<?php }else{?>
 			<li class="dropdown">
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"><?php echo unserialize($_SESSION["UserName"])."さま"; ?> <span class="caret"></span></a>
 					<ul class="dropdown-menu" role="menu">
-						<li><a href="/php/server/logout.php">ログアウト</a></li>
-						<li><a href="/php/php/mypage.php">マイページに戻る</a></li>							
-						<li><a href="/php/php/help.php">ヘルプ</a></li>
+						<li><a href="/teamG/server/logout.php">ログアウト</a></li>
+						<li><a href="/teamG/php/mypage.php">マイページに戻る</a></li>							
+						<li><a href="/teamG/php/help.php">ヘルプ</a></li>
 					</ul>
 			</li>
 			<?php } ?>

@@ -1,6 +1,6 @@
 function getPdf(date){
 	$.ajax({
-		url:"/php/server/orderserver.php",
+		url:"/teamG/server/orderserver.php",
 		type: "get",
 		dataType: "json",
 		data:{

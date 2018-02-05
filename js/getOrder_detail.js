@@ -1,6 +1,6 @@
 $(function(){
 	$.ajax({
-		url: "/php/server/orderserver.php",
+		url: "/teamG/server/orderserver.php",
 		type: "get",
 		dataType: "json",
 		data:{
@@ -18,7 +18,7 @@ $(function(){
 
 	.fail(function(){
 		console.log('失敗');
-		location.href = '/php/php/error.php'; 
+		location.href = '/teamG/php/error.php'; 
 	});
 
 });

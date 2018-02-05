@@ -6,7 +6,7 @@ $(function(){
    		minSpeed : 1, // 最小速度
    		maxSize  : 30, // 最大サイズ
    		minSize  : 5, // 最小サイズ
-   		image : '/php/image/snow_crystal_blue.png'
+   		image : '/teamG/image/snow_crystal_blue.png'
 	});
    // $("#animation_back").snowfall();
 });
@@ -19,7 +19,7 @@ function bodysnow(){
    	minSpeed : 1, // 最小速度
    	maxSize  : 20, // 最大サイズ
    	minSize  : 5, // 最小サイズ
-   	// image: '/php/image/snowflakes.png'
-      image: '/php/image/snow_crystal_blue.png'
+   	// image: '/teamG/image/snowflakes.png'
+      image: '/teamG/image/snow_crystal_blue.png'
 	});
 }

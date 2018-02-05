@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<link rel="stylesheet" type="text/css" href="/php/css/footer.css">
+	<link rel="stylesheet" type="text/css" href="/teamG/css/footer.css">
 	<title>ログアウト</title>
 </head>
 <body>

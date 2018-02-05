@@ -84,6 +84,6 @@
 		}
 		echo $resMes;
 		// echo $_SESSION["message_Login"];
-		// header("Location: /php/php/mypage.php");
+		// header("Location: /teamG/php/mypage.php");
 		// exit;
 

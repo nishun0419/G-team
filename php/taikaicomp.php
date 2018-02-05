@@ -5,9 +5,13 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>退会処理結果</title>
-	<link rel="stylesheet" type="text/css" href="/php/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="/php/css/navbar.css">
-	<link rel="stylesheet" type="text/css" href="/php/css/taikaicomp.css">
+	<link rel="stylesheet" type="text/css" href="/teamG/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="/teamG/css/navbar.css">
+	<link rel="stylesheet" type="text/css" href="/teamG/css/taikaicomp.css">
+	<link rel="stylesheet" type="text/css" href="/teamG/css/footer.css">
+	<script type="text/javascript" src="/teamG/js/jquery-3.1.1.min.js"></script>
+	<script type="text/javascript" src="/teamG/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="/teamG/js/footerFixed.js"></script>
 <body>
 	<?php
         require('navbar.php');
@@ -20,7 +24,7 @@
 				</div>
 			</div>
 			<div class="col-md-8 col-md-offset-2">
-				<button type="button" onclick="location.href='/php/index.php'" class="btn btn-primary center-block">
+				<button type="button" onclick="location.href='/teamG/index.php'" class="btn btn-primary center-block">
 					<span class="glyphicon glyphicon-home" aria-hidden="true">
 						トップに戻る
 					</span>
@@ -28,5 +32,8 @@
 			</div>
 		</div>
 	</div>
+	<?php 
+		require('footer.php');
+	?>
 </body>
 </html>

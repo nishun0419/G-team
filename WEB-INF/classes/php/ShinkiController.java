@@ -56,7 +56,7 @@ public class ShinkiController extends HttpServlet{
 
 			String data = "id="+id+"&family="+family+"&family_kana="+family_kana+"&given="+given+"&given_kana="+given_kana+"&password="+password+"&re_password="+re_password+"&postnum="+postnum+"&pref="+pref+"&city="+city+"&address="+address+"&tel="+tel+"&email="+email+"&flag="+flag;
 			System.out.println(data);
-			URL url = new URL("http://localhost:8080/php/server/shinkiserver.php");
+			URL url = new URL("http://localhost:8080/teamG/server/shinkiserver.php");
 			uc = (HttpURLConnection)url.openConnection();
 			uc.setDoInput(true);
 			uc.setDoOutput(true);
@@ -143,7 +143,7 @@ public class ShinkiController extends HttpServlet{
 
 			String data = "id="+id+"&family="+family+"&family_kana="+family_kana+"&given="+given+"&given_kana="+given_kana+"&postnum="+postnum+"&pref="+pref+"&city="+city+"&address="+address+"&tel="+tel+"&email="+email+"&username="+username+"&flag="+flag;
 			System.out.println(data);
-			URL url = new URL("http://localhost:8080/php/server/usereditserver.php");
+			URL url = new URL("http://localhost:8080/teamG/server/usereditserver.php");
 			uc = (HttpURLConnection)url.openConnection();
 			uc.setDoInput(true);
 			uc.setDoOutput(true);

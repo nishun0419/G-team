@@ -5,7 +5,7 @@ body{
 	background-attachment: fixed;
 	background-size: cover;
 	/*http://frame-illust.com/?p=358*/
-	background-image: url(/php/image/login_back.png);
+	background-image: url(/teamG/image/login_back.png);
 }
 
 .main{

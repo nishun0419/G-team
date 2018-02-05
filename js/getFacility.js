@@ -1,6 +1,6 @@
 $(function(){
 	$.ajax({
-		url:"/php/server/facility.php",
+		url:"/teamG/server/facility.php",
 		type: "get",
 		dataType: "json",
 		data:{

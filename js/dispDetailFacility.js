@@ -60,10 +60,10 @@ function dispDetailFacility(response){
 					 .append($("<div id='calendar'></div>"))));
 		for(i = 0; i < 3; i++){
 			if(response.images[i] === ""){
-				$(".img"+i).attr({'src':'/php/image/noimage.jpg'});
+				$(".img"+i).attr({'src':'/teamG/image/noimage.jpg'});
 			}
 			else{
-				$(".img"+i).attr({'src':'/php/image/post_image/'+response.images[i]});
+				$(".img"+i).attr({'src':'/teamG/image/post_image/'+response.images[i]});
 			}
 		}
 		for(i = 0; i < 10; i++){

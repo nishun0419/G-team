@@ -5,12 +5,12 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>新規登録</title>
-	<link rel="stylesheet" type="text/css" href="/php/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="/php/css/navbar.css">
-	<link rel="stylesheet" type="text/css" href="/php/css/footer.css">
-	<link rel="stylesheet" type="text/css" href="/php/css/kiyaku.css">
-    <script type="text/javascript" src="/php/js/jquery-3.1.1.min.js"></script>
-    <script src="/php/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="/teamG/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="/teamG/css/navbar.css">
+	<link rel="stylesheet" type="text/css" href="/teamG/css/footer.css">
+	<link rel="stylesheet" type="text/css" href="/teamG/css/kiyaku.css">
+    <script type="text/javascript" src="/teamG/js/jquery-3.1.1.min.js"></script>
+    <script src="/teamG/js/bootstrap.min.js"></script>
 <body>
 	<?php
 		require('navbar.php');

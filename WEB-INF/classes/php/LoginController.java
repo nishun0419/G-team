@@ -52,7 +52,7 @@ public class LoginController extends HttpServlet{
 		HttpURLConnection uc = null;
 		String sessionId = request.getParameter("sessionId");
 		try{
-			URL url = new URL("http://localhost:8080/php/server/logincheck.php?sessionId=" + sessionId);
+			URL url = new URL("http://localhost:8080/teamG/server/logincheck.php?sessionId=" + sessionId);
 			uc = (HttpURLConnection)url.openConnection();
 			uc.setRequestMethod("GET");
 			uc.connect();
@@ -98,7 +98,7 @@ public class LoginController extends HttpServlet{
 			System.out.println(id);
 			System.out.println(password);
 			String data = "id="+id+"&password="+password+"&flag="+flag;
-			URL url = new URL("http://localhost:8080/php/server/loginserver.php");
+			URL url = new URL("http://localhost:8080/teamG/server/loginserver.php");
 			uc = (HttpURLConnection)url.openConnection();
 			uc.setDoInput(true);
 			uc.setDoOutput(true);
@@ -181,7 +181,7 @@ public class LoginController extends HttpServlet{
 			System.out.println(id);
 			System.out.println(password);
 			String data = "id="+id+"&password="+password+"&flag="+flag+"&userid="+userid+"&username="+username+"&process=tankai";
-			URL url = new URL("http://localhost:8080/php/server/loginserver.php");
+			URL url = new URL("http://localhost:8080/teamG/server/loginserver.php");
 			uc = (HttpURLConnection)url.openConnection();
 			uc.setDoInput(true);
 			uc.setDoOutput(true);
@@ -250,7 +250,7 @@ public class LoginController extends HttpServlet{
 			String id = request.getParameter("id");
 			System.out.println(id);
 			String data ="id="+id;
-			URL url = new URL("http://localhost:8080/php/server/taikaiserver.php");
+			URL url = new URL("http://localhost:8080/teamG/server/taikaiserver.php");
 			uc = (HttpURLConnection)url.openConnection();
 			uc.setDoInput(true);
 			uc.setDoOutput(true);

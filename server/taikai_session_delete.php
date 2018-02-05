@@ -2,5 +2,5 @@
 	session_start();
 	$_SESSION= array();
 	@session_destroy();
-	header("Location: /php/logincontroller?process=complete");
+	header("Location: /teamG/logincontroller?process=complete");
 	exit;

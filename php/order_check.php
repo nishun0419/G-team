@@ -3,15 +3,15 @@
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" type="text/css" href="/php/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="/php/css/jquery-ui.css">
-	<link rel="stylesheet" type="text/css" href="/php/css/order_check.css">
-	<link rel="stylesheet" type="text/css" href="/php/css/navbar.css">
-	<script type="text/javascript" src="/php/js/jquery-3.1.1.min.js"></script>
-	<script type="text/javascript" src="/php/js/jquery-ui.min.js"></script>
-	<script type="text/javascript" src="/php/js/bootstrap.min.js"></script>
-	<script src='/php/js/build/pdfmake.min.js'></script>
- 	<script src='/php/js/build/vfs_fonts.js'></script>
+	<link rel="stylesheet" type="text/css" href="/teamG/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="/teamG/css/jquery-ui.css">
+	<link rel="stylesheet" type="text/css" href="/teamG/css/order_check.css">
+	<link rel="stylesheet" type="text/css" href="/teamG/css/navbar.css">
+	<script type="text/javascript" src="/teamG/js/jquery-3.1.1.min.js"></script>
+	<script type="text/javascript" src="/teamG/js/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="/teamG/js/bootstrap.min.js"></script>
+	<script src='/teamG/js/build/pdfmake.min.js'></script>
+ 	<script src='/teamG/js/build/vfs_fonts.js'></script>
 	<title>予約状況確認</title>
 </head>
 <body>
@@ -34,11 +34,11 @@
 			<div class="col-md-10 col-md-offset-1" id="calendar"></div>
 		</div>
 	</div>
-	<script type="text/javascript" src="/php/js/getFacility.js"></script>
-	<!-- <script type="text/javascript" src="/php/js/dispOrderCheck.js"></script> -->
-	<script type="text/javascript" src="/php/js/separate.js"></script>
-	<script type="text/javascript" src="/php/js/getPdf.js"></script>
-	<script type="text/javascript" src="/php/js/dispPdf.js"></script>
-	<script type="text/javascript" src="/php/js/dispOrderCheck.js"></script>
+	<script type="text/javascript" src="/teamG/js/getFacility.js"></script>
+	<!-- <script type="text/javascript" src="/teamG/js/dispOrderCheck.js"></script> -->
+	<script type="text/javascript" src="/teamG/js/separate.js"></script>
+	<script type="text/javascript" src="/teamG/js/getPdf.js"></script>
+	<script type="text/javascript" src="/teamG/js/dispPdf.js"></script>
+	<script type="text/javascript" src="/teamG/js/dispOrderCheck.js"></script>
 </body>
 </html>

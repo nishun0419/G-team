@@ -1,7 +1,7 @@
 $(function(){
 	console.log(userid);
 	$.ajax({
-		url:"/php/server/getUserserver.php",
+		url:"/teamG/server/getUserserver.php",
 		type:"get",
 		dataType: "json",
 		data:{

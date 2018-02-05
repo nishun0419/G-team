@@ -4,11 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>予約確認</title>
-<link rel="stylesheet" type="text/css" href="/php/css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="/php/css/order_detail.css">
-<link rel="stylesheet" type="text/css" href="/php/css/navbar.css">
-<script type="text/javascript" src="/php/js/jquery-3.1.1.min.js"></script>
-<script type="text/javascript" src="/php/js/bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css" href="/teamG/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="/teamG/css/order_detail.css">
+<link rel="stylesheet" type="text/css" href="/teamG/css/navbar.css">
+<link rel="stylesheet" type="text/css" href="/teamG/css/footer.css">
+<script type="text/javascript" src="/teamG/js/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="/teamG/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/teamG/js/footerFixed.js"></script>
 </head>
 <body>
 	<?php
@@ -29,7 +31,7 @@
 				予約を取り下げます。よろしいですか？
 			</div>
 			<div class="modal-footer">
-				<form method="post" action="/php/ordercontroller">
+				<form method="post" action="/teamG/ordercontroller">
 					<button type="button" class="btn btn-default" data-dismiss="modal">キャンセル</button>
 					<input type="hidden" name="process" value="order_cancel">
 					<input type="hidden" name="resID" value="<?php echo htmlspecialchars($_GET['ResID']) ?>">
@@ -72,8 +74,11 @@
 			<button type="button" class="button go_mypage">マイページに戻る</button>
 		</div> 
 	</div>
-	<script type="text/javascript" src="/php/js/separate.js"></script>
-	<script type="text/javascript" src="/php/js/getOrder_detail.js"></script>
-	<script type="text/javascript" src="/php/js/order_detail_ClickEvent.js"></script>
+	<?php 
+		require('footer.php');
+	?>
+	<script type="text/javascript" src="/teamG/js/separate.js"></script>
+	<script type="text/javascript" src="/teamG/js/getOrder_detail.js"></script>
+	<script type="text/javascript" src="/teamG/js/order_detail_ClickEvent.js"></script>
 </body>
 </html>

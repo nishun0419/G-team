@@ -3,12 +3,13 @@
 <head>
 	<meta charset="UTF-8">
 	<title>エラー</title>
-	<link rel="stylesheet" type="text/css" href="/php/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="/php/css/navbar.css">
-	<link rel="stylesheet" type="text/css" href="/php/css/footer.css">
-	<link rel="stylesheet" type="text/css" href="/php/css/error.css">
-	<script type="text/javascript" src="/php/js/jquery-3.1.1.min.js"></script>
-	<script src="/php/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="/teamG/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="/teamG/css/navbar.css">
+	<link rel="stylesheet" type="text/css" href="/teamG/css/footer.css">
+	<link rel="stylesheet" type="text/css" href="/teamG/css/error.css">
+	<script type="text/javascript" src="/teamG/js/jquery-3.1.1.min.js"></script>
+	<script src="/teamG/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="/teamG/js/footerFixed.js"></script>
 </head>
 <body>
 	<?php
@@ -22,7 +23,7 @@
 			施設管理者が施設を予約することはできません。施設利用者としてログインしてやり直してください。
 		</div>
 		<div class="text-center back_button">
-			<a href="/php/server/logout.php">ログアウト</a>
+			<a href="/teamG/server/logout.php">ログアウト</a>
 		</div>
 	</div>
 	<?php

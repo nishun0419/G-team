@@ -1,5 +1,5 @@
 $(function(){
 	$('.cancel').on('click', function(){
-		location.href='/php/php/mypage.php';
+		location.href='/teamG/php/mypage.php';
 	});
 });

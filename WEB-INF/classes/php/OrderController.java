@@ -39,7 +39,7 @@ public class OrderController extends HttpServlet{
 		String upID = request.getParameter("upID");
 		String reservation = request.getParameter("reservation");
 		try{
-			URL url = new URL("http://localhost:8080/php/server/orderserver.php?UpID=" + upID +"&Reservation=" + reservation +"&process=preOrder" );
+			URL url = new URL("http://localhost:8080/teamG/server/orderserver.php?UpID=" + upID +"&Reservation=" + reservation +"&process=preOrder" );
 			uc = (HttpURLConnection)url.openConnection();
 			uc.setRequestMethod("GET");
 			uc.connect();
@@ -83,7 +83,7 @@ public class OrderController extends HttpServlet{
 
 			System.out.println(data);
 
-			URL url = new URL("http://localhost:8080/php/server/postorderserver.php");
+			URL url = new URL("http://localhost:8080/teamG/server/postorderserver.php");
 			uc = (HttpURLConnection)url.openConnection();
 			uc.setDoInput(true);
 			uc.setDoOutput(true);
@@ -151,7 +151,7 @@ public class OrderController extends HttpServlet{
 
 			System.out.println(data);
 
-			URL url = new URL("http://localhost:8080/php/server/postorderserver.php");
+			URL url = new URL("http://localhost:8080/teamG/server/postorderserver.php");
 			uc = (HttpURLConnection)url.openConnection();
 			uc.setDoInput(true);
 			uc.setDoOutput(true);

@@ -4,11 +4,13 @@
 	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Serch</title>
-	<link href="/php/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-	<link rel="stylesheet" type="text/css" href="/php/css/serch.css">
-	<link rel="stylesheet" type="text/css" href="/php/css/navbar.css">
-    <script type="text/javascript" src="/php/js/jquery-3.1.1.min.js"></script>
-    <script src="/php/js/bootstrap.min.js"></script>
+	<link href="/teamG/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" type="text/css" href="/teamG/css/serch.css">
+	<link rel="stylesheet" type="text/css" href="/teamG/css/navbar.css">
+	<link rel="stylesheet" type="text/css" href="/teamG/css/footer.css">
+    <script type="text/javascript" src="/teamG/js/jquery-3.1.1.min.js"></script>
+    <script src="/teamG/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/teamG/js/footerFixed.js"></script>
 </head>
 <body>
 	<?php
@@ -69,7 +71,7 @@
 	<div class="container main">
 		<div class="row">
 			<div class="col-md-4 serchbox">
-				<form class="form-horizontal" method="GET" action="/php/serchcontroller">
+				<form class="form-horizontal" method="GET" action="/teamG/serchcontroller">
 						<div class="col-md-10 sercharea">
 							<input type="text" class="form-control" id="paramValue" name="keyword" placeholder="キーワード検索">
 							<div>
@@ -193,10 +195,13 @@
 			<div class="col-md-8" id="serchResult"></div>
 		</div>
 	</div>
-	<script type="text/javascript" src="/php/js/separate.js"></script>
-	<script type="text/javascript" src="/php/js/dispFacility.js"></script>
-	<!-- <script type="text/javascript" src="/php/js/firstSerch.js"></script> -->
-	<script type="text/javascript" src="/php/js/serchClickEvent.js"></script>
-	<script type="text/javascript" src="/php/js/serch.js"></script>
+	<?php
+		require('footer.php');
+	?>
+	<script type="text/javascript" src="/teamG/js/separate.js"></script>
+	<script type="text/javascript" src="/teamG/js/dispFacility.js"></script>
+	<!-- <script type="text/javascript" src="/teamG/js/firstSerch.js"></script> -->
+	<script type="text/javascript" src="/teamG/js/serchClickEvent.js"></script>
+	<script type="text/javascript" src="/teamG/js/serch.js"></script>
 </body>
 </html>

@@ -3,23 +3,23 @@
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link href="/php/css/index.css" rel="stylesheet" type="text/css">
+	<link href="/teamG/css/index.css" rel="stylesheet" type="text/css">
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="css/navbar.css">
-	<link rel="stylesheet" type="text/css" href="/php/css/footer.css">
-	<link href="/php/css/animate.css" rel="stylesheet">
-	<script type="text/javascript" src="/php/js/jquery-3.1.1.min.js"></script>
-	<script src="/php/js/jquery.lettering.js"></script>
-	<script src="/php/js/jquery.textillate.js"></script>
-	<script type="text/javascript" src="/php/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="/php/js/snowfall.jquery.js"></script>
+	<link rel="stylesheet" type="text/css" href="/teamG/css/footer.css">
+	<link href="/teamG/css/animate.css" rel="stylesheet">
+	<script type="text/javascript" src="/teamG/js/jquery-3.1.1.min.js"></script>
+	<script src="/teamG/js/jquery.lettering.js"></script>
+	<script src="/teamG/js/jquery.textillate.js"></script>
+	<script type="text/javascript" src="/teamG/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="/teamG/js/snowfall.jquery.js"></script>
 	<title>Title</title>
 </head>
 <body>
 	<div id="animation_back">
 		<div class="text-center animationtext animationtext1">施設を利用したい</div>
 		<div class="text-center animationtext animationtext2">施設を利用してもらいたい</div>
-		<img src="/php/image/batsu.png" alt="" class="xImage">
+		<img src="/teamG/image/batsu.png" alt="" class="xImage">
 		<div class="text-center animationtext animationtext3">二つの気持ちをマッチング</div>
 	</div>
 	<?php
@@ -36,12 +36,12 @@
 		var visitflag="<?php echo $visitFlag; ?>"; 
 	</script>
 	<div id="titletop">
-		<img class="img-responsive center-block" src="/php/image/chinook-top-image.png">
+		<img class="img-responsive center-block" src="/teamG/image/chinook-top-image.png">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-4 firstInfo">
 					<div class="row">
-						<img class="imgbox center-block" src="/php/image/firstInfo1.jpg"></img>
+						<img class="imgbox center-block" src="/teamG/image/firstInfo1.jpg"></img>
 					</div>
 					<div class="text-center">
 						<h3>使い方は簡単</h3>
@@ -53,7 +53,7 @@
 				</div>
 				<div class="col-md-4 firstInfo">
 					<div class="row">
-						<img class="imgbox center-block" src="/php/image/firstInfo2.jpg"></img>
+						<img class="imgbox center-block" src="/teamG/image/firstInfo2.jpg"></img>
 					</div>
 					<div class="text-center">
 						<h3>いつでも、どこでも</h3>
@@ -65,7 +65,7 @@
 				</div>
 				<div class="col-md-4 firstInfo">
 					<div class="row">
-						<img class="imgbox center-block" src="/php/image/firstInfo3.jpg"></img>
+						<img class="imgbox center-block" src="/teamG/image/firstInfo3.jpg"></img>
 					</div>
 					<div class="text-center">
 						<h3>お小遣い稼ぎに</h3>
@@ -81,7 +81,7 @@
 	<div class="container titlesecond">
 		<div class="row">
 			<div class="serch_box col-md-10 col-md-offset-1">
-				<form class="form-inline text-center" role="form" method="get" action="/php/serchcontroller">
+				<form class="form-inline text-center" role="form" method="get" action="/teamG/serchcontroller">
 					<div class="text-center">
 						<h3>施設検索</h3>
 					</div>
@@ -165,7 +165,7 @@
 				<h2>Chinookでは全国のあらゆる空き施設を検索できます</h2>
 			</div>
 			<div class="col-md-4 secondInfo">
-				<img class="img-responsive secondInfoImg" src="/php/image/hall_l.jpg">
+				<img class="img-responsive secondInfoImg" src="/teamG/image/hall_l.jpg">
 				<div class="text-left">
 					<h3>A施設</h3>
 				</div>
@@ -174,7 +174,7 @@
 				</div>
 			</div>
 			<div class="col-md-4 secondInfo">
-				<img class="img-responsive secondInfoImg" src="/php/image/secondInfo1.jpg">
+				<img class="img-responsive secondInfoImg" src="/teamG/image/secondInfo1.jpg">
 				<div class="text-left">
 					<h3>B施設</h3>
 				</div>
@@ -183,7 +183,7 @@
 				</div>
 			</div>
 			<div class="col-md-4 secondInfo">
-				<img class="img-responsive secondInfoImg" src="/php/image/secondInfo2.jpg">
+				<img class="img-responsive secondInfoImg" src="/teamG/image/secondInfo2.jpg">
 				<div class="text-left">
 					<h3>C施設</h3>
 				</div>
@@ -196,8 +196,8 @@
 	<?php
 		require('php/footer.php');
 	?> 
-	<script type="text/javascript" src="/php/js/snowfall.js"></script>
-	<script type="text/javascript" src="/php/js/texteffect.js"></script>
-	<script type="text/javascript" src="/php/js/indexScrollAnimation.js"></script>
+	<script type="text/javascript" src="/teamG/js/snowfall.js"></script>
+	<script type="text/javascript" src="/teamG/js/texteffect.js"></script>
+	<script type="text/javascript" src="/teamG/js/indexScrollAnimation.js"></script>
 </body>
 </html>

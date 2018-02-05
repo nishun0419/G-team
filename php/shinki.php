@@ -5,12 +5,13 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>新規登録</title>
-	<link rel="stylesheet" type="text/css" href="/php/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="/php/css/navbar.css">
-	<link rel="stylesheet" type="text/css" href="/php/css/sinki.css">
-    <script type="text/javascript" src="/php/js/jquery-3.1.1.min.js"></script>
-    <script src="/php/js/bootstrap.min.js"></script>
-    <script src="/php/js/PassWordCheck.js"></script>
+	<link rel="stylesheet" type="text/css" href="/teamG/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="/teamG/css/navbar.css">
+	<link rel="stylesheet" type="text/css" href="/teamG/css/sinki.css">
+	<link rel="stylesheet" type="text/css" href="/teamG/css/footer.css">
+    <script type="text/javascript" src="/teamG/js/jquery-3.1.1.min.js"></script>
+    <script src="/teamG/js/bootstrap.min.js"></script>
+    <script src="/teamG/js/PassWordCheck.js"></script>
 <!--     <script src="//code.jquery.com/jquery-2.1.0.min.js" type="text/javascript"></script>
     <script src="/ajaxzip2/prototype.js"></script>
 	<script src="ajaxzip2/ajaxzip2.js" charset="UTF-8"></script> -->
@@ -20,7 +21,7 @@
 		require('navbar.php');
 
 		if(isset($_SESSION['UserName'])){
-			header("Location: /php/logincontroller");
+			header("Location: /teamG/logincontroller");
 			exit;
 		}
 		if(isset($_SESSION['message_Shinki'])) {
@@ -31,7 +32,7 @@
 	<div class="container">
 		<div class="text-center"><h3>新規登録</h3></div>
 		<div class="col-md-8 col-md-offset-2">
-			<form id="form1" class="form-horizontal" role="form" method="POST" action="/php/shinkicontroller">
+			<form id="form1" class="form-horizontal" role="form" method="POST" action="/teamG/shinkicontroller">
 				<div class="panel panel-primary">
 					<div class="panel-heading">
 						新規登録
@@ -197,5 +198,8 @@
 		</div>
 		</div>
 	</div>
+	<?php 
+		require('footer.php');
+	?>
 </body>
 </html>

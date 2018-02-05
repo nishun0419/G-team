@@ -4,15 +4,15 @@
 	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>施設詳細</title>
-	<link rel="stylesheet" type="text/css" href="/php/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="/php/css/jquery-ui.css">
-	<link rel="stylesheet" type="text/css" href="/php/css/detail_facility.css">
-	<link rel="stylesheet" type="text/css" href="/php/css/navbar.css">
-	<link rel="stylesheet" type="text/css" href="/php/css/footer.css">
-	<script type="text/javascript" src="/php/js/jquery-3.1.1.min.js"></script>
-	<script type="text/javascript" src="/php/js/jquery-ui.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="/teamG/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="/teamG/css/jquery-ui.css">
+	<link rel="stylesheet" type="text/css" href="/teamG/css/detail_facility.css">
+	<link rel="stylesheet" type="text/css" href="/teamG/css/navbar.css">
+	<link rel="stylesheet" type="text/css" href="/teamG/css/footer.css">
+	<script type="text/javascript" src="/teamG/js/jquery-3.1.1.min.js"></script>
+	<script type="text/javascript" src="/teamG/js/jquery-ui.min.js"></script>
 
-	<script type="text/javascript" src="/php/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="/teamG/js/bootstrap.min.js"></script>
 </head>
 <body>
 	<?php
@@ -41,7 +41,7 @@
 					<div class="text-center calendarVal"></div>
 				</div>
 				<div class="modal-footer">
-					<form method="POST" action="/php/ordercontroller">
+					<form method="POST" action="/teamG/ordercontroller">
 						<button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
 						<input type="hidden" name="upID" id="upID">
 						<input type="hidden" name="reservation" id="reservation">
@@ -61,11 +61,11 @@
 			<div id="detail_Info"></div>
 		</div>
 	</div>
-	<script type="text/javascript" src="/php/js/separate.js"></script>
-	<script type="text/javascript" src="/php/js/Map.js"></script>
-	<script type="text/javascript" src="/php/js/disp_fac_Calendar.js"></script>
-	<script type="text/javascript" src="/php/js/dispDetailFacility.js"></script>
-	<script type="text/javascript" src="/php/js/getFacility.js"></script>
+	<script type="text/javascript" src="/teamG/js/separate.js"></script>
+	<script type="text/javascript" src="/teamG/js/Map.js"></script>
+	<script type="text/javascript" src="/teamG/js/disp_fac_Calendar.js"></script>
+	<script type="text/javascript" src="/teamG/js/dispDetailFacility.js"></script>
+	<script type="text/javascript" src="/teamG/js/getFacility.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCZg9ufeYKKY11pds-r8Y-qkfDQLIN-2fw"></script>
     <?php
 		require('footer.php');

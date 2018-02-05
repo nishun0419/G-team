@@ -24,7 +24,7 @@ $(function(){//位置情報を使わない検索
 	}
 
 	$.ajax({
-		url:"/php/server/facility.php",
+		url:"/teamG/server/facility.php",
 		type: "get",
 		dataType: "json",
 		data:{
