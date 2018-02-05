@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="/teamG/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="/teamG/css/order.css">
 	<link rel="stylesheet" type="text/css" href="/teamG/css/navbar.css">
@@ -61,8 +62,10 @@
 						<input type="hidden" id="userid" name="UserID">
 						<input type="hidden" id="date" name="Reservation">
 						<input type="hidden" name="process" value="order">
-						<button type="button" class="btn cancel"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>キャンセル</button>
-						<button type="submit" class="btn btn-primary ok"><span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>申し込む</button>
+						<div class="text-center">
+							<button type="button" class="btn cancel"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>キャンセル</button>
+							<button type="submit" class="btn btn-primary ok"><span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>申し込む</button>
+						</div>
 					</form>
 				</div>
 			</div>
